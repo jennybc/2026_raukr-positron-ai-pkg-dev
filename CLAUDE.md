@@ -7,21 +7,27 @@ Workshop materials for two sessions taught by Jenny Bryan as part of [RaukR: Dat
 
 ## Status and next steps
 
-* Create basic Quarto website Jenny can use as a landing page for workshop participants on both days.
-  - `index.qmd`: landing page with welcome, sections for each topic (Positron + Posit Assistant, Package development), info on where to find Jenny online.
-  - Section on Positron + Posit Assistant should just link out to existing, external material mentioned in the current README.
-  - Section on package development should link out to a landing page for package dev content.
-  - Give Jenny nudges to do what ever is necessary to get a GitHub Pages site up.
-* Work on inlining package development content adapted from Andy Teucher's workshop offered as posit::conf(2023).
+Done (as of 2026-07-29):
+
+* Basic Quarto website exists, with a landing page participants can use on both days.
+  - `index.qmd`: welcome, a table of the two sessions, a section per topic, where to find Jenny online.
+  - Positron + Posit Assistant just links out to <http://pos.it/ron-raukr>.
+  - Package development links in to `pkg-dev/index.qmd`.
+* Build and deploy work end to end. Repo is <https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev>, site is live at <https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/>. All pages plus the PDF were verified to return 200.
+
+Next steps:
+
+* Inline package development content adapted from Andy Teucher's workshop offered as posit::conf(2023).
   - Specifically, bring the content of https://posit-conf-2023.github.io/pkg-dev/ into this repo. Source can be found at https://github.com/posit-conf-2023/pkg-dev.
-  - Work incrementally. Let's first get a working version of Jenny's workshop site, including all of this package development material. Then we can start to adapt it.
-  - We will also want to create a Quarto slide deck that replicates the content of https://posit-conf-2023.github.io/pkg-dev/materials/slides.pdf. Probably use reveal.js. Jenny is not very experienced with Quarto slides and wants to keep this very basic.
+  - Work incrementally, roughly a module at a time, so Jenny can preview as we go. First get a working version of the site including all of the package development material, then start to adapt it.
+  - `pkg-dev/01-whole-game.qmd` is currently a bare placeholder. It exists only so the sidebar `auto:` glob has something to match. Replace it with real content.
+* Create a Quarto slide deck that replicates the content of https://posit-conf-2023.github.io/pkg-dev/materials/slides.pdf (also in this repo as `pkg-dev-2023.pdf`). Probably use reveal.js. Jenny is not very experienced with Quarto slides and wants to keep this very basic.
 
 ## Operating notes
 
 - `quarto preview` is typically started by Jenny in a separate terminal, not by Claude. Wiping `_site/` and `.quarto/` is the right move when stale builds cause weirdness (e.g., old font imports lingering after SCSS changes).
 - Local-only workflow: there is no `.devcontainer/` and no Codespaces wiring on purpose.
-- The repo is git-initialized. Jenny makes her own commits and PRs; never commit or push on her behalf, stage or prepare changes and stop there.
+- The repo is on GitHub with `origin` set. Jenny makes her own commits and PRs; never commit or push on her behalf, stage or prepare changes and stop there. Same goes for anything that publishes or reshapes the remote (`quarto publish`, `gh workflow run`, `gh repo rename`): hand Jenny the command instead of running it.
 
 ## Per-user preferences
 
@@ -30,16 +36,25 @@ Workshop materials for two sessions taught by Jenny Bryan as part of [RaukR: Dat
 
 ## Website and Slide deck conventions
 
-Jenny has borrowed everything below here from a colleague.
+Jenny originally borrowed this section from a colleague. The website bullets below now describe what this repo actually does. The slide deck conventions further down are still aspirational: there is no `slides/`, `custom.scss`, `title-slide.html`, `images/`, `demo/`, or `_extensions/` in this repo yet, so treat that part as a spec to build toward, not a description of existing files.
 
 That workshop's content is at https://github.com/juliasilge/applied-stats-byu-2026/tree/main. But when in doubt, we want to keep the Quarto usage simple! So feel free to ask questions or use simpler approaches.
 
 Another useful workshop repo is <https://github.com/posit-dev/positron-workshop>. We might eventually inline content from there. For now, the main thing to take from here are the mechanics around deployment.
 
 - `_quarto.yml`: website config; theme is `[zephyr, footer.scss]`. Output dir is the Quarto default `_site/`, which is gitignored.
+  - `render:` is an inclusive list (`index.qmd`, `pkg-dev/*.qmd`), following Julia. That way stray `.md` files never become pages and need no `!` exclusions.
+  - `resources:` lists `pkg-dev-2023.pdf` so the PDF gets copied into the built site.
+  - Navigation is a sidebar (not a navbar), following positron-workshop. Contents are an explicit `href` for `pkg-dev/index.qmd` followed by `- auto: "pkg-dev/0*.qmd"`. The glob is deliberately `0*` rather than the whole directory: a bare `auto: pkg-dev/` would also pull in `index.qmd` and sort it *after* the numbered modules, since `0` sorts before `i`.
 - Deployment follows <https://github.com/posit-dev/positron-workshop> rather than Julia's repo: `.github/workflows/publish.yml` renders on push to `main` and publishes to the `gh-pages` branch via `quarto-dev/quarto-actions/publish@v2`. Built output is never committed.
+  - Action versions: `actions/checkout@v7` (v4 emits a Node 20 deprecation warning on the runners; anything >= v5 clears it) and `quarto-dev/quarto-actions/{setup,publish}@v2`, which is the current major, with the `v2` tag pointing at the latest release. This deliberately diverges from positron-workshop, which still pins `checkout@v4`.
+  - `quarto-actions/setup@v2` installs the latest Quarto release, so the CI version can drift from Jenny's local Quarto. Left floating on purpose. Pin with `with: {version: X.Y.Z}` if that ever causes trouble.
+  - Gotcha, recorded in case this ever needs redoing: the workflow can only push to a `gh-pages` branch that already exists, and fails outright if it is missing. `usethis::use_github_pages()` handles that, creating an empty orphan `gh-pages` branch and configuring the Pages settings. But it does not render or populate anything, so the site 404s (while GitHub reports a successful deploy of the empty branch) until the publish workflow runs once.
+- `pkg-dev/_metadata.yml`: shared front matter for all package development pages (`sidebar: main`, `toc: true`), so module pages need not repeat it.
+- `_license.md`: short CC blurb, included at the bottom of pages via `{{< include _license.md >}}` (or `../_license.md` from `pkg-dev/`). Distinct from root `LICENSE.md`, which is the full text plus attribution to Andy Teucher's workshop. Underscore prefix keeps it from rendering as its own page.
 - `footer.scss`: site SCSS. Disables zephyr's Google Fonts import via `$web-font-path: false`, plus footer layout and table-width rules.
 - `DESCRIPTION`: R dependency manifest (`Type: Workshop`). Licensing: course content (slides, prose) is CC BY-NC-SA 4.0 (root `LICENSE.md`, matching the site footer and `DESCRIPTION`).
+  - The `Package:` field does not match the repo name, and cannot: R package names may not start with a digit or contain underscores or hyphens. This mismatch is intentional; do not try to "fix" it. Note `usethis::use_github()` derives the repo name from this field when a `DESCRIPTION` is present, which is why the repo was initially created with the wrong name and had to be renamed.
 - Renamed `footer.scss` from `footer.css` because it contains SCSS (`$var` syntax). Do not rename back, the CSS linter will complain.
 
 Every deck's YAML uses:
