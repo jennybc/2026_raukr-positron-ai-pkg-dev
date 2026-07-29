@@ -12,3 +12,5 @@ Imports:
     devtools,
     testthat,
     usethis
+URL: https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev
+BugReports: https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev/issues
