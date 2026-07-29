@@ -1,0 +1,14 @@
+Package: raukr2026
+Title: RaukR 2026: Positron, Posit Assistant, and R Package Development
+Version: 0.0.1
+Authors@R:
+    person("Jenny", "Bryan", , "jenny@posit.co", role = c("aut", "cre"))
+Description: Workshop materials for two sessions taught by Jenny Bryan at
+    RaukR: Data Science with R, 2026 August 10 - 20, Visby, Sweden.
+License: CC BY-NC-SA 4.0
+Encoding: UTF-8
+Type: Workshop
+Imports:
+    devtools,
+    testthat,
+    usethis

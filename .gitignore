@@ -3,4 +3,7 @@
 .RData
 .httr-oauth
 .DS_Store
-.quarto
+
+/.quarto/
+/_site/
+**/*.quarto_ipynb

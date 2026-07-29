@@ -1,0 +1,19 @@
+/*-- scss:defaults --*/
+
+// Disable zephyr's Google Fonts import; use system fonts instead
+$web-font-path: false;
+
+/*-- scss:rules --*/
+
+.nav-footer {
+  align-items: flex-start;
+}
+
+.nav-footer-left,
+.nav-footer-right {
+  font-size: 0.9em;
+}
+
+table {
+  width: auto;
+}

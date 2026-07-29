@@ -1,0 +1,36 @@
+---
+title: "RaukR 2026"
+subtitle: "Two sessions with Jenny Bryan"
+---
+
+Welcome! This is the landing page for my two sessions at
+[RaukR: Data Science with R](https://nbisweden.github.io/raukr-2026/),
+held 2026 August 10 - 20 in Visby, Sweden.
+
+| When | What |
+|------|------|
+| Monday, August 10 (half day) | [Introduction to Positron and Posit Assistant](#positron-and-posit-assistant) |
+| Wednesday, August 12 (half day) | [Introduction to R package development](#r-package-development) |
+
+## Positron and Posit Assistant {#positron-and-posit-assistant}
+
+Monday's material lives in the Positron workshop site:
+
+<http://pos.it/ron-raukr>
+
+which should take you to
+
+<https://posit-dev.github.io/positron-workshop/raukr.html>
+
+## R package development {#r-package-development}
+
+Wednesday's material lives here on this site:
+
+* [Package development](pkg-dev/index.qmd)
+
+## Where to find me online
+
+GitHub [@jennybc](https://github.com/jennybc) |
+BlueSky [@jennybryan.bsky.social](https://bsky.app/profile/jennybryan.bsky.social)
+
+{{< include _license.md >}}

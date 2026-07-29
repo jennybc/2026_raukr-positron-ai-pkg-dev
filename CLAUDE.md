@@ -19,7 +19,7 @@ Workshop materials for two sessions taught by Jenny Bryan as part of [RaukR: Dat
 
 ## Operating notes
 
-- `quarto preview` is typically started by Jenny in a separate terminal, not by Claude. Wiping `docs/` and `.quarto/` is the right move when stale builds cause weirdness (e.g., old font imports lingering after SCSS changes).
+- `quarto preview` is typically started by Jenny in a separate terminal, not by Claude. Wiping `_site/` and `.quarto/` is the right move when stale builds cause weirdness (e.g., old font imports lingering after SCSS changes).
 - Local-only workflow: there is no `.devcontainer/` and no Codespaces wiring on purpose.
 - The repo is git-initialized. Jenny makes her own commits and PRs; never commit or push on her behalf, stage or prepare changes and stop there.
 
@@ -34,7 +34,10 @@ Jenny has borrowed everything below here from a colleague.
 
 That workshop's content is at https://github.com/juliasilge/applied-stats-byu-2026/tree/main. But when in doubt, we want to keep the Quarto usage simple! So feel free to ask questions or use simpler approaches.
 
-- `_quarto.yml`: website config; theme is `[zephyr, footer.scss]`. Output dir is `docs/`.
+Another useful workshop repo is <https://github.com/posit-dev/positron-workshop>. We might eventually inline content from there. For now, the main thing to take from here are the mechanics around deployment.
+
+- `_quarto.yml`: website config; theme is `[zephyr, footer.scss]`. Output dir is the Quarto default `_site/`, which is gitignored.
+- Deployment follows <https://github.com/posit-dev/positron-workshop> rather than Julia's repo: `.github/workflows/publish.yml` renders on push to `main` and publishes to the `gh-pages` branch via `quarto-dev/quarto-actions/publish@v2`. Built output is never committed.
 - `footer.scss`: site SCSS. Disables zephyr's Google Fonts import via `$web-font-path: false`, plus footer layout and table-width rules.
 - `DESCRIPTION`: R dependency manifest (`Type: Workshop`). Licensing: course content (slides, prose) is CC BY-NC-SA 4.0 (root `LICENSE.md`, matching the site footer and `DESCRIPTION`).
 - Renamed `footer.scss` from `footer.css` because it contains SCSS (`$var` syntax). Do not rename back, the CSS linter will complain.

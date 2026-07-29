@@ -1,0 +1,42 @@
+project:
+  type: website
+  render:
+    - "index.qmd"
+    - "pkg-dev/*.qmd"
+  resources:
+    - "pkg-dev-2023.pdf"
+
+website:
+  title: "RaukR 2026"
+  page-navigation: true
+  site-url: https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/
+  repo-url: https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev
+  sidebar:
+    id: main
+    title: "RaukR 2026"
+    pinned: true
+    align: center
+    search: true
+    collapse-level: 2
+    contents:
+      - href: index.qmd
+        text: Home
+      - text: "---"
+      - href: pkg-dev/index.qmd
+        text: "Package development"
+      - auto: "pkg-dev/0*.qmd"
+  page-footer:
+    left: |
+      Content by Jenny Bryan, licensed
+      [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+    center:
+      - icon: github
+        href: https://github.com/jennybc
+        aria-label: GitHub
+    right: |
+      Made with [Quarto](https://quarto.org/)
+
+format:
+  html:
+    theme: [zephyr, footer.scss]
+    toc: true

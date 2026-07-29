@@ -1,0 +1,27 @@
+---
+title: "Introduction to R package development"
+subtitle: "RaukR 2026, Wednesday August 12 (half day)"
+---
+
+## What we'll do
+
+* **The Whole Game**: create a small package from scratch.
+  Based on [this chapter of R Packages (2e)](https://r-pkgs.org/whole-game.html).
+* **The Package Within**: extract a package from data analysis scripts.
+  Based on [this chapter of R Packages (2e)](https://r-pkgs.org/package-within.html).
+
+## Materials
+
+* Slides: The Whole Game, in slide form, by Andy Teucher, prepared for
+  posit::conf(2023). [PDF](../pkg-dev-2023.pdf)
+* libminer, the example package we will build:
+  <https://github.com/ateucher/libminer>
+* Package development workshop from posit::conf(2023); the "Modules" provide
+  prompts for various activities:
+  <https://posit-conf-2023.github.io/pkg-dev/intro.html>
+
+## Where to learn more
+
+* R Packages, 2nd edition: <https://r-pkgs.org/>
+
+{{< include ../_license.md >}}
