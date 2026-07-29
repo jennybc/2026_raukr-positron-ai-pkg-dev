@@ -1,0 +1,124 @@
+[
+  {
+    "objectID": "pkg-dev/index.html",
+    "href": "pkg-dev/index.html",
+    "title": "Introduction to R package development",
+    "section": "",
+    "text": "The Whole Game: create a small package from scratch. Based on this chapter of R Packages (2e).\nThe Package Within: extract a package from data analysis scripts. Based on this chapter of R Packages (2e).",
+    "crumbs": [
+      "Package development"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/index.html#what-well-do",
+    "href": "pkg-dev/index.html#what-well-do",
+    "title": "Introduction to R package development",
+    "section": "",
+    "text": "The Whole Game: create a small package from scratch. Based on this chapter of R Packages (2e).\nThe Package Within: extract a package from data analysis scripts. Based on this chapter of R Packages (2e).",
+    "crumbs": [
+      "Package development"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/index.html#materials",
+    "href": "pkg-dev/index.html#materials",
+    "title": "Introduction to R package development",
+    "section": "Materials",
+    "text": "Materials\n\nSlides: The Whole Game, in slide form, by Andy Teucher, prepared for posit::conf(2023). PDF\nlibminer, the example package we will build: https://github.com/ateucher/libminer\nPackage development workshop from posit::conf(2023); the “Modules” provide prompts for various activities: https://posit-conf-2023.github.io/pkg-dev/intro.html",
+    "crumbs": [
+      "Package development"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/index.html#where-to-learn-more",
+    "href": "pkg-dev/index.html#where-to-learn-more",
+    "title": "Introduction to R package development",
+    "section": "Where to learn more",
+    "text": "Where to learn more\n\nR Packages, 2nd edition: https://r-pkgs.org/",
+    "crumbs": [
+      "Package development"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/index.html#license",
+    "href": "pkg-dev/index.html#license",
+    "title": "Introduction to R package development",
+    "section": "License",
+    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).",
+    "crumbs": [
+      "Package development"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RaukR 2026",
+    "section": "",
+    "text": "Welcome! This is the landing page for my two sessions at RaukR: Data Science with R, held 2026 August 10 - 20 in Visby, Sweden.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#positron-and-posit-assistant",
+    "href": "index.html#positron-and-posit-assistant",
+    "title": "RaukR 2026",
+    "section": "Positron and Posit Assistant",
+    "text": "Positron and Posit Assistant\nMonday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#r-package-development",
+    "href": "index.html#r-package-development",
+    "title": "RaukR 2026",
+    "section": "R package development",
+    "text": "R package development\nWednesday’s material lives here on this site:\n\nPackage development",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#where-to-find-me-online",
+    "href": "index.html#where-to-find-me-online",
+    "title": "RaukR 2026",
+    "section": "Where to find me online",
+    "text": "Where to find me online\nGitHub @jennybc | BlueSky @jennybryan.bsky.social",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "RaukR 2026",
+    "section": "License",
+    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-whole-game.html",
+    "href": "pkg-dev/01-whole-game.html",
+    "title": "The Whole Game",
+    "section": "",
+    "text": "Placeholder. Content to be adapted from R Packages (2e), The Whole Game and the corresponding module of Introduction to R Package Development (posit::conf(2023), Andy Teucher).",
+    "crumbs": [
+      "Pkg Dev",
+      "The Whole Game"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-whole-game.html#license",
+    "href": "pkg-dev/01-whole-game.html#license",
+    "title": "The Whole Game",
+    "section": "License",
+    "text": "License\nThis work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).",
+    "crumbs": [
+      "Pkg Dev",
+      "The Whole Game"
+    ]
+  }
+]
