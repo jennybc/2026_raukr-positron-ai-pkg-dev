@@ -4,7 +4,7 @@
 Agenda for Jenny Bryan's instruction at:
 
   * [RaukR: Data Science with R](https://nbisweden.github.io/raukr-2026/)
-  * 2025 June 10 - 20, Visby, Sweden
+  * 2026 August 10 - 20, Visby, Sweden
 
 ## Introduction to Positron and Posit Assistant (Monday August 10)
 
