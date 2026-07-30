@@ -1,0 +1,107 @@
+---
+title: "Managing dependencies"
+---
+
+## Use functions from fs in our package
+
+Let's add a feature to reveal the on-disk size of each package library.
+We'll use some functions from the fs package to do this.
+We're taking on a dependency.
+
+Declare that your package will use fs:
+
+```r
+use_package("fs")
+```
+
+Then call fs functions with the `pkg::fun()` form:
+
+```r
+lib_summary <- function(sizes = FALSE) {
+  pkgs <- utils::installed.packages()
+  pkg_tbl <- table(pkgs[, "LibPath"])
+  pkg_df <- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)
+  names(pkg_df) <- c("Library", "n_packages")
+
+  if (sizes) {
+    pkg_df$lib_size <- fs::as_fs_bytes(vapply(
+      pkg_df$Library,
+      function(x) {
+        sum(fs::dir_info(x, recurse = TRUE, type = "file")$size)
+      },
+      FUN.VALUE = numeric(1)
+    ))
+  }
+  pkg_df
+}
+```
+
+## Manual test drive
+
+```r
+load_all()
+lib_summary()
+lib_summary(TRUE)
+```
+
+It seems to work!
+
+## Run package tests
+
+* **R: Test R Package in Test Explorer** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd> or
+* `test()` in R console (the command / keyboard shortcut is better, though)
+
+Oops, a test fails, though.
+
+## Update tests and test again
+
+```r
+test_that("lib_summary fails appropriately", {
+  expect_error(lib_summary(sizes = "foo"), "not interpretable as logical")
+})
+
+test_that("sizes argument works", {
+  res <- lib_summary(sizes = TRUE)
+  expect_equal(names(res), c("Library", "n_packages", "lib_size"))
+  expect_type(res$lib_size, "double")
+})
+```
+
+Tests pass again!
+
+## Check package again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command / keyboard shortcut is better, though)
+
+Oops, warning about undocumented parameter, `sizes`.
+
+## Update roxygen comment and regenerate documentation
+
+```r
+#' Provides a brief summary of the package libraries on your machine
+#'
+#' @param sizes Should the sizes of the libraries be calculated?
+#'
+#' @returns A data.frame containing the count of packages in each of the user's
+#'   libraries. A `lib_size` column is included if `sizes = TRUE`.
+#' @export
+#'
+#' @examples
+#' lib_summary()
+#' lib_summary(sizes = TRUE)
+```
+
+```r
+document() # Cmd/Ctrl + Shift + D
+```
+
+## Check package again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command / keyboard shortcut is better, though)
+
+Passing cleanly: `0 errors ✔ | 0 warnings ✔ | 0 notes ✔`
