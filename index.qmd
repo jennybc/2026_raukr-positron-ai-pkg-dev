@@ -9,28 +9,17 @@ held 2026 August 10 - 20 in Visby, Sweden.
 
 | When | What |
 |------|------|
-| Monday, August 10 (half day) | [Introduction to Positron and Posit Assistant](#positron-and-posit-assistant) |
-| Wednesday, August 12 (half day) | [Introduction to R package development](#r-package-development) |
-
-## Positron and Posit Assistant {#positron-and-posit-assistant}
-
-Monday's material lives in the Positron workshop site:
-
-<http://pos.it/ron-raukr>
-
-which should take you to
-
-<https://posit-dev.github.io/positron-workshop/raukr.html>
-
-## R package development {#r-package-development}
-
-Wednesday's material lives here on this site:
-
-* [Package development](pkg-dev/index.qmd)
+| Monday, August 10 (morning) | [Introduction to Positron and Posit Assistant](positron/index.qmd) |
+| Wednesday, August 12 (afternoon) | [Introduction to R package development](pkg-dev/index.qmd) |
 
 ## Where to find me online
 
-GitHub [@jennybc](https://github.com/jennybc) |
-BlueSky [@jennybryan.bsky.social](https://bsky.app/profile/jennybryan.bsky.social)
-
-{{< include _license.md >}}
+::: contact-list
+* <i class="bi bi-slack" aria-hidden="true"></i> RaukR Slack:
+  [#positron](https://raukr.slack.com/archives/C090T4MALDC) or
+  [#pkg-dev](https://raukr.slack.com/archives/C090ZD4GWD9)
+* <i class="bi bi-github" aria-hidden="true"></i> GitHub:
+  [\@jennybc](https://github.com/jennybc)
+* <i class="bi bi-bluesky" aria-hidden="true"></i> BlueSky:
+  [\@jennybryan.bsky.social](https://bsky.app/profile/jennybryan.bsky.social)
+:::

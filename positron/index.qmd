@@ -1,0 +1,13 @@
+---
+title: "Introduction to Positron and Posit Assistant"
+---
+
+## Materials
+
+Monday's material lives in the Positron workshop site:
+
+<http://pos.it/ron-raukr>
+
+which should take you to
+
+<https://posit-dev.github.io/positron-workshop/raukr.html>

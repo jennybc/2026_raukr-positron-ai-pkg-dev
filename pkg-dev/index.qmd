@@ -1,14 +1,16 @@
 ---
 title: "Introduction to R package development"
-subtitle: "RaukR 2026, Wednesday August 12 (half day)"
 ---
 
 ## What we'll do
 
+We follow two chapters of [R Packages (2e)](https://r-pkgs.org/), which is the
+book to read if you want to go deeper on anything here:
+
 * **The Whole Game**: create a small package from scratch.
-  Based on [this chapter of R Packages (2e)](https://r-pkgs.org/whole-game.html).
+  [Chapter](https://r-pkgs.org/whole-game.html)
 * **The Package Within**: extract a package from data analysis scripts.
-  Based on [this chapter of R Packages (2e)](https://r-pkgs.org/package-within.html).
+  [Chapter](https://r-pkgs.org/package-within.html)
 
 ## Materials
 
@@ -20,8 +22,10 @@ subtitle: "RaukR 2026, Wednesday August 12 (half day)"
   prompts for various activities:
   <https://posit-conf-2023.github.io/pkg-dev/intro.html>
 
-## Where to learn more
+## Acknowledgements
 
-* R Packages, 2nd edition: <https://r-pkgs.org/>
-
-{{< include ../_license.md >}}
+Much of this material is adapted, with gratitude, from
+[Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/)
+by [Andy Teucher](https://github.com/ateucher), prepared for posit::conf(2023)
+([source](https://github.com/posit-conf-2023/pkg-dev)). Andy's original is
+licensed CC BY-NC-SA 4.0, as is this adaptation.

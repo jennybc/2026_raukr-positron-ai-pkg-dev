@@ -2,6 +2,7 @@ project:
   type: website
   render:
     - "index.qmd"
+    - "positron/*.qmd"
     - "pkg-dev/*.qmd"
   resources:
     - "pkg-dev-2023.pdf"
@@ -17,22 +18,25 @@ website:
     pinned: true
     align: center
     search: true
-    collapse-level: 2
+    collapse-level: 1
     contents:
       - href: index.qmd
         text: Home
       - text: "---"
-      - href: pkg-dev/index.qmd
-        text: "Package development"
-      - auto: "pkg-dev/0*.qmd"
+      - href: positron/index.qmd
+        text: "Positron and Posit Assistant"
+      - section: "Package development"
+        href: pkg-dev/index.qmd
+        contents:
+          - pkg-dev/01-whole-game.qmd
   page-footer:
     left: |
       Content by Jenny Bryan, licensed
       [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
     center:
       - icon: github
-        href: https://github.com/jennybc
-        aria-label: GitHub
+        href: https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev
+        aria-label: Source repository on GitHub
     right: |
       Made with [Quarto](https://quarto.org/)
 

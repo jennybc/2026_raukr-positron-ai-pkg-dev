@@ -10,9 +10,9 @@ Workshop materials for two sessions taught by Jenny Bryan as part of [RaukR: Dat
 Done (as of 2026-07-29):
 
 * Basic Quarto website exists, with a landing page participants can use on both days.
-  - `index.qmd`: welcome, a table of the two sessions, a section per topic, where to find Jenny online.
-  - Positron + Posit Assistant just links out to <http://pos.it/ron-raukr>.
-  - Package development links in to `pkg-dev/index.qmd`.
+  - `index.qmd` is deliberately thin: welcome, a table of the two sessions linking to their landing pages, where to find Jenny online.
+  - The two sessions are peers, one directory each: `positron/` and `pkg-dev/`, each with an `index.qmd` landing page and a `_metadata.yml`.
+  - `positron/index.qmd` is a stub that links out to <http://pos.it/ron-raukr>.
 * Build and deploy work end to end. Repo is <https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev>, site is live at <https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/>. All pages plus the PDF were verified to return 200.
 
 Next steps:
@@ -20,7 +20,7 @@ Next steps:
 * Inline package development content adapted from Andy Teucher's workshop offered as posit::conf(2023).
   - Specifically, bring the content of https://posit-conf-2023.github.io/pkg-dev/ into this repo. Source can be found at https://github.com/posit-conf-2023/pkg-dev.
   - Work incrementally, roughly a module at a time, so Jenny can preview as we go. First get a working version of the site including all of the package development material, then start to adapt it.
-  - `pkg-dev/01-whole-game.qmd` is currently a bare placeholder. It exists only so the sidebar `auto:` glob has something to match. Replace it with real content.
+  - `pkg-dev/01-whole-game.qmd` is currently a bare placeholder, listed explicitly in the sidebar `contents:`. Replace it with real content.
 * Create a Quarto slide deck that replicates the content of https://posit-conf-2023.github.io/pkg-dev/materials/slides.pdf (also in this repo as `pkg-dev-2023.pdf`). Probably use reveal.js. Jenny is not very experienced with Quarto slides and wants to keep this very basic.
 
 ## Operating notes
@@ -43,15 +43,18 @@ That workshop's content is at https://github.com/juliasilge/applied-stats-byu-20
 Another useful workshop repo is <https://github.com/posit-dev/positron-workshop>. We might eventually inline content from there. For now, the main thing to take from here are the mechanics around deployment.
 
 - `_quarto.yml`: website config; theme is `[zephyr, footer.scss]`. Output dir is the Quarto default `_site/`, which is gitignored.
-  - `render:` is an inclusive list (`index.qmd`, `pkg-dev/*.qmd`), following Julia. That way stray `.md` files never become pages and need no `!` exclusions.
+  - `render:` is an inclusive list (`index.qmd`, `positron/*.qmd`, `pkg-dev/*.qmd`), following Julia. That way stray `.md` files never become pages and need no `!` exclusions.
   - `resources:` lists `pkg-dev-2023.pdf` so the PDF gets copied into the built site.
-  - Navigation is a sidebar (not a navbar), following positron-workshop. Contents are an explicit `href` for `pkg-dev/index.qmd` followed by `- auto: "pkg-dev/0*.qmd"`. The glob is deliberately `0*` rather than the whole directory: a bare `auto: pkg-dev/` would also pull in `index.qmd` and sort it *after* the numbered modules, since `0` sorts before `i`.
+  - Navigation is a sidebar (not a navbar), following positron-workshop. Contents: Home, a divider, then the two sessions in chronological order.
+    - A session with no module pages is a plain `href:` (currently `positron/index.qmd`). A session with module pages is a `section:` carrying its own `href:` to the landing page, so the section title doubles as that link, with the module files listed **explicitly** under `contents:` (currently "Package development"). Add each new module by hand, and promote a session from `href:` to `section:` when it gains its first module.
+    - List modules explicitly rather than using `auto:`. An `auto:` glob always wraps its matches in an extra section titled from the directory name, which shows up as a stray "Pkg Dev" entry.
+    - `collapse-level: 1` so sections start collapsed on the home page and auto-expand when you are on a page inside them.
 - Deployment follows <https://github.com/posit-dev/positron-workshop> rather than Julia's repo: `.github/workflows/publish.yml` renders on push to `main` and publishes to the `gh-pages` branch via `quarto-dev/quarto-actions/publish@v2`. Built output is never committed.
   - Action versions: `actions/checkout@v7` (v4 emits a Node 20 deprecation warning on the runners; anything >= v5 clears it) and `quarto-dev/quarto-actions/{setup,publish}@v2`, which is the current major, with the `v2` tag pointing at the latest release. This deliberately diverges from positron-workshop, which still pins `checkout@v4`.
   - `quarto-actions/setup@v2` installs the latest Quarto release, so the CI version can drift from Jenny's local Quarto. Left floating on purpose. Pin with `with: {version: X.Y.Z}` if that ever causes trouble.
   - Gotcha, recorded in case this ever needs redoing: the workflow can only push to a `gh-pages` branch that already exists, and fails outright if it is missing. `usethis::use_github_pages()` handles that, creating an empty orphan `gh-pages` branch and configuring the Pages settings. But it does not render or populate anything, so the site 404s (while GitHub reports a successful deploy of the empty branch) until the publish workflow runs once.
-- `pkg-dev/_metadata.yml`: shared front matter for all package development pages (`sidebar: main`, `toc: true`), so module pages need not repeat it.
-- `_license.md`: short CC blurb, included at the bottom of pages via `{{< include _license.md >}}` (or `../_license.md` from `pkg-dev/`). Distinct from root `LICENSE.md`, which is the full text plus attribution to Andy Teucher's workshop. Underscore prefix keeps it from rendering as its own page.
+- `positron/_metadata.yml` and `pkg-dev/_metadata.yml`: shared front matter for the pages in each session directory (`sidebar: main`, `toc: true`), so individual pages need not repeat it.
+- Licensing is stated **once** on the site, in the `page-footer` of `_quarto.yml`, which links to the CC BY-NC-SA 4.0 deed. Do not add per-page license sections; they were repetitive and cluttered every page's TOC. Root `LICENSE.md` holds the full text plus attribution to Andy Teucher's workshop, for people reading the repo.
 - `footer.scss`: site SCSS. Disables zephyr's Google Fonts import via `$web-font-path: false`, plus footer layout and table-width rules.
 - `DESCRIPTION`: R dependency manifest (`Type: Workshop`). Licensing: course content (slides, prose) is CC BY-NC-SA 4.0 (root `LICENSE.md`, matching the site footer and `DESCRIPTION`).
   - The `Package:` field does not match the repo name, and cannot: R package names may not start with a digit or contain underscores or hyphens. This mismatch is intentional; do not try to "fix" it. Note `usethis::use_github()` derives the repo name from this field when a `DESCRIPTION` is present, which is why the repo was initially created with the wrong name and had to be renamed.
