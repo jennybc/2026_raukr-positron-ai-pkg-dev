@@ -40,6 +40,94 @@
     ]
   },
   {
+    "objectID": "pkg-dev/05-dependencies.html",
+    "href": "pkg-dev/05-dependencies.html",
+    "title": "Managing dependencies",
+    "section": "",
+    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
+    "href": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
+    "title": "Managing dependencies",
+    "section": "",
+    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#manual-test-drive",
+    "href": "pkg-dev/05-dependencies.html#manual-test-drive",
+    "title": "Managing dependencies",
+    "section": "Manual test drive",
+    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nIt seems to work!",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#run-package-tests",
+    "href": "pkg-dev/05-dependencies.html#run-package-tests",
+    "title": "Managing dependencies",
+    "section": "Run package tests",
+    "text": "Run package tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nOops, a test fails, though.",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
+    "href": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
+    "title": "Managing dependencies",
+    "section": "Update tests and test again",
+    "text": "Update tests and test again\ntest_that(\"lib_summary fails appropriately\", {\n  expect_error(lib_summary(sizes = \"foo\"), \"not interpretable as logical\")\n})\n\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})\nTests pass again!",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#check-package-again",
+    "href": "pkg-dev/05-dependencies.html#check-package-again",
+    "title": "Managing dependencies",
+    "section": "Check package again",
+    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nOops, warning about undocumented parameter, sizes.",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
+    "href": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
+    "title": "Managing dependencies",
+    "section": "Update roxygen comment and regenerate documentation",
+    "text": "Update roxygen comment and regenerate documentation\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the user's\n#'   libraries. A `lib_size` column is included if `sizes = TRUE`.\n#' @export\n#'\n#' @examples\n#' lib_summary()\n#' lib_summary(sizes = TRUE)\ndocument() # Cmd/Ctrl + Shift + D",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/05-dependencies.html#check-package-again-1",
+    "href": "pkg-dev/05-dependencies.html#check-package-again-1",
+    "title": "Managing dependencies",
+    "section": "Check package again",
+    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nPassing cleanly: 0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
+    "crumbs": [
+      "Package development",
+      "Managing dependencies"
+    ]
+  },
+  {
     "objectID": "pkg-dev/03-documentation.html",
     "href": "pkg-dev/03-documentation.html",
     "title": "Documentation",
@@ -352,6 +440,39 @@
     "crumbs": [
       "Package development",
       "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/06-ci.html",
+    "href": "pkg-dev/06-ci.html",
+    "title": "Automated checking with GitHub Actions",
+    "section": "",
+    "text": "If your package source code is hosted on GitHub, you can take advantage of GitHub Actions to automatically check your package on 3 operating systems every time you push. Example of what’s known as “continuous integration” = CI.\nPlace a special YAML file to configure this:\nRe-generate README.md to incorporate the new badge.",
+    "crumbs": [
+      "Package development",
+      "Automated checking with GitHub Actions"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/06-ci.html#check-package-again",
+    "href": "pkg-dev/06-ci.html#check-package-again",
+    "title": "Automated checking with GitHub Actions",
+    "section": "Check package again",
+    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nPassing cleanly: 0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
+    "crumbs": [
+      "Package development",
+      "Automated checking with GitHub Actions"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/06-ci.html#commit-and-push",
+    "href": "pkg-dev/06-ci.html#commit-and-push",
+    "title": "Automated checking with GitHub Actions",
+    "section": "Commit and push",
+    "text": "Commit and push\nObviously the GHA config must be pushed to GitHub to take effect.\nView your package on GitHub to see the new badge and to see where R CMD check is running:\nbrowse_github()\nbrowse_github_actions()",
+    "crumbs": [
+      "Package development",
+      "Automated checking with GitHub Actions"
     ]
   }
 ]
