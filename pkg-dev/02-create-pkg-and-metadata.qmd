@@ -142,7 +142,6 @@ Description: Provides functions for learning about your R libraries, and the
 * <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
 * `check()` in R console (the command is better, though, because it runs in a clean terminal)
 
-
 ### Use GitHub
 
 ```r

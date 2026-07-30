@@ -1,0 +1,108 @@
+---
+title: "Documentation"
+---
+
+## Add a roxygen block just above your function definition
+
+Put your cursor inside the function's name (e.g. `lib_summary`) and a
+light bulb appears, offering to "Show Code Actions". Click it and choose
+"Generate a roxygen template".
+
+![](images/roxygen-code-action.png){width="60%"
+fig-alt="The Positron editor with the cursor in the function name lib_summary. A
+light bulb has appeared and its menu is open, showing the code action \"Generate
+a roxygen template\"."}
+
+``` r
+#' R Library Summary
+#'
+#' Provides a brief summary of the package libraries on your machine
+#'
+#' @returns A `data.frame` containing the count of packages in each of the
+#'   user's libraries
+#' @export
+#'
+#' @examples
+#' lib_summary()
+lib_summary <- function() {
+  ...
+}
+```
+
+## Build documentation from roxygen comments
+
+```r
+document()
+```
+
+::: {.callout-tip}
+## Learn the `document()` keyboard shortcut
+
+Positron also exposes this from the Command Palette as **R: Document R Package**,
+with the keyboard shortcut <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>.
+
+Every time you edit a roxygen comment, you need to run `document()` before the
+change shows up in the rendered help.
+:::
+
+You can preview the docs with `?function_name`
+
+```r
+load_all()
+
+?lib_summary
+```
+
+## Check package again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command / keyboard shortcut is better, though)
+
+## Create package-level documentation
+
+```r
+use_package_doc()
+
+document()
+```
+
+Preview it:
+
+```r
+?libminer
+```
+
+Then check the package again, using the Command Palette or the keyboard shortcut.
+
+## Install your package
+
+* **R: Install R Package and Restart R** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> or
+* `install()` in R console (the command / keyboard shortcut is better, though)
+
+```r
+library(libminer)
+
+lib_summary() # note one more package than before - that's yours!
+```
+
+## README
+
+```r
+use_readme_rmd()
+```
+
+Creates `README.Rmd` for your package and opens it for editing.
+
+You still need to render that to `README.md` and `build_readme()` makes sure to render with respect to the current source of your in-development package, for consistency.
+
+```r
+build_readme()
+```
+
+## Check package again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command / keyboard shortcut is better, though)
