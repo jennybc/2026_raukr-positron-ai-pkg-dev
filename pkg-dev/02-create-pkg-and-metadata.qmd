@@ -1,0 +1,150 @@
+---
+title: "Package creation and metadata"
+---
+
+## Explore your package libraries
+
+Before we make a package, let's look at where the packages you already have
+actually live:
+
+```r
+.libPaths()
+```
+
+And at what is in them:
+
+```r
+installed.packages()
+```
+
+That is a lot of information, so you may prefer to look at just a few columns:
+
+```r
+installed.packages()[, c("Package", "Version", "LibPath")]
+```
+
+That is the raw material for the package we are about to build.
+
+## Lay the foundations
+
+### Load devtools and create your package infrastructure
+
+```r
+library(devtools)                 # attaches usethis as well
+create_package("~/work/libminer") # pick a place that makes sense to you!
+```
+
+### Initialize this package as a git repo
+
+```r
+use_git()
+```
+
+### Attach devtools in all interactive sessions
+
+We can load devtools automatically via our `.Rprofile` file so that it is
+always loaded during development
+
+```r
+use_devtools()
+```
+
+Paste the contents of your clipboard in `.Rprofile`, and restart R.
+
+If you choose not to do this, you'll need to attach devtools everytime you restart R during your package development work:
+
+```r
+library(devtools)
+```
+
+## Write your first function
+
+### Open a new file in `R/` to hold your code
+
+```r
+use_r("lib-summary")
+```
+
+### Write your function definition in this file
+
+```r
+lib_summary <- function() {
+  pkgs <- utils::installed.packages()
+  pkg_tbl <- table(pkgs[, "LibPath"])
+  pkg_df <- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)
+  names(pkg_df) <- c("Library", "n_packages")
+  pkg_df
+}
+```
+
+### Load your package with `load_all()`
+
+```r
+load_all()
+```
+
+::: {.callout-tip}
+## Learn the `load_all()` keyboard shortcut
+
+Positron also exposes this from the Command Palette as **R: Load R Package**,
+with the keyboard shortcut <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>.
+
+`load_all()` is the single most common thing you do while developing a package,
+so this shortcut is worth committing to muscle memory.
+:::
+
+And test out our new function:
+
+```r
+lib_summary()
+```
+
+### Check your package
+
+```r
+check()
+```
+
+::: {.callout-tip}
+## Learn the `check()` keyboard shortcut
+
+Positron also exposes this from the Command Palette as **R: Check R Package**,
+with the keyboard shortcut <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>.
+
+`check()` is your early warning system: run it often, so that when something
+does break you have a small set of recent changes to blame.
+:::
+
+### Choose a license, any license
+
+```r
+use_mit_license()
+```
+
+### Update DESCRIPTION with better metadata
+
+```
+Package: libminer
+Title: Explore Your R Libraries
+Version: 0.0.0.9000
+Authors@R:
+    person("Jane", "Doe",
+           email = "jane.doe@something.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "XXXX-XXXX-XXXX-XXXX"))
+Description: Provides functions for learning about your R libraries, and the
+    packages you have installed.
+```
+
+### Check again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command is better, though, because it runs in a clean terminal)
+
+
+### Use GitHub
+
+```r
+use_github()
+```
