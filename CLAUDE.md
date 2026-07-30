@@ -14,13 +14,16 @@ Done (as of 2026-07-29):
   - The two sessions are peers, one directory each: `positron/` and `pkg-dev/`, each with an `index.qmd` landing page and a `_metadata.yml`.
   - `positron/index.qmd` is a stub that links out to <http://pos.it/ron-raukr>.
 * Build and deploy work end to end. Repo is <https://github.com/jennybc/2026_raukr-positron-ai-pkg-dev>, site is live at <https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/>. All pages plus the PDF were verified to return 200.
+* Andy Teucher's posit::conf(2023) modules are ported into `pkg-dev/` as `01-setup.qmd` through `08-share.qmd` (source: <https://github.com/posit-conf-2023/pkg-dev>).
+  - Andy's "Introduction" page was dropped. His "Packages in a nutshell" page was one `.libPaths()` call, now folded into `02-create-pkg-and-metadata.qmd`.
+  - `01-setup.qmd` is rewritten for Positron rather than RStudio, and its bibliography citations are inlined as plain links since we have no `references.bib`.
+  - `03-documentation.qmd` onward are Andy's content essentially as is.
+  - His `vignettes.qmd` exists in his repo but is absent from his sidebar, so it was not ported. Pick it up if we want a vignettes module.
 
 Next steps:
 
-* Inline package development content adapted from Andy Teucher's workshop offered as posit::conf(2023).
-  - Specifically, bring the content of https://posit-conf-2023.github.io/pkg-dev/ into this repo. Source can be found at https://github.com/posit-conf-2023/pkg-dev.
-  - Work incrementally, roughly a module at a time, so Jenny can preview as we go. First get a working version of the site including all of the package development material, then start to adapt it.
-  - `pkg-dev/01-whole-game.qmd` is currently a bare placeholder, listed explicitly in the sidebar `contents:`. Replace it with real content.
+* Adapt the ported modules for RaukR: they are currently Andy's material with light edits, still built around the libminer example.
+* Reconcile the module list with the two-part framing on `pkg-dev/index.qmd` ("The Whole Game" and "The Package Within"). Modules 01-08 collectively cover the Whole Game; nothing covers The Package Within yet.
 * Create a Quarto slide deck that replicates the content of https://posit-conf-2023.github.io/pkg-dev/materials/slides.pdf (also in this repo as `pkg-dev-2023.pdf`). Probably use reveal.js. Jenny is not very experienced with Quarto slides and wants to keep this very basic.
 
 ## Operating notes
@@ -54,6 +57,8 @@ Another useful workshop repo is <https://github.com/posit-dev/positron-workshop>
   - `quarto-actions/setup@v2` installs the latest Quarto release, so the CI version can drift from Jenny's local Quarto. Left floating on purpose. Pin with `with: {version: X.Y.Z}` if that ever causes trouble.
   - Gotcha, recorded in case this ever needs redoing: the workflow can only push to a `gh-pages` branch that already exists, and fails outright if it is missing. `usethis::use_github_pages()` handles that, creating an empty orphan `gh-pages` branch and configuring the Pages settings. But it does not render or populate anything, so the site 404s (while GitHub reports a successful deploy of the empty branch) until the publish workflow runs once.
 - `positron/_metadata.yml` and `pkg-dev/_metadata.yml`: shared front matter for the pages in each session directory (`sidebar: main`, `toc: true`), so individual pages need not repeat it.
+- No R runs at render time, and CI does not install R. Show R code in plain ```` ```r ```` blocks, never executable ```` ```{r} ```` chunks.
+  - To *display* chunk syntax literally, use Quarto's escape: double the braces, ```` ```{{r}} ````. This both renders as `{r}` and keeps Quarto's engine detection from firing up knitr. Needed in `pkg-dev/03-documentation.qmd`, which quotes a README containing chunks. Nesting inside a four-backtick fence is not enough on its own; the escape is what matters.
 - Licensing is stated **once** on the site, in the `page-footer` of `_quarto.yml`, which links to the CC BY-NC-SA 4.0 deed. Do not add per-page license sections; they were repetitive and cluttered every page's TOC. Root `LICENSE.md` holds the full text plus attribution to Andy Teucher's workshop, for people reading the repo.
 - `footer.scss`: site SCSS. Disables zephyr's Google Fonts import via `$web-font-path: false`, plus footer layout and table-width rules.
 - `DESCRIPTION`: R dependency manifest (`Type: Workshop`). Licensing: course content (slides, prose) is CC BY-NC-SA 4.0 (root `LICENSE.md`, matching the site footer and `DESCRIPTION`).

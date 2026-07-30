@@ -28,7 +28,14 @@ website:
       - section: "Package development"
         href: pkg-dev/index.qmd
         contents:
-          - pkg-dev/01-whole-game.qmd
+          - pkg-dev/01-setup.qmd
+          - pkg-dev/02-create-pkg-and-metadata.qmd
+          - pkg-dev/03-documentation.qmd
+          - pkg-dev/04-testing.qmd
+          - pkg-dev/05-dependencies.qmd
+          - pkg-dev/06-ci.qmd
+          - pkg-dev/07-website.qmd
+          - pkg-dev/08-share.qmd
   page-footer:
     left: |
       Content by Jenny Bryan, licensed

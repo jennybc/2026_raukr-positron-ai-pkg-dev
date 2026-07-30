@@ -1,0 +1,168 @@
+---
+title: "System setup"
+---
+
+You will need the following software installed and configured.
+Please have this set up and ready to go **before** we start.
+
+## Computing requirements
+
+You will need:
+
+* A computer you are allowed to install software on
+* [R](#install-r)
+* [Positron](#install-positron)
+* [R package development toolchain](#install-r-package-development-tools)
+* [The devtools package](#packages)
+
+Optional, but recommended:
+
+* [Git and GitHub](#git-and-github)
+
+## Install R {#install-r}
+
+I highly recommend installing R with **rig**, the R Installation Manager:
+<https://github.com/r-lib/rig>.
+It handles the fiddly parts for you, steers you into best practices, and lets you keep several versions of R side by side, which works great with Positron.
+Once rig is installed, getting the current release of R is:
+
+```
+rig add release
+```
+
+If you would rather not use rig, download and install R for your operating
+system from <https://cloud.r-project.org/>.
+Either way, use a recent version, ideally the current release.
+
+## Install Positron {#install-positron}
+
+Download and install Positron from <https://positron.posit.co/download.html>.
+
+If you already have Positron, please make sure it is up to date.
+Positron updates often and we want everyone on the same version.
+Use **Positron > Check for Updates...** on macOS, or
+**Help > Check for Updates...** on Windows and Linux.
+
+::: aside
+Everything in this session also works in RStudio or other development environment.
+The commands are all `devtools` and `usethis` function calls, which are
+IDE-agnostic.
+But the workshop will feature interactive workflows in Positron.
+:::
+
+## Install R package development tools {#install-r-package-development-tools}
+
+Some packages include C, C++, or Fortran code, which has to be compiled.
+You need a compiler toolchain in order to install such a package from source.
+
+The package we will develop is pure R, so you'll probably be fine without a compiler toolchain.
+But as you get deeper into package development, you will inevitably want to install *something* from source that has compiled code, so this is a nicetime to set it up.
+
+#### For Windows
+
+Download and run the latest **Rtools** installer from
+<https://cran.r-project.org/bin/windows/Rtools/>.
+Be sure to get the Rtools version that matches your R version.
+
+* Keep the default settings for the installation location and components.
+* Do **not** select the box for "Edit the system PATH". R-specific tooling puts
+  Rtools on the `PATH` when it is needed.
+* Do select the box for "Save version information to registry". It should be
+  selected by default.
+
+#### For Mac
+
+Install the **Xcode command line tools** (full Xcode is not necessary).
+Open a terminal (in Positron, use the Terminal pane) and run:
+
+```
+xcode-select --install
+```
+
+You will be prompted to confirm the install, and possibly to enter your
+computer password.
+
+#### For Linux
+
+If you installed `r-base-dev` when you installed R, you should have all you
+need to build packages from source.
+If not, go back to <https://cloud.r-project.org/> and follow the instructions
+for your distribution.
+On Ubuntu and Debian it is `sudo apt-get install r-base-dev`.
+
+## Install packages {#packages}
+
+In R, run:
+
+```r
+install.packages("devtools")
+```
+
+That is enough.
+devtools is a meta-package and everything else we need, such as usethis,
+roxygen2, testthat, and pkgdown, comes along with it.
+
+::: aside
+I personally use [pak](https://pak.r-lib.org) to install packages:
+
+```r
+pak::pak("devtools")
+```
+:::
+
+You can verify your system is set up for package development by asking for a
+"development situation report":
+
+```r
+devtools::dev_sitrep()
+```
+
+This reports on your R version, your IDE, devtools itself, and whether any of
+your package development dependencies are out of date.
+If it flags something as missing or stale, update it.
+
+## Git and GitHub {#git-and-github}
+
+[Happy Git with R](https://happygitwithr.com/) is the place to go for anything
+in this section that does not go smoothly.
+
+::: aside
+We will use Git and GitHub to track changes and share our package.
+You can follow along without them, but you will get more out of the session if
+you have them working.
+:::
+
+### Git
+
+Check whether you already have Git by running this in a terminal (in Positron,
+use the Terminal pane):
+
+```
+which git
+```
+
+If that reports a path, you're set.
+If not, Happy Git has
+[installation instructions](https://happygitwithr.com/install-git.html) for
+every platform.
+
+### GitHub account
+
+Register at [github.com](https://github.com/), if you have not already.
+
+### Check the link between R and GitHub
+
+Ask usethis for a "situation report":
+
+```r
+usethis::git_sitrep()
+```
+
+You are in good shape if it shows your name and email, and reports a personal
+access token (PAT) as `<discovered>`.
+
+If not:
+
+* No name or email? [`usethis::use_git_config()`](https://usethis.r-lib.org/reference/use_git_config.html)
+* No PAT? Underscoped PAT? [Managing Git(Hub) Credentials](https://usethis.r-lib.org/articles/git-credentials.html)
+  walks through `create_github_token()` and `gitcreds::gitcreds_set()`.

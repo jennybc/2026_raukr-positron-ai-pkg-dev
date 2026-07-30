@@ -1,9 +1,0 @@
----
-title: "The Whole Game"
----
-
-Placeholder. Content to be adapted from
-[R Packages (2e), The Whole Game](https://r-pkgs.org/whole-game.html)
-and the corresponding module of
-[Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/)
-(posit::conf(2023), Andy Teucher).
