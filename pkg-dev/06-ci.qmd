@@ -1,0 +1,57 @@
+---
+title: "Automated checking with GitHub Actions"
+---
+
+If your package source code is hosted on GitHub, you can take advantage of GitHub Actions to automatically check your package on 3 operating systems every time you push.
+Example of what's known as "continuous integration" = CI.
+
+Place a special YAML file to configure this:
+
+```r
+use_github_action()
+```
+
+```
+Which action do you want to add? (0 to exit)
+(See <https://github.com/r-lib/actions/tree/v2/examples> for other options)
+
+1: check-standard: Run `R CMD check` on Linux, macOS, and Windows
+2: test-coverage: Compute test coverage and report to https://about.codecov.io
+3: pr-commands: Add /document and /style commands for pull requests
+
+Selection: 1
+✔ Setting active project to "/Users/jenny/work/libminer".
+✔ Creating .github/.
+✔ Adding "^\\.github$" to .Rbuildignore.
+✔ Adding "*.html" to .github/.gitignore.
+✔ Creating .github/workflows/.
+✔ Saving "r-lib/actions/examples/check-standard.yaml@v2" to .github/workflows/R-CMD-check.yaml.
+☐ Learn more at <https://github.com/r-lib/actions/blob/v2/examples/README.md>.
+✔ Adding "R-CMD-check badge" to README.Rmd.
+☐ Re-knit README.Rmd with devtools::build_readme().
+```
+
+Re-generate `README.md` to incorporate the new badge.
+
+```r
+build_readme()
+```
+
+## Check package again
+
+* **R: Check R Package** from Positron Command Palette or
+* <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or
+* `check()` in R console (the command / keyboard shortcut is better, though)
+
+Passing cleanly: `0 errors ✔ | 0 warnings ✔ | 0 notes ✔`
+
+## Commit and push
+
+Obviously the GHA config must be pushed to GitHub to take effect.
+
+View your package on GitHub to see the new badge and to see where `R CMD check` is running:
+
+```r
+browse_github()
+browse_github_actions()
+```
