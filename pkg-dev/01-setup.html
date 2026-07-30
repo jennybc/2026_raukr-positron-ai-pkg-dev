@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RaukR 2026</title>
+<title>System setup – RaukR 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,25 +26,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cdef8e731132aa1ec54b651ff1d17921.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../pkg-dev/02-create-pkg-and-metadata.html" rel="next">
+<link href="../pkg-dev/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cdef8e731132aa1ec54b651ff1d17921.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -76,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -85,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pkg-dev/index.html">Package development</a></li><li class="breadcrumb-item"><a href="../pkg-dev/01-setup.html">System setup</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -100,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">RaukR 2026</a> 
+      <a href="../">RaukR 2026</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -112,47 +149,47 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./positron/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../positron/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positron and Posit Assistant</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./pkg-dev/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../pkg-dev/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Package development</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/01-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/01-setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">System setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/02-create-pkg-and-metadata.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/02-create-pkg-and-metadata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Package creation and metadata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/03-documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/03-documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/04-testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/04-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
@@ -180,17 +217,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-to-find-me-online" id="toc-where-to-find-me-online" class="nav-link active" data-scroll-target="#where-to-find-me-online">Where to find me online</a></li>
+  <li><a href="#computing-requirements" id="toc-computing-requirements" class="nav-link active" data-scroll-target="#computing-requirements">Computing requirements</a></li>
+  <li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r">Install R</a></li>
+  <li><a href="#install-positron" id="toc-install-positron" class="nav-link" data-scroll-target="#install-positron">Install Positron</a></li>
+  <li><a href="#install-r-package-development-tools" id="toc-install-r-package-development-tools" class="nav-link" data-scroll-target="#install-r-package-development-tools">Install R package development tools</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Install packages</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and GitHub</a>
+  <ul class="collapse">
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
+  <li><a href="#github-account" id="toc-github-account" class="nav-link" data-scroll-target="#github-account">GitHub account</a></li>
+  <li><a href="#check-the-link-between-r-and-github" id="toc-check-the-link-between-r-and-github" class="nav-link" data-scroll-target="#check-the-link-between-r-and-github">Check the link between R and GitHub</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pkg-dev/index.html">Package development</a></li><li class="breadcrumb-item"><a href="../pkg-dev/01-setup.html">System setup</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">RaukR 2026</h1>
-<p class="subtitle lead">Two sessions with Jenny Bryan</p>
+<h1 class="title">System setup</h1>
 </div>
 
 
@@ -207,36 +253,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome! This is the landing page for my two sessions at <a href="https://nbisweden.github.io/raukr-2026/">RaukR: Data Science with R</a>, held 2026 August 10 - 20 in Visby, Sweden.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>When</th>
-<th>What</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monday, August 10 (morning)</td>
-<td><a href="./positron/index.html">Introduction to Positron and Posit Assistant</a></td>
-</tr>
-<tr class="even">
-<td>Wednesday, August 12 (afternoon)</td>
-<td><a href="./pkg-dev/index.html">Introduction to R package development</a></td>
-</tr>
-</tbody>
-</table>
-<section id="where-to-find-me-online" class="level2">
-<h2 class="anchored" data-anchor-id="where-to-find-me-online">Where to find me online</h2>
-<div class="contact-list">
+<p>You will need the following software installed and configured. Please have this set up and ready to go <strong>before</strong> we start.</p>
+<section id="computing-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="computing-requirements">Computing requirements</h2>
+<p>You will need:</p>
 <ul>
-<li><i class="bi bi-slack" aria-hidden="true"></i> RaukR Slack: <a href="https://raukr.slack.com/archives/C090T4MALDC">#positron</a> or <a href="https://raukr.slack.com/archives/C090ZD4GWD9">#pkg-dev</a></li>
-<li><i class="bi bi-github" aria-hidden="true"></i> GitHub: <a href="https://github.com/jennybc">@jennybc</a></li>
-<li><i class="bi bi-bluesky" aria-hidden="true"></i> BlueSky: <a href="https://bsky.app/profile/jennybryan.bsky.social">@jennybryan.bsky.social</a></li>
+<li>A computer you are allowed to install software on</li>
+<li><a href="#install-r">R</a></li>
+<li><a href="#install-positron">Positron</a></li>
+<li><a href="#install-r-package-development-tools">R package development toolchain</a></li>
+<li><a href="#packages">The devtools package</a></li>
 </ul>
-</div>
+<p>Optional, but recommended:</p>
+<ul>
+<li><a href="#git-and-github">Git and GitHub</a></li>
+</ul>
+</section>
+<section id="install-r" class="level2">
+<h2 class="anchored" data-anchor-id="install-r">Install R</h2>
+<p>I highly recommend installing R with <strong>rig</strong>, the R Installation Manager: <a href="https://github.com/r-lib/rig" class="uri">https://github.com/r-lib/rig</a>. It handles the fiddly parts for you, steers you into best practices, and lets you keep several versions of R side by side, which works great with Positron. Once rig is installed, getting the current release of R is:</p>
+<pre><code>rig add release</code></pre>
+<p>If you would rather not use rig, download and install R for your operating system from <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a>. Either way, use a recent version, ideally the current release.</p>
+</section>
+<section id="install-positron" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="install-positron">Install Positron</h2>
+<p>Download and install Positron from <a href="https://positron.posit.co/download.html" class="uri">https://positron.posit.co/download.html</a>.</p>
+<p>If you already have Positron, please make sure it is up to date. Positron updates often and we want everyone on the same version. Use <strong>Positron &gt; Check for Updates…</strong> on macOS, or <strong>Help &gt; Check for Updates…</strong> on Windows and Linux.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Everything in this session also works in RStudio or other development environment. The commands are all <code>devtools</code> and <code>usethis</code> function calls, which are IDE-agnostic. But the workshop will feature interactive workflows in Positron.</p>
+</div></div></section>
+<section id="install-r-package-development-tools" class="level2">
+<h2 class="anchored" data-anchor-id="install-r-package-development-tools">Install R package development tools</h2>
+<p>Some packages include C, C++, or Fortran code, which has to be compiled. You need a compiler toolchain in order to install such a package from source.</p>
+<p>The package we will develop is pure R, so you’ll probably be fine without a compiler toolchain. But as you get deeper into package development, you will inevitably want to install <em>something</em> from source that has compiled code, so this is a nicetime to set it up.</p>
+<section id="for-windows" class="level4">
+<h4 class="anchored" data-anchor-id="for-windows">For Windows</h4>
+<p>Download and run the latest <strong>Rtools</strong> installer from <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a>. Be sure to get the Rtools version that matches your R version.</p>
+<ul>
+<li>Keep the default settings for the installation location and components.</li>
+<li>Do <strong>not</strong> select the box for “Edit the system PATH”. R-specific tooling puts Rtools on the <code>PATH</code> when it is needed.</li>
+<li>Do select the box for “Save version information to registry”. It should be selected by default.</li>
+</ul>
+</section>
+<section id="for-mac" class="level4">
+<h4 class="anchored" data-anchor-id="for-mac">For Mac</h4>
+<p>Install the <strong>Xcode command line tools</strong> (full Xcode is not necessary). Open a terminal (in Positron, use the Terminal pane) and run:</p>
+<pre><code>xcode-select --install</code></pre>
+<p>You will be prompted to confirm the install, and possibly to enter your computer password.</p>
+</section>
+<section id="for-linux" class="level4">
+<h4 class="anchored" data-anchor-id="for-linux">For Linux</h4>
+<p>If you installed <code>r-base-dev</code> when you installed R, you should have all you need to build packages from source. If not, go back to <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a> and follow the instructions for your distribution. On Ubuntu and Debian it is <code>sudo apt-get install r-base-dev</code>.</p>
+</section>
+</section>
+<section id="packages" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="packages">Install packages</h2>
+<p>In R, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"devtools"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>That is enough. devtools is a meta-package and everything else we need, such as usethis, roxygen2, testthat, and pkgdown, comes along with it.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>I personally use <a href="https://pak.r-lib.org">pak</a> to install packages:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"devtools"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div><p>You can verify your system is set up for package development by asking for a “development situation report”:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">dev_sitrep</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This reports on your R version, your IDE, devtools itself, and whether any of your package development dependencies are out of date. If it flags something as missing or stale, update it.</p>
+</section>
+<section id="git-and-github" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="git-and-github">Git and GitHub</h2>
+<p><a href="https://happygitwithr.com/">Happy Git with R</a> is the place to go for anything in this section that does not go smoothly.</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>We will use Git and GitHub to track changes and share our package. You can follow along without them, but you will get more out of the session if you have them working.</p>
+</div></div><section id="git" class="level3">
+<h3 class="anchored" data-anchor-id="git">Git</h3>
+<p>Check whether you already have Git by running this in a terminal (in Positron, use the Terminal pane):</p>
+<pre><code>which git</code></pre>
+<p>If that reports a path, you’re set. If not, Happy Git has <a href="https://happygitwithr.com/install-git.html">installation instructions</a> for every platform.</p>
+</section>
+<section id="github-account" class="level3">
+<h3 class="anchored" data-anchor-id="github-account">GitHub account</h3>
+<p>Register at <a href="https://github.com/">github.com</a>, if you have not already.</p>
+</section>
+<section id="check-the-link-between-r-and-github" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-link-between-r-and-github">Check the link between R and GitHub</h3>
+<p>Ask usethis for a “situation report”:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You are in good shape if it shows your name and email, and reports a personal access token (PAT) as <code>&lt;discovered&gt;</code>.</p>
+<p>If not:</p>
+<ul>
+<li>No name or email? <a href="https://usethis.r-lib.org/reference/use_git_config.html"><code>usethis::use_git_config()</code></a></li>
+<li>No PAT? Underscoped PAT? <a href="https://usethis.r-lib.org/articles/git-credentials.html">Managing Git(Hub) Credentials</a> walks through <code>create_github_token()</code> and <code>gitcreds::gitcreds_set()</code>.</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -640,6 +752,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../pkg-dev/index.html" class="pagination-link" aria-label="Package development">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Package development</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../pkg-dev/02-create-pkg-and-metadata.html" class="pagination-link" aria-label="Package creation and metadata">
+        <span class="nav-page-text">Package creation and metadata</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

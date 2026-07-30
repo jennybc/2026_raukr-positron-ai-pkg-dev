@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RaukR 2026</title>
+<title>Documentation – RaukR 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,25 +26,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cdef8e731132aa1ec54b651ff1d17921.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../pkg-dev/04-testing.html" rel="next">
+<link href="../pkg-dev/02-create-pkg-and-metadata.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-cdef8e731132aa1ec54b651ff1d17921.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pkg-dev/index.html">Package development</a></li><li class="breadcrumb-item"><a href="../pkg-dev/03-documentation.html">Documentation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -100,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">RaukR 2026</a> 
+      <a href="../">RaukR 2026</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -112,47 +149,47 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./positron/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../positron/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positron and Posit Assistant</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./pkg-dev/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../pkg-dev/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Package development</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/01-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/01-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">System setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/02-create-pkg-and-metadata.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/02-create-pkg-and-metadata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Package creation and metadata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/03-documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/03-documentation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pkg-dev/04-testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../pkg-dev/04-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
@@ -180,17 +217,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#where-to-find-me-online" id="toc-where-to-find-me-online" class="nav-link active" data-scroll-target="#where-to-find-me-online">Where to find me online</a></li>
+  <li><a href="#add-a-roxygen-block-just-above-your-function-definition" id="toc-add-a-roxygen-block-just-above-your-function-definition" class="nav-link active" data-scroll-target="#add-a-roxygen-block-just-above-your-function-definition">Add a roxygen block just above your function definition</a></li>
+  <li><a href="#build-documentation-from-roxygen-comments" id="toc-build-documentation-from-roxygen-comments" class="nav-link" data-scroll-target="#build-documentation-from-roxygen-comments">Build documentation from roxygen comments</a></li>
+  <li><a href="#check-package-again" id="toc-check-package-again" class="nav-link" data-scroll-target="#check-package-again">Check package again</a></li>
+  <li><a href="#create-package-level-documentation" id="toc-create-package-level-documentation" class="nav-link" data-scroll-target="#create-package-level-documentation">Create package-level documentation</a></li>
+  <li><a href="#install-your-package" id="toc-install-your-package" class="nav-link" data-scroll-target="#install-your-package">Install your package</a></li>
+  <li><a href="#readme" id="toc-readme" class="nav-link" data-scroll-target="#readme">README</a></li>
+  <li><a href="#check-package-again-1" id="toc-check-package-again-1" class="nav-link" data-scroll-target="#check-package-again-1">Check package again</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pkg-dev/index.html">Package development</a></li><li class="breadcrumb-item"><a href="../pkg-dev/03-documentation.html">Documentation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">RaukR 2026</h1>
-<p class="subtitle lead">Two sessions with Jenny Bryan</p>
+<h1 class="title">Documentation</h1>
 </div>
 
 
@@ -207,34 +249,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome! This is the landing page for my two sessions at <a href="https://nbisweden.github.io/raukr-2026/">RaukR: Data Science with R</a>, held 2026 August 10 - 20 in Visby, Sweden.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>When</th>
-<th>What</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Monday, August 10 (morning)</td>
-<td><a href="./positron/index.html">Introduction to Positron and Posit Assistant</a></td>
-</tr>
-<tr class="even">
-<td>Wednesday, August 12 (afternoon)</td>
-<td><a href="./pkg-dev/index.html">Introduction to R package development</a></td>
-</tr>
-</tbody>
-</table>
-<section id="where-to-find-me-online" class="level2">
-<h2 class="anchored" data-anchor-id="where-to-find-me-online">Where to find me online</h2>
-<div class="contact-list">
-<ul>
-<li><i class="bi bi-slack" aria-hidden="true"></i> RaukR Slack: <a href="https://raukr.slack.com/archives/C090T4MALDC">#positron</a> or <a href="https://raukr.slack.com/archives/C090ZD4GWD9">#pkg-dev</a></li>
-<li><i class="bi bi-github" aria-hidden="true"></i> GitHub: <a href="https://github.com/jennybc">@jennybc</a></li>
-<li><i class="bi bi-bluesky" aria-hidden="true"></i> BlueSky: <a href="https://bsky.app/profile/jennybryan.bsky.social">@jennybryan.bsky.social</a></li>
-</ul>
+<section id="add-a-roxygen-block-just-above-your-function-definition" class="level2">
+<h2 class="anchored" data-anchor-id="add-a-roxygen-block-just-above-your-function-definition">Add a roxygen block just above your function definition</h2>
+<p>Put your cursor inside the function’s name (e.g.&nbsp;<code>lib_summary</code>) and a light bulb appears, offering to “Show Code Actions”. Click it and choose “Generate a roxygen template”.</p>
+<p><img src="images/roxygen-code-action.png" class="img-fluid" style="width:60.0%" alt="The Positron editor with the cursor in the function name lib_summary. A light bulb has appeared and its menu is open, showing the code action &quot;Generate a roxygen template&quot;."></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' R Library Summary</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' Provides a brief summary of the package libraries on your machine</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns A `data.frame` containing the count of packages in each of the</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'   user's libraries</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' lib_summary()</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>lib_summary <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="build-documentation-from-roxygen-comments" class="level2">
+<h2 class="anchored" data-anchor-id="build-documentation-from-roxygen-comments">Build documentation from roxygen comments</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">document</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Learn the <code>document()</code> keyboard shortcut
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Positron also exposes this from the Command Palette as <strong>R: Document R Package</strong>, with the keyboard shortcut <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>.</p>
+<p>Every time you edit a roxygen comment, you need to run <code>document()</code> before the change shows up in the rendered help.</p>
+</div>
+</div>
+<p>You can preview the docs with <code>?function_name</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load_all</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>?lib_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="check-package-again" class="level2">
+<h2 class="anchored" data-anchor-id="check-package-again">Check package again</h2>
+<ul>
+<li><strong>R: Check R Package</strong> from Positron Command Palette or</li>
+<li><kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or</li>
+<li><code>check()</code> in R console (the command / keyboard shortcut is better, though)</li>
+</ul>
+</section>
+<section id="create-package-level-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="create-package-level-documentation">Create package-level documentation</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_package_doc</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">document</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Preview it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>?libminer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then check the package again, using the Command Palette or the keyboard shortcut.</p>
+</section>
+<section id="install-your-package" class="level2">
+<h2 class="anchored" data-anchor-id="install-your-package">Install your package</h2>
+<ul>
+<li><strong>R: Install R Package and Restart R</strong> from Positron Command Palette or</li>
+<li><kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd> or</li>
+<li><code>install()</code> in R console (the command / keyboard shortcut is better, though)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(libminer)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lib_summary</span>() <span class="co"># note one more package than before - that's yours!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="readme" class="level2">
+<h2 class="anchored" data-anchor-id="readme">README</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_readme_rmd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Creates <code>README.Rmd</code> for your package and opens it for editing.</p>
+<p>You still need to render that to <code>README.md</code> and <code>build_readme()</code> makes sure to render with respect to the current source of your in-development package, for consistency.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">build_readme</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="check-package-again-1" class="level2">
+<h2 class="anchored" data-anchor-id="check-package-again-1">Check package again</h2>
+<ul>
+<li><strong>R: Check R Package</strong> from Positron Command Palette or</li>
+<li><kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd> or</li>
+<li><code>check()</code> in R console (the command / keyboard shortcut is better, though)</li>
+</ul>
 
 
 </section>
@@ -640,6 +736,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../pkg-dev/02-create-pkg-and-metadata.html" class="pagination-link" aria-label="Package creation and metadata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Package creation and metadata</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../pkg-dev/04-testing.html" class="pagination-link" aria-label="Tests">
+        <span class="nav-page-text">Tests</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
