@@ -337,7 +337,7 @@
     "href": "pkg-dev/04-testing.html#run-tests",
     "title": "Tests",
     "section": "Run tests",
-    "text": "Run tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nThat first option uses Positron’s R test explorer, which gives you a tree of your test files and test_that() blocks, with pass / fail marks attached to each one. You can run or re-run an individual test from there, which is very handy when you’re iterating on one failure.\nThere is also R: Test R Package in Terminal, which just runs devtools::test() in a terminal and gives you plain console output.",
+    "text": "Run tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nThat first option uses Positron’s R test explorer, which gives you a tree of your test files and test_that() blocks, with pass / fail marks attached to each one. You can run or re-run an individual test from there, which is very handy when you’re iterating on one failure.\n\nThere is also R: Test R Package in Terminal, which just runs devtools::test() in a terminal and gives you plain console output.",
     "crumbs": [
       "Package development",
       "Tests"
