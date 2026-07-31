@@ -114,7 +114,7 @@ Public links live in `positron/index.qmd`. Recorded here are the local paths and
 * Slides are built in **Keynote**, exported to PDF, and the PDFs are committed to `slides/`. `*.key` is gitignored; the decks live in a Google Drive folder, downloaded by the untracked `get-slides.R` helper.
 * `modules/03-organize.qmd` sends learners to the example project repo `posit-dev/positron-workshop-project`, cloned at `~/rrrchive/positron-workshop-project` (fruit.csv, debugging exercises, an Air practice file, a hello.qmd). In practice the 2025 deliveries barely reached it, so it is deliberately **not** mentioned on `positron/index.qmd`. Do not add it back without asking.
 * `modules/02-explore.qmd` has a **Positron bingo card** activity, with per-learner unique cards in `_bingo/` and answers in `bingo-solutions/`.
-* **Assistant coverage exists, but only in the decks.** Grepping the `.qmd` files for assistant, copilot, or AI returns nothing, which is misleading: the pages are shells and all content is in the slides. `07-beyond` (useR version) devotes about 5 of its 17 slides to Positron Assistant, framed as one of three "elephants in the room" alongside Python and the future of RStudio. That content is from August 2025 and is now dated (it says chat is Anthropic Claude only with a user-supplied API key), so it needs refreshing rather than inventing from scratch.
+* **Assistant coverage exists, but only in the decks.** Grepping the `.qmd` files for assistant, copilot, or AI returns nothing, which is misleading: the pages are shells and all content is in the slides. `07-beyond` (useR version) devotes about 5 of its 17 slides to Positron Assistant, framed as one of three "elephants in the room" alongside Python and the future of RStudio. But do not count it as reusable content: it is an FAQ answer, not teaching material, about 5 to 7 minutes long, and it describes a product that is being deprecated. The three-elephants framing survives; the Assistant substance is a rebuild. Details in `notes-private/deck-07-summary.md`.
 
 **Keynote sources**, at `~/work/2025_positron-tutorial/slides/`, one directory per delivery:
 
@@ -136,7 +136,13 @@ Public links live in `positron/index.qmd`. Recorded here are the local paths and
 
 **Julia Silge's `applied-stats-byu-2026`**, <https://github.com/juliasilge/applied-stats-byu-2026>. Two full days, considerably more advanced and intensive than this half day. Topically relevant, but pitched at a different level, so it is a reference rather than a source to adapt. Not cloned locally.
 
-**Positron documentation**, cloned at `~/work/positron-website`. The Assistant docs are `assistant*.qmd`, about a dozen pages, published at `https://positron.posit.co/assistant*.html`. Note the stale `_positron-assistant-deprecated.qmd`; ignore it.
+**Positron documentation**, cloned at `~/work/positron-website`.
+
+* **Careful with the Assistant docs.** The `assistant*.qmd` pages mostly document **Positron Assistant**, which together with Databot is superseded by **Posit Assistant** and will be deprecated. Those pages carry warning callouts. Posit Assistant is preview in Positron 2026.04.0+ and goes GA in Q3 2026, right around the workshop. Its authoritative docs are **off-site** at <https://pos.it/assistant-docs>; `assistant.qmd` itself is the current overview and points there. Do not cite the sub-pages as current.
+* `migrate-rstudio-settings-and-extensions.qmd`, `migrate-rstudio-rproj.qmd`, and `migrate-vscode.qmd` are purpose-built for the RStudio-switcher audience and did not exist in usable form when the 2025 decks were written. Read these before restructuring anything.
+* `guide-r-debugging.qmd` and `guide-r-air.qmd` document two things the 2025 decks get wrong; see the audit below.
+
+**Audit of the 2025 decks:** `notes-private/` in this repo holds a per-deck summary of all 7 useR decks plus a synthesis in `notes-private/README.md`, covering timing arithmetic, staleness findings, and a verification checklist for late July 2026. The directory is **gitignored on purpose**, since the notes are candid about specific slides. Keep planning notes there rather than in published pages, and do not move them into the 2025 archive at `~/work/2025_positron-tutorial/`.
 
 **Timing for 2026:** the half day is two 1.5 hour sessions, and the first one also carries the overall introduction to the two-week workshop, so plan the material against roughly 2.5 hours. The balance favors Positron, with Posit Assistant getting a smaller but real share.
 

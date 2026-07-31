@@ -5,6 +5,7 @@ author: "Jenny Bryan"
 format:
   revealjs:
     slide-number: true
+    footer: "[Package development](../pkg-dev/) | [RaukR 2026](../)"
 ---
 
 # Setup
