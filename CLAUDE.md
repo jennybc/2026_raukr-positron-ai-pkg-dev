@@ -55,6 +55,31 @@ Quarto website, deployed to <https://jennybc.github.io/2026_raukr-positron-ai-pk
 - Images use `fig-alt`. The nine workflow build slides are the exception: they are full-bleed `## {background-image="..." background-size="contain"}` slides with no heading, because Jenny's exports already contain their own titles.
 - Exports are 1920x1080 while revealjs defaults to 1050x700, so background images letterbox slightly. Setting `width: 1600` / `height: 900` would fix it but resizes text everywhere; not done.
 
+## Live workflow (day of the workshop)
+
+How Jenny actually presents. Constraints: she is constantly switching between slides, Positron, and a web browser, so she does **not** present fullscreen; and she wants to present from a local file, not the deployed site.
+
+**Build the presenting copy**, from the repo root:
+
+```sh
+quarto render slides/pkg-dev.qmd -M embed-resources:true
+```
+
+That writes `_site/slides/pkg-dev.html` as one self-contained file, ~7 MB, with images base64-inlined and reveal's CSS and JS embedded. Copy it anywhere; it works with no server and no network. Regenerate after any edit; it is a snapshot.
+
+Do **not** put `embed-resources: true` in the deck's YAML. It would apply to the CI build too and bloat the deployed page. Keep it a flag.
+
+**Presenting**
+
+- Deck goes in its own browser window, not a tab among many, so window switching never exposes the tab bar. Consider a dedicated macOS Space holding just the deck, Positron, and the demo browser.
+- Windowed is fine: reveal scales its canvas to the window. The nine full-bleed 16:9 workflow slides letterbox more than text slides in a non-16:9 window, so eyeball those at the real presenting size beforehand.
+- Reveal keys: <kbd>Esc</kbd> or <kbd>o</kbd> overview, <kbd>m</kbd> slide menu, <kbd>f</kbd> fullscreen, <kbd>?</kbd> help. `slide-number: true` is on, so slides are citable by number.
+- Overview is a single horizontal strip, not a grid, because `navigation-mode` is the default `linear`. Switching to `vertical` or `grid` would give a real light-table view at the cost of two-axis navigation while presenting. Not done.
+- No speaker notes exist, so <kbd>s</kbd> opens an empty notes pane.
+- `?print-pdf` appended to the URL gives a print view, useful as an offline PDF backup. No PDF is committed, on purpose, since the deck will keep changing.
+
+**Students** reach the deck from the workshop site: the "Slides" sidebar entry or the link atop `pkg-dev/index.qmd`. They also have the module pages for copy/paste.
+
 ## Sources for the pkg-dev material
 
 The deck was reconstructed from these. Go back to them for a better port, more figures, or content that was skipped.
