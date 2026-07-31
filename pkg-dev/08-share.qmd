@@ -1,0 +1,9 @@
+---
+title: "Hosting and sharing"
+---
+
+To get a checklist suitable for preparing for CRAN release:
+
+```r
+use_release_issue()
+```
