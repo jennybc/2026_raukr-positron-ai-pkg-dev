@@ -70,6 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../pkg-dev/07-website.html" rel="next">
 <link href="../pkg-dev/05-dependencies.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -205,11 +206,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">pkg-dev/07-website.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pkg-dev/07-website.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Create a package website</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">pkg-dev/08-share.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pkg-dev/08-share.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hosting and sharing</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -283,7 +290,7 @@ Selection: 1
 <section id="commit-and-push" class="level2">
 <h2 class="anchored" data-anchor-id="commit-and-push">Commit and push</h2>
 <p>Obviously the GHA config must be pushed to GitHub to take effect.</p>
-<p>View your package on GitHub to see the new badge and to see where <code>R CMD check</code> is running:</p>
+<p>View your package on GitHub to see the new badge in <code>README</code> and to see your new, automatic, multi-platform <code>R CMD check</code> results:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">browse_github</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">browse_github_actions</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
@@ -698,6 +705,9 @@ Selection: 1
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../pkg-dev/07-website.html" class="pagination-link" aria-label="Create a package website">
+        <span class="nav-page-text">Create a package website</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
