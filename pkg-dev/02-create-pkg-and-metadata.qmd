@@ -62,7 +62,7 @@ library(devtools)
 ### Open a new file in `R/` to hold your code
 
 ```r
-use_r("lib-summary")
+use_r("lib_summary")
 ```
 
 ### Write your function definition in this file
