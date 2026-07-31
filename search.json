@@ -4,553 +4,869 @@
     "href": "slides/pkg-dev.html#how-to-follow-along",
     "title": "Introduction to R package development",
     "section": "How to follow along",
-    "text": "How to follow along\n\nThese slides are available on the workshop website.\nWorkshop website also has one page per module:\n\nUse this to copy / paste content\nSee exact devtools/usethis functions\n\nQuestions, links, and getting unstuck: the #pkg-dev channel in the RaukR Slack\nDeeper reading: R Packages (2e), especially The Whole Game"
+    "text": "How to follow along\n\nThese slides are available on the workshop website.\nWorkshop website also has one page per module:\n\nUse this to copy / paste content\nSee exact devtools/usethis functions\n\nQuestions, links, and getting unstuck: the #pkg-dev channel in the RaukR Slack\nDeeper reading: R Packages (2e), especially The Whole Game",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#tools",
     "href": "slides/pkg-dev.html#tools",
     "title": "Introduction to R package development",
     "section": "Tools",
-    "text": "Tools\n\n\nR, ideally the current release\nPositron\nA package development toolchain (Rtools, Xcode CLI tools, r-base-dev)\nThe devtools package\n\nGit and GitHub are optional but strongly recommended."
+    "text": "Tools\n\n\nR, ideally the current release\nPositron\nA package development toolchain (Rtools, Xcode CLI tools, r-base-dev)\nThe devtools package\n\nGit and GitHub are optional but strongly recommended.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#installing-r",
     "href": "slides/pkg-dev.html#installing-r",
     "title": "Introduction to R package development",
     "section": "Installing R",
-    "text": "Installing R\nI recommend rig, the R Installation Manager:\nrig add release\nIt handles the fiddly parts, steers you into best practices, and lets you keep several versions of R side by side."
+    "text": "Installing R\nI recommend rig, the R Installation Manager:\nrig add release\nIt handles the fiddly parts, steers you into best practices, and lets you keep several versions of R side by side.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#installing-packages",
     "href": "slides/pkg-dev.html#installing-packages",
     "title": "Introduction to R package development",
     "section": "Installing packages",
-    "text": "Installing packages\ninstall.packages(\"devtools\")\ndevtools is a meta-package, so usethis, roxygen2, testthat, and pkgdown all come along.\nI personally use pak for all package management:\npak::pak(\"devtools\")"
+    "text": "Installing packages\ninstall.packages(\"devtools\")\ndevtools is a meta-package, so usethis, roxygen2, testthat, and pkgdown all come along.\nI personally use pak for all package management:\npak::pak(\"devtools\")",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#situation-reports",
     "href": "slides/pkg-dev.html#situation-reports",
     "title": "Introduction to R package development",
     "section": "Situation reports",
-    "text": "Situation reports\nIs my system ready to develop packages?\ndevtools::dev_sitrep()\nDo R, Git, and GitHub understand each other?\nusethis::git_sitrep()\nYou want a name, an email, and a PAT reported as &lt;discovered&gt;."
+    "text": "Situation reports\nIs my system ready to develop packages?\ndevtools::dev_sitrep()\nDo R, Git, and GitHub understand each other?\nusethis::git_sitrep()\nYou want a name, an email, and a PAT reported as &lt;discovered&gt;.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#why-positron",
     "href": "slides/pkg-dev.html#why-positron",
     "title": "Introduction to R package development",
     "section": "Why Positron?",
-    "text": "Why Positron?\nEverything here works in RStudio too. The commands are all devtools and usethis calls, which are IDE-agnostic.\nBut we will lean on Positron’s package development affordances, which live in the Command Palette and behind keyboard shortcuts."
+    "text": "Why Positron?\nEverything here works in RStudio too. The commands are all devtools and usethis calls, which are IDE-agnostic.\nBut we will lean on Positron’s package development affordances, which live in the Command Palette and behind keyboard shortcuts.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#why-make-a-package",
     "href": "slides/pkg-dev.html#why-make-a-package",
     "title": "Introduction to R package development",
     "section": "Why make a package?",
-    "text": "Why make a package?\n\nEasier to reuse the functions you write\nA consistent framework that nudges you to organize, document, and test\nThat framework unlocks a lot of standardized tooling\nThe easiest way to distribute code, to your team or to the world"
+    "text": "Why make a package?\n\nEasier to reuse the functions you write\nA consistent framework that nudges you to organize, document, and test\nThat framework unlocks a lot of standardized tooling\nThe easiest way to distribute code, to your team or to the world",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#lets-make-a-package-together",
     "href": "slides/pkg-dev.html#lets-make-a-package-together",
     "title": "Introduction to R package development",
     "section": "Let’s make a package together",
-    "text": "Let’s make a package together\nWe will:\n\nCreate a small package from scratch\nUse Git to track our changes\nPush the code to GitHub\nWrite documentation\nWrite tests\nTake on a dependency\nSet up automated checks and a website"
+    "text": "Let’s make a package together\nWe will:\n\nCreate a small package from scratch\nUse Git to track our changes\nPush the code to GitHub\nWrite documentation\nWrite tests\nTake on a dependency\nSet up automated checks and a website",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#we-wont",
     "href": "slides/pkg-dev.html#we-wont",
     "title": "Introduction to R package development",
     "section": "We won’t",
-    "text": "We won’t\n\nTalk much about writing and designing functions\nTalk about shipping data in your package (possible, and often useful)\nGo deep on any one topic\n\nHalf a day is enough for the whole game, once. Depth comes later."
+    "text": "We won’t\n\nTalk much about writing and designing functions\nTalk about shipping data in your package (possible, and often useful)\nGo deep on any one topic\n\nHalf a day is enough for the whole game, once. Depth comes later.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#our-end-goal",
     "href": "slides/pkg-dev.html#our-end-goal",
     "title": "Introduction to R package development",
     "section": "Our end goal",
-    "text": "Our end goal\nlibminer, a toy package that tells you about your R libraries.\n\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\nJenny’s libminer from 2026: PLACEHOLDER, we make it live today"
+    "text": "Our end goal\nlibminer, a toy package that tells you about your R libraries.\n\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\nJenny’s libminer from 2026: PLACEHOLDER, we make it live today",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#five-forms-of-a-package",
     "href": "slides/pkg-dev.html#five-forms-of-a-package",
     "title": "Introduction to R package development",
     "section": "Five forms of a package",
-    "text": "Five forms of a package"
+    "text": "Five forms of a package",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#a-package-in-source-form",
     "href": "slides/pkg-dev.html#a-package-in-source-form",
     "title": "Introduction to R package development",
     "section": "A package in “source” form",
-    "text": "A package in “source” form"
+    "text": "A package in “source” form",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#libraries-where-packages-live",
     "href": "slides/pkg-dev.html#libraries-where-packages-live",
     "title": "Introduction to R package development",
     "section": "Libraries: where packages live",
-    "text": "Libraries: where packages live\n\nA library is a directory containing installed packages\nYou have at least one, and commonly two:\n\na system library, with the base and recommended packages\na user library, with everything you installed\n\nlibrary(pkg) attaches a package from a library"
+    "text": "Libraries: where packages live\n\nA library is a directory containing installed packages\nYou have at least one, and commonly two:\n\na system library, with the base and recommended packages\na user library, with everything you installed\n\nlibrary(pkg) attaches a package from a library",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#where-do-your-packages-live",
     "href": "slides/pkg-dev.html#where-do-your-packages-live",
     "title": "Introduction to R package development",
     "section": "Where do your packages live?",
-    "text": "Where do your packages live?\n.libPaths()\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build."
+    "text": "Where do your packages live?\n.libPaths()\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#load-devtools",
     "href": "slides/pkg-dev.html#load-devtools",
     "title": "Introduction to R package development",
     "section": "Load devtools",
-    "text": "Load devtools\nlibrary(devtools)\n\nAttaches usethis as well, which is the source of most functions we will use\nUpdate it if it is old"
+    "text": "Load devtools\nlibrary(devtools)\n\nAttaches usethis as well, which is the source of most functions we will use\nUpdate it if it is old",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#create_package",
     "href": "slides/pkg-dev.html#create_package",
     "title": "Introduction to R package development",
     "section": "create_package()",
-    "text": "create_package()\ncreate_package(\"~/work/libminer\")\nPick a location that makes sense to you. Not inside another package or Git repo!"
+    "text": "create_package()\ncreate_package(\"~/work/libminer\")\nPick a location that makes sense to you. Not inside another package or Git repo!",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#what-you-get",
     "href": "slides/pkg-dev.html#what-you-get",
     "title": "Introduction to R package development",
     "section": "What you get",
-    "text": "What you get\nlibminer\n├── .Rbuildignore\n├── DESCRIPTION\n├── NAMESPACE\n├── R\n└── libminer.Rproj\n\nA directory with the basic package skeleton\nOpened as a new project in Positron"
+    "text": "What you get\nlibminer\n├── .Rbuildignore\n├── DESCRIPTION\n├── NAMESPACE\n├── R\n└── libminer.Rproj\n\nA directory with the basic package skeleton\nOpened as a new project in Positron",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_git",
     "href": "slides/pkg-dev.html#use_git",
     "title": "Introduction to R package development",
     "section": "use_git()",
-    "text": "use_git()\nuse_git()\n\nTurns the package directory into a Git repository\nOffers to commit the files\nOffers to restart"
+    "text": "use_git()\nuse_git()\n\nTurns the package directory into a Git repository\nOffers to commit the files\nOffers to restart",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_github",
     "href": "slides/pkg-dev.html#use_github",
     "title": "Introduction to R package development",
     "section": "use_github()",
-    "text": "use_github()\nuse_github()\nCreates a GitHub repo and pushes your package to it.\nPrerequisites: a GitHub account, and credentials that work. That is what git_sitrep() was for."
+    "text": "use_github()\nuse_github()\nCreates a GitHub repo and pushes your package to it.\nPrerequisites: a GitHub account, and credentials that work. That is what git_sitrep() was for.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_devtools",
     "href": "slides/pkg-dev.html#use_devtools",
     "title": "Introduction to R package development",
     "section": "use_devtools()",
-    "text": "use_devtools()\nuse_devtools()\nAdds a line to your .Rprofile so devtools is attached in every interactive session. Paste, save, restart R.\nSkip it if you prefer, then just call library(devtools) after each restart."
+    "text": "use_devtools()\nuse_devtools()\nAdds a line to your .Rprofile so devtools is attached in every interactive session. Paste, save, restart R.\nSkip it if you prefer, then just call library(devtools) after each restart.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn",
     "href": "slides/pkg-dev.html#your-turn",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nCreate your package with create_package()\nPoke around the files it made\nRun use_git(), then use_github()\nRun use_devtools() and restart R"
+    "text": "Your turn\n\nCreate your package with create_package()\nPoke around the files it made\nRun use_git(), then use_github()\nRun use_devtools() and restart R",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_r",
     "href": "slides/pkg-dev.html#use_r",
     "title": "Introduction to R package development",
     "section": "use_r()",
-    "text": "use_r()\nuse_r(\"lib_summary\")\n\nYour R code goes in R/\nName the file after the function it defines\nPut the function definition, and only the definition, in the file"
+    "text": "use_r()\nuse_r(\"lib_summary\")\n\nYour R code goes in R/\nName the file after the function it defines\nPut the function definition, and only the definition, in the file",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#write-your-first-function",
     "href": "slides/pkg-dev.html#write-your-first-function",
     "title": "Introduction to R package development",
     "section": "Write your first function",
-    "text": "Write your first function\nlib_summary &lt;- function() {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n  pkg_df\n}"
+    "text": "Write your first function\nlib_summary &lt;- function() {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n  pkg_df\n}",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#how-do-you-test-drive-it",
     "href": "slides/pkg-dev.html#how-do-you-test-drive-it",
     "title": "Introduction to R package development",
     "section": "How do you test drive it?",
-    "text": "How do you test drive it?\nTempting, but no:\n\nsource(\"R/lib_summary.R\")\nSend the function definition to R console with keyboard shortcut\n\nDo this instead:\nload_all() # remember: I assume devtools is attached!"
+    "text": "How do you test drive it?\nTempting, but no:\n\nsource(\"R/lib_summary.R\")\nSend the function definition to R console with keyboard shortcut\n\nDo this instead:\nload_all() # remember: I assume devtools is attached!",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#load_all",
     "href": "slides/pkg-dev.html#load_all",
     "title": "Introduction to R package development",
     "section": "load_all()",
-    "text": "load_all()\n\nSimulates building, installing, and attaching your package.\n\nMakes all your package’s functions available immediately\nFast iteration: edit, load, run\nA good approximation of how users will meet your package"
+    "text": "load_all()\n\nSimulates building, installing, and attaching your package.\n\nMakes all your package’s functions available immediately\nFast iteration: edit, load, run\nA good approximation of how users will meet your package",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#workflow-edit-load-run",
     "href": "slides/pkg-dev.html#workflow-edit-load-run",
     "title": "Introduction to R package development",
     "section": "Workflow: edit, load, run",
-    "text": "Workflow: edit, load, run\nload_all() is the single most common thing you do.\n\nR: Load R Package in the Command Palette\nCmd/Ctrl + Shift + L\n\nWorth committing to muscle memory."
+    "text": "Workflow: edit, load, run\nload_all() is the single most common thing you do.\n\nR: Load R Package in the Command Palette\nCmd/Ctrl + Shift + L\n\nWorth committing to muscle memory.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-1",
     "href": "slides/pkg-dev.html#your-turn-1",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nuse_r(\"lib_summary\")\nWrite lib_summary() in that file\nload_all(), then call lib_summary()\nCommit your changes"
+    "text": "Your turn\n\nuse_r(\"lib_summary\")\nWrite lib_summary() in that file\nload_all(), then call lib_summary()\nCommit your changes",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#check",
     "href": "slides/pkg-dev.html#check",
     "title": "Introduction to R package development",
     "section": "check()",
-    "text": "check()\nRuns R CMD check, the official checker, from within R.\n\nR: Check R Package in the Command Palette\nCmd/Ctrl + Shift + E\nor check() in the console (the command / keyboard shortcut is better, tho)\n\nCheck early, check often. “If it hurts, do it more often.”"
+    "text": "check()\nRuns R CMD check, the official checker, from within R.\n\nR: Check R Package in the Command Palette\nCmd/Ctrl + Shift + E\nor check() in the console (the command / keyboard shortcut is better, tho)\n\nCheck early, check often. “If it hurts, do it more often.”",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#three-kinds-of-message",
     "href": "slides/pkg-dev.html#three-kinds-of-message",
     "title": "Introduction to R package development",
     "section": "Three kinds of message",
-    "text": "Three kinds of message\n\nERROR: severe problems, always fix\nWARNING: fix them, and you must fix them for CRAN\nNOTE: mild problems, or sometimes just an observation\n\nFor CRAN, try to get to zero of all three."
+    "text": "Three kinds of message\n\nERROR: severe problems, always fix\nWARNING: fix them, and you must fix them for CRAN\nNOTE: mild problems, or sometimes just an observation\n\nFor CRAN, try to get to zero of all three.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#the-description-file",
     "href": "slides/pkg-dev.html#the-description-file",
     "title": "Introduction to R package development",
     "section": "The DESCRIPTION file",
-    "text": "The DESCRIPTION file\nYour package’s metadata. Edit along these lines:\nPackage: libminer\nTitle: Explore Your R Libraries\nVersion: 0.0.0.9000\nAuthors@R:\n    person(\"Jane\", \"Doe\",\n           email = \"jane.doe@something.com\",\n           role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"XXXX-XXXX-XXXX-XXXX\"))\nDescription: Provides functions for learning about your R libraries, and the\n    packages you have installed."
+    "text": "The DESCRIPTION file\nYour package’s metadata. Edit along these lines:\nPackage: libminer\nTitle: Explore Your R Libraries\nVersion: 0.0.0.9000\nAuthors@R:\n    person(\"Jane\", \"Doe\",\n           email = \"jane.doe@something.com\",\n           role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"XXXX-XXXX-XXXX-XXXX\"))\nDescription: Provides functions for learning about your R libraries, and the\n    packages you have installed.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#description-details",
     "href": "slides/pkg-dev.html#description-details",
     "title": "Introduction to R package development",
     "section": "DESCRIPTION details",
-    "text": "DESCRIPTION details\n\nEvery package must have one. It is the defining feature\nMachine readable, with fussy formatting (Debian Control Format)\nTitle: one line, title case, no full stop\nDescription: full sentences, ends with a full stop, does not start with “A package for”\nAuthors@R is unusual: it holds executable R code"
+    "text": "DESCRIPTION details\n\nEvery package must have one. It is the defining feature\nMachine readable, with fussy formatting (Debian Control Format)\nTitle: one line, title case, no full stop\nDescription: full sentences, ends with a full stop, does not start with “A package for”\nAuthors@R is unusual: it holds executable R code",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#licenses",
     "href": "slides/pkg-dev.html#licenses",
     "title": "Introduction to R package development",
     "section": "Licenses",
-    "text": "Licenses\nuse_*_license()\n\nPermissive: MIT (simple), Apache 2.0 (MIT plus patent protection)\nCopyleft: GPL, AGPL, LGPL. Improvements must be shared\nCreative Commons: good for data packages. CC0, CC-BY"
+    "text": "Licenses\nuse_*_license()\n\nPermissive: MIT (simple), Apache 2.0 (MIT plus patent protection)\nCopyleft: GPL, AGPL, LGPL. Improvements must be shared\nCreative Commons: good for data packages. CC0, CC-BY",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_mit_license",
     "href": "slides/pkg-dev.html#use_mit_license",
     "title": "Introduction to R package development",
     "section": "use_mit_license()",
-    "text": "use_mit_license()\nuse_mit_license()\n✔ Adding 'MIT + file LICENSE' to License\n✔ Writing 'LICENSE'\n✔ Writing 'LICENSE.md'\n✔ Adding '^LICENSE\\.md$' to '.Rbuildignore'\nThen check again."
+    "text": "use_mit_license()\nuse_mit_license()\n✔ Adding 'MIT + file LICENSE' to License\n✔ Writing 'LICENSE'\n✔ Writing 'LICENSE.md'\n✔ Adding '^LICENSE\\.md$' to '.Rbuildignore'\nThen check again.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-2",
     "href": "slides/pkg-dev.html#your-turn-2",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\ncheck() and read the output\nFill in DESCRIPTION with your own details\nuse_mit_license()\ncheck() again, then commit and push"
+    "text": "Your turn\n\ncheck() and read the output\nFill in DESCRIPTION with your own details\nuse_mit_license()\ncheck() again, then commit and push",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#man.rd",
     "href": "slides/pkg-dev.html#man.rd",
     "title": "Introduction to R package development",
     "section": "man/*.Rd",
-    "text": "man/*.Rd\nHelp files live in man/ and are written in an Rd markup language.\nYou will not write them by hand. You write roxygen comments next to your code, and roxygen2 generates the .Rd files."
+    "text": "man/*.Rd\nHelp files live in man/ and are written in an Rd markup language.\nYou will not write them by hand. You write roxygen comments next to your code, and roxygen2 generates the .Rd files.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#roxygen2",
     "href": "slides/pkg-dev.html#roxygen2",
     "title": "Introduction to R package development",
     "section": "roxygen2",
-    "text": "roxygen2\nSpecial comments starting with #' above a function definition:\n\nTitle and description\n@param for each argument\n@returns for the return value\n@export to make it public\n@examples for usage\n\nDocumentation lives with the code."
+    "text": "roxygen2\nSpecial comments starting with #' above a function definition:\n\nTitle and description\n@param for each argument\n@returns for the return value\n@export to make it public\n@examples for usage\n\nDocumentation lives with the code.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#generating-a-skeleton-in-positron",
     "href": "slides/pkg-dev.html#generating-a-skeleton-in-positron",
     "title": "Introduction to R package development",
     "section": "Generating a skeleton in Positron",
-    "text": "Generating a skeleton in Positron\n\nPut your cursor in the function’s name\nA light bulb appears, offering “Show Code Actions”\nChoose Generate a roxygen template"
+    "text": "Generating a skeleton in Positron\n\nPut your cursor in the function’s name\nA light bulb appears, offering “Show Code Actions”\nChoose Generate a roxygen template",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#a-roxygen-block",
     "href": "slides/pkg-dev.html#a-roxygen-block",
     "title": "Introduction to R package development",
     "section": "A roxygen block",
-    "text": "A roxygen block\n#' R Library Summary\n#'\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @returns A `data.frame` containing the count of packages in each of the\n#'   user's libraries\n#' @export\n#'\n#' @examples\n#' lib_summary()\nlib_summary &lt;- function() {\n  ...\n}"
+    "text": "A roxygen block\n#' R Library Summary\n#'\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @returns A `data.frame` containing the count of packages in each of the\n#'   user's libraries\n#' @export\n#'\n#' @examples\n#' lib_summary()\nlib_summary &lt;- function() {\n  ...\n}",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#document",
     "href": "slides/pkg-dev.html#document",
     "title": "Introduction to R package development",
     "section": "document()",
-    "text": "document()\nTurns roxygen comments into man/*.Rd and updates NAMESPACE.\n\nR: Document R Package in the Command Palette\nCmd/Ctrl + Shift + D\nor document() in the console (the command / keyboard shortcut is better, tho)\n\nThen preview:\nload_all()\n\n?lib_summary"
+    "text": "document()\nTurns roxygen comments into man/*.Rd and updates NAMESPACE.\n\nR: Document R Package in the Command Palette\nCmd/Ctrl + Shift + D\nor document() in the console (the command / keyboard shortcut is better, tho)\n\nThen preview:\nload_all()\n\n?lib_summary",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#namespace",
     "href": "slides/pkg-dev.html#namespace",
     "title": "Introduction to R package development",
     "section": "NAMESPACE",
-    "text": "NAMESPACE\nLists the R objects that are:\n\nExported from your package for users: export(), S3method()\nImported from other packages for your internal use: import(), importFrom()\n\ndocument() maintains this file for you. Do not edit it by hand."
+    "text": "NAMESPACE\nLists the R objects that are:\n\nExported from your package for users: export(), S3method()\nImported from other packages for your internal use: import(), importFrom()\n\ndocument() maintains this file for you. Do not edit it by hand.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#documentation-workflow",
     "href": "slides/pkg-dev.html#documentation-workflow",
     "title": "Introduction to R package development",
     "section": "Documentation workflow",
-    "text": "Documentation workflow\nEdit roxygen, document(), ?fun, repeat.\nAdd it to the loop you already have:\n\nload_all(), Cmd/Ctrl + Shift + L\ndocument(), Cmd/Ctrl + Shift + D\ncheck(), Cmd/Ctrl + Shift + E"
+    "text": "Documentation workflow\nEdit roxygen, document(), ?fun, repeat.\nAdd it to the loop you already have:\n\nload_all(), Cmd/Ctrl + Shift + L\ndocument(), Cmd/Ctrl + Shift + D\ncheck(), Cmd/Ctrl + Shift + E",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#package-level-documentation",
     "href": "slides/pkg-dev.html#package-level-documentation",
     "title": "Introduction to R package development",
     "section": "Package-level documentation",
-    "text": "Package-level documentation\nuse_package_doc()\n\ndocument()\n?libminer\nA landing page for the package as a whole. Then check again."
+    "text": "Package-level documentation\nuse_package_doc()\n\ndocument()\n?libminer\nA landing page for the package as a whole. Then check again.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#install",
     "href": "slides/pkg-dev.html#install",
     "title": "Introduction to R package development",
     "section": "install()",
-    "text": "install()\nInstalls your package into your library, for real.\n\nR: Install R Package and Restart R in the Command Palette\nCmd/Ctrl + Shift + B\n\nlibrary(libminer)\n\nlib_summary() # one more package than before, that's yours!"
+    "text": "install()\nInstalls your package into your library, for real.\n\nR: Install R Package and Restart R in the Command Palette\nCmd/Ctrl + Shift + B\n\nlibrary(libminer)\n\nlib_summary() # one more package than before, that's yours!",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#readme",
     "href": "slides/pkg-dev.html#readme",
     "title": "Introduction to R package development",
     "section": "README",
-    "text": "README\nuse_readme_rmd()\nYour package’s home page on GitHub. Cover:\n\nThe purpose of the package\nInstallation instructions\nExample usage"
+    "text": "README\nuse_readme_rmd()\nYour package’s home page on GitHub. Cover:\n\nThe purpose of the package\nInstallation instructions\nExample usage",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#installation-instructions",
     "href": "slides/pkg-dev.html#installation-instructions",
     "title": "Introduction to R package development",
     "section": "Installation instructions",
-    "text": "Installation instructions\n# install.packages(\"pak\")\npak::pak(\"jennybc/libminer\")\nThen render README.Rmd to README.md:\nbuild_readme()\nbuild_readme() renders against the current source of your package."
+    "text": "Installation instructions\n# install.packages(\"pak\")\npak::pak(\"jennybc/libminer\")\nThen render README.Rmd to README.md:\nbuild_readme()\nbuild_readme() renders against the current source of your package.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-3",
     "href": "slides/pkg-dev.html#your-turn-3",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nAdd a roxygen block, document(), and read your own help page\nuse_package_doc() and document() again\ninstall() and use your package like a user would\nuse_readme_rmd(), fill it in, build_readme()\nCheck, commit, push"
+    "text": "Your turn\n\nAdd a roxygen block, document(), and read your own help page\nuse_package_doc() and document() again\ninstall() and use your package like a user would\nuse_readme_rmd(), fill it in, build_readme()\nCheck, commit, push",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#why-formal-tests",
     "href": "slides/pkg-dev.html#why-formal-tests",
     "title": "Introduction to R package development",
     "section": "Why formal tests?",
-    "text": "Why formal tests?\nYou are already testing informally, every time you load_all() and try something out.\nFormal tests make that permanent: they run every time, in a fresh session, on every platform."
+    "text": "Why formal tests?\nYou are already testing informally, every time you load_all() and try something out.\nFormal tests make that permanent: they run every time, in a fresh session, on every platform.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#benefits-of-automated-tests",
     "href": "slides/pkg-dev.html#benefits-of-automated-tests",
     "title": "Introduction to R package development",
     "section": "Benefits of automated tests",
-    "text": "Benefits of automated tests\n\nFewer bugs. Informal testing explores typical usage; formal tests anticipate the weird cases\nBetter code structure. Hard-to-test code is usually badly factored code\nA call to action. Write a failing test first when you hit a bug\nRobust code. You can refactor with confidence"
+    "text": "Benefits of automated tests\n\nFewer bugs. Informal testing explores typical usage; formal tests anticipate the weird cases\nBetter code structure. Hard-to-test code is usually badly factored code\nA call to action. Write a failing test first when you hit a bug\nRobust code. You can refactor with confidence",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_testthat",
     "href": "slides/pkg-dev.html#use_testthat",
     "title": "Introduction to R package development",
     "section": "use_testthat()",
-    "text": "use_testthat()\nuse_testthat()\n\nAdds testthat to Suggests\nCreates tests/testthat/\nWrites tests/testthat.R\n\nYou still have to write the tests."
+    "text": "use_testthat()\nuse_testthat()\n\nAdds testthat to Suggests\nCreates tests/testthat/\nWrites tests/testthat.R\n\nYou still have to write the tests.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_test",
     "href": "slides/pkg-dev.html#use_test",
     "title": "Introduction to R package development",
     "section": "use_test()",
-    "text": "use_test()\nuse_test(\"lib_summary\")\nBetter: with R/lib_summary.R open in the editor, call use_test() with no arguments. usethis creates and opens the companion test file.\n\n\n\n\n\n\n\n\n\n\nuse_r() is the inverse, for jumping back the other way."
+    "text": "use_test()\nuse_test(\"lib_summary\")\nBetter: with R/lib_summary.R open in the editor, call use_test() with no arguments. usethis creates and opens the companion test file.\n\n\n\n\n\n\n\n\n\n\nuse_r() is the inverse, for jumping back the other way.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#anatomy-of-a-test",
     "href": "slides/pkg-dev.html#anatomy-of-a-test",
     "title": "Introduction to R package development",
     "section": "Anatomy of a test",
-    "text": "Anatomy of a test\n\nFile: one or more related tests, named test-*.R, mirroring R/\nTest: test_that(\"description\", { ... }), one unit of functionality\nExpectation: expect_*(), one specific comparison\n\nFailure reports quote the description, so make it informative."
+    "text": "Anatomy of a test\n\nFile: one or more related tests, named test-*.R, mirroring R/\nTest: test_that(\"description\", { ... }), one unit of functionality\nExpectation: expect_*(), one specific comparison\n\nFailure reports quote the description, so make it informative.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#write-a-test",
     "href": "slides/pkg-dev.html#write-a-test",
     "title": "Introduction to R package development",
     "section": "Write a test",
-    "text": "Write a test\ntest_that(\"lib_summary returns expected results\", {\n  res &lt;- lib_summary()\n  expect_s3_class(res, \"data.frame\")\n  expect_equal(ncol(res), 2)\n  expect_equal(names(res), c(\"Library\", \"n_packages\"))\n  expect_type(res$Library, \"character\")\n  expect_type(res$n_packages, \"integer\")\n})"
+    "text": "Write a test\ntest_that(\"lib_summary returns expected results\", {\n  res &lt;- lib_summary()\n  expect_s3_class(res, \"data.frame\")\n  expect_equal(ncol(res), 2)\n  expect_equal(names(res), c(\"Library\", \"n_packages\"))\n  expect_type(res$Library, \"character\")\n  expect_type(res$n_packages, \"integer\")\n})",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#run-your-tests",
     "href": "slides/pkg-dev.html#run-your-tests",
     "title": "Introduction to R package development",
     "section": "Run your tests",
-    "text": "Run your tests\n\nR: Test R Package in Test Explorer in the Command Palette\nCmd/Ctrl + Shift + T\nor test() in the console"
+    "text": "Run your tests\n\nR: Test R Package in Test Explorer in the Command Palette\nCmd/Ctrl + Shift + T\nor test() in the console",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#positrons-test-explorer",
     "href": "slides/pkg-dev.html#positrons-test-explorer",
     "title": "Introduction to R package development",
     "section": "Positron’s Test Explorer",
-    "text": "Positron’s Test Explorer\nA tree of your test files and test_that() blocks, with pass and fail marks on each one.\n\nRun or re-run a single test\nVery handy when you are chasing one failure\n\n\nR: Test R Package in Terminal gives you plain console output instead."
+    "text": "Positron’s Test Explorer\nA tree of your test files and test_that() blocks, with pass and fail marks on each one.\n\nRun or re-run a single test\nVery handy when you are chasing one failure\n\n\nR: Test R Package in Terminal gives you plain console output instead.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#workflow-code-plus-tests",
     "href": "slides/pkg-dev.html#workflow-code-plus-tests",
     "title": "Introduction to R package development",
     "section": "Workflow: code plus tests",
-    "text": "Workflow: code plus tests\n\nEdit code, load_all(), Cmd/Ctrl + Shift + L\nEdit tests, test(), Cmd/Ctrl + Shift + T\nEdit roxygen, document(), Cmd/Ctrl + Shift + D\nPeriodically, check(), Cmd/Ctrl + Shift + E"
+    "text": "Workflow: code plus tests\n\nEdit code, load_all(), Cmd/Ctrl + Shift + L\nEdit tests, test(), Cmd/Ctrl + Shift + T\nEdit roxygen, document(), Cmd/Ctrl + Shift + D\nPeriodically, check(), Cmd/Ctrl + Shift + E",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-4",
     "href": "slides/pkg-dev.html#your-turn-4",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nuse_testthat()\nuse_test() with R/lib_summary.R open\nWrite a couple of tests and run them\ncheck(), commit, push"
+    "text": "Your turn\n\nuse_testthat()\nuse_test() with R/lib_summary.R open\nWrite a couple of tests and run them\ncheck(), commit, push",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#taking-on-a-dependency",
     "href": "slides/pkg-dev.html#taking-on-a-dependency",
     "title": "Introduction to R package development",
     "section": "Taking on a dependency",
-    "text": "Taking on a dependency\nLet’s report the on-disk size of each library, using the fs package.\nuse_package(\"fs\")\n\nEvery package you use must be declared\nNever call library() in code below R/"
+    "text": "Taking on a dependency\nLet’s report the on-disk size of each library, using the fs package.\nuse_package(\"fs\")\n\nEvery package you use must be declared\nNever call library() in code below R/",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#depends-imports-suggests",
     "href": "slides/pkg-dev.html#depends-imports-suggests",
     "title": "Introduction to R package development",
     "section": "Depends, Imports, Suggests",
-    "text": "Depends, Imports, Suggests\n\nDepends: installed with your package and attached. Rarely what you want\nImports: installed with your package. The usual choice\nSuggests: not installed automatically. For development, tests, vignettes, or rarely used features"
+    "text": "Depends, Imports, Suggests\n\nDepends: installed with your package and attached. Rarely what you want\nImports: installed with your package. The usual choice\nSuggests: not installed automatically. For development, tests, vignettes, or rarely used features",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#imports-in-two-files",
     "href": "slides/pkg-dev.html#imports-in-two-files",
     "title": "Introduction to R package development",
     "section": "Imports in two files",
-    "text": "Imports in two files\n\nListing a package in Imports: in DESCRIPTION does not “import” it\nA package in Imports: may, but need not, appear in NAMESPACE\nEvery package in NAMESPACE must be in Imports: (or Depends:)"
+    "text": "Imports in two files\n\nListing a package in Imports: in DESCRIPTION does not “import” it\nA package in Imports: may, but need not, appear in NAMESPACE\nEvery package in NAMESPACE must be in Imports: (or Depends:)",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#three-ways-to-call-another-packages-functions",
     "href": "slides/pkg-dev.html#three-ways-to-call-another-packages-functions",
     "title": "Introduction to R package development",
     "section": "Three ways to call another package’s functions",
-    "text": "Three ways to call another package’s functions\n\npkg::fun(), always fine, always explicit\n#' @importFrom pkg fun1 fun2, for functions you use constantly\n#' @import pkg, the whole package. Rarely a good idea\n\nWe will use pkg::fun()."
+    "text": "Three ways to call another package’s functions\n\npkg::fun(), always fine, always explicit\n#' @importFrom pkg fun1 fun2, for functions you use constantly\n#' @import pkg, the whole package. Rarely a good idea\n\nWe will use pkg::fun().",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use-the-dependency",
     "href": "slides/pkg-dev.html#use-the-dependency",
     "title": "Introduction to R package development",
     "section": "Use the dependency",
-    "text": "Use the dependency\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}"
+    "text": "Use the dependency\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#manual-test-drive",
     "href": "slides/pkg-dev.html#manual-test-drive",
     "title": "Introduction to R package development",
     "section": "Manual test drive",
-    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nSeems to work!"
+    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nSeems to work!",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#but-the-tests-disagree",
     "href": "slides/pkg-dev.html#but-the-tests-disagree",
     "title": "Introduction to R package development",
     "section": "But the tests disagree",
-    "text": "But the tests disagree\nRun the tests and one of them fails. This is the system working as designed.\nUpdate the test, and add one for the new behaviour:\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})"
+    "text": "But the tests disagree\nRun the tests and one of them fails. This is the system working as designed.\nUpdate the test, and add one for the new behaviour:\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#and-check-disagrees-too",
     "href": "slides/pkg-dev.html#and-check-disagrees-too",
     "title": "Introduction to R package development",
     "section": "And check() disagrees too",
-    "text": "And check() disagrees too\nA warning about an undocumented parameter, sizes.\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the\n#'   user's libraries. A `lib_size` column is included if `sizes = TRUE`.\nThen document() and check again."
+    "text": "And check() disagrees too\nA warning about an undocumented parameter, sizes.\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the\n#'   user's libraries. A `lib_size` column is included if `sizes = TRUE`.\nThen document() and check again.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#clean",
     "href": "slides/pkg-dev.html#clean",
     "title": "Introduction to R package development",
     "section": "Clean",
-    "text": "Clean\n0 errors ✔ | 0 warnings ✔ | 0 notes ✔"
+    "text": "Clean\n0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-5",
     "href": "slides/pkg-dev.html#your-turn-5",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nuse_package(\"fs\")\nAdd the sizes argument\nFix and extend your tests\nDocument sizes, document(), check()\nCommit and push"
+    "text": "Your turn\n\nuse_package(\"fs\")\nAdd the sizes argument\nFix and extend your tests\nDocument sizes, document(), check()\nCommit and push",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_github_action",
     "href": "slides/pkg-dev.html#use_github_action",
     "title": "Introduction to R package development",
     "section": "use_github_action()",
-    "text": "use_github_action()\nIf your code is on GitHub, GitHub Actions can check your package on three operating systems every time you push.\nuse_github_action()\nChoose check-standard."
+    "text": "use_github_action()\nIf your code is on GitHub, GitHub Actions can check your package on three operating systems every time you push.\nuse_github_action()\nChoose check-standard.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#what-it-writes",
     "href": "slides/pkg-dev.html#what-it-writes",
     "title": "Introduction to R package development",
     "section": "What it writes",
-    "text": "What it writes\n\n.github/workflows/R-CMD-check.yaml\nAn R-CMD-check badge in README.Rmd\n\nSo re-render the README:\nbuild_readme()"
+    "text": "What it writes\n\n.github/workflows/R-CMD-check.yaml\nAn R-CMD-check badge in README.Rmd\n\nSo re-render the README:\nbuild_readme()",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#commit-and-push",
     "href": "slides/pkg-dev.html#commit-and-push",
     "title": "Introduction to R package development",
     "section": "Commit and push",
-    "text": "Commit and push\nThe config has to be on GitHub to take effect.\nbrowse_github()\nbrowse_github_actions()\nAdmire the badge, and your automatic multi-platform check results."
+    "text": "Commit and push\nThe config has to be on GitHub to take effect.\nbrowse_github()\nbrowse_github_actions()\nAdmire the badge, and your automatic multi-platform check results.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-6",
     "href": "slides/pkg-dev.html#your-turn-6",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nuse_github_action()\nbuild_readme()\ncheck(), commit, push\nWatch the checks run on GitHub"
+    "text": "Your turn\n\nuse_github_action()\nbuild_readme()\ncheck(), commit, push\nWatch the checks run on GitHub",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_pkgdown_github_pages",
     "href": "slides/pkg-dev.html#use_pkgdown_github_pages",
     "title": "Introduction to R package development",
     "section": "use_pkgdown_github_pages()",
-    "text": "use_pkgdown_github_pages()\nuse_pkgdown_github_pages()\nCommit and push.\nThat is all you need to publish a beautiful website for your package.\nAssuming that:\n\nYou are using Git\nand GitHub\nand Git and GitHub work smoothly from R\nand the repo is public\nand you remembered to commit and push afterwards"
+    "text": "use_pkgdown_github_pages()\nuse_pkgdown_github_pages()\nCommit and push.\nThat is all you need to publish a beautiful website for your package.\nAssuming that:\n\nYou are using Git\nand GitHub\nand Git and GitHub work smoothly from R\nand the repo is public\nand you remembered to commit and push afterwards",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#your-turn-7",
     "href": "slides/pkg-dev.html#your-turn-7",
     "title": "Introduction to R package development",
     "section": "Your turn",
-    "text": "Your turn\n\nuse_pkgdown_github_pages()\nCommit and push\nVisit the URL in the output and marvel at your handiwork"
+    "text": "Your turn\n\nuse_pkgdown_github_pages()\nCommit and push\nVisit the URL in the output and marvel at your handiwork",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#getting-your-package-to-users",
     "href": "slides/pkg-dev.html#getting-your-package-to-users",
     "title": "Introduction to R package development",
     "section": "Getting your package to users",
-    "text": "Getting your package to users\n\nGitHub: easy for you, harder for users. Comes free with everything we just did. Good for a small, savvy audience\nCRAN: easy for users, harder for you. Binaries, discoverability, ordinary install.packages(), and stringent requirements"
+    "text": "Getting your package to users\n\nGitHub: easy for you, harder for users. Comes free with everything we just did. Good for a small, savvy audience\nCRAN: easy for users, harder for you. Binaries, discoverability, ordinary install.packages(), and stringent requirements",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#preparing-for-cran",
     "href": "slides/pkg-dev.html#preparing-for-cran",
     "title": "Introduction to R package development",
     "section": "Preparing for CRAN",
-    "text": "Preparing for CRAN\n“If it hurts, do it more often.”\n\n\ncheck() often, aiming for zero errors, warnings, and notes\nLet GitHub Actions check you on every platform, on every push"
+    "text": "Preparing for CRAN\n“If it hurts, do it more often.”\n\n\ncheck() often, aiming for zero errors, warnings, and notes\nLet GitHub Actions check you on every platform, on every push",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#use_release_issue",
     "href": "slides/pkg-dev.html#use_release_issue",
     "title": "Introduction to R package development",
     "section": "use_release_issue()",
-    "text": "use_release_issue()\nuse_release_issue()\nOpens a GitHub issue with a checklist for preparing a CRAN release."
+    "text": "use_release_issue()\nuse_release_issue()\nOpens a GitHub issue with a checklist for preparing a CRAN release.",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#review-functions",
     "href": "slides/pkg-dev.html#review-functions",
     "title": "Introduction to R package development",
     "section": "Review: functions",
-    "text": "Review: functions\nRun once\ncreate_package(), use_git(), use_github(), use_devtools(), use_mit_license(), use_testthat(), use_readme_rmd(), use_package_doc(), use_github_action(), use_pkgdown_github_pages(), use_release_issue()\nRun periodically\nuse_r(), use_test(), use_package(), build_readme(), install()"
+    "text": "Review: functions\nRun once\ncreate_package(), use_git(), use_github(), use_devtools(), use_mit_license(), use_testthat(), use_readme_rmd(), use_package_doc(), use_github_action(), use_pkgdown_github_pages(), use_release_issue()\nRun periodically\nuse_r(), use_test(), use_package(), build_readme(), install()",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#review-shortcuts",
     "href": "slides/pkg-dev.html#review-shortcuts",
     "title": "Introduction to R package development",
     "section": "Review: shortcuts",
-    "text": "Review: shortcuts\n\n\n\n\n\n\n\n\nFunction\nPositron command\nShortcut\n\n\n\n\nload_all()\nR: Load R Package\nCmd/Ctrl + Shift + L\n\n\ndocument()\nR: Document R Package\nCmd/Ctrl + Shift + D\n\n\ntest()\nR: Test R Package in Test Explorer\nCmd/Ctrl + Shift + T\n\n\ncheck()\nR: Check R Package\nCmd/Ctrl + Shift + E\n\n\ninstall()\nR: Install R Package and Restart R\nCmd/Ctrl + Shift + B"
+    "text": "Review: shortcuts\n\n\n\n\n\n\n\n\nFunction\nPositron command\nShortcut\n\n\n\n\nload_all()\nR: Load R Package\nCmd/Ctrl + Shift + L\n\n\ndocument()\nR: Document R Package\nCmd/Ctrl + Shift + D\n\n\ntest()\nR: Test R Package in Test Explorer\nCmd/Ctrl + Shift + T\n\n\ncheck()\nR: Check R Package\nCmd/Ctrl + Shift + E\n\n\ninstall()\nR: Install R Package and Restart R\nCmd/Ctrl + Shift + B",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#resources",
     "href": "slides/pkg-dev.html#resources",
     "title": "Introduction to R package development",
     "section": "Resources",
-    "text": "Resources\n\nr-pkgs.org, the book behind this workshop\nhappygitwithr.com, for Git and GitHub trouble\ndesign.tidyverse.org, for function design\nPosit cheatsheets"
+    "text": "Resources\n\nr-pkgs.org, the book behind this workshop\nhappygitwithr.com, for Git and GitHub trouble\ndesign.tidyverse.org, for function design\nPosit cheatsheets",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "slides/pkg-dev.html#thanks",
     "href": "slides/pkg-dev.html#thanks",
     "title": "Introduction to R package development",
     "section": "Thanks!",
-    "text": "Thanks!\nWorkshop site: https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/\nRead next: R Packages (2e)\nGratefully adapted from materials by Andy Teucher for Introduction to R Package Development at posit::conf(2023)."
+    "text": "Thanks!\nWorkshop site: https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/\nRead next: R Packages (2e)\nGratefully adapted from materials by Andy Teucher for Introduction to R Package Development at posit::conf(2023).",
+    "crumbs": [
+      "Package development",
+      "Slides"
+    ]
   },
   {
     "objectID": "pkg-dev/08-share.html",
@@ -1026,7 +1342,7 @@
     "href": "pkg-dev/index.html",
     "title": "Introduction to R package development",
     "section": "",
-    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023), whose source is on GitHub.",
+    "text": "👉 Slides for this session.\nWorkshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023), whose source is on GitHub.",
     "crumbs": [
       "Package development"
     ]
