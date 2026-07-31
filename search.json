@@ -1,122 +1,826 @@
 [
   {
-    "objectID": "pkg-dev/index.html",
-    "href": "pkg-dev/index.html",
+    "objectID": "slides/pkg-dev.html#how-to-follow-along",
+    "href": "slides/pkg-dev.html#how-to-follow-along",
     "title": "Introduction to R package development",
-    "section": "",
-    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023).\n\nAndy’s slides: PDF",
-    "crumbs": [
-      "Package development"
-    ]
+    "section": "How to follow along",
+    "text": "How to follow along\n\nThese slides are available on the workshop website.\nWorkshop website also has one page per module:\n\nUse this to copy / paste content\nSee exact devtools/usethis functions\n\nQuestions, links, and getting unstuck: the #pkg-dev channel in the RaukR Slack\nDeeper reading: R Packages (2e), especially The Whole Game"
   },
   {
-    "objectID": "pkg-dev/07-website.html",
-    "href": "pkg-dev/07-website.html",
-    "title": "Create a package website",
-    "section": "",
-    "text": "use_pkgdown_github_pages()\nCommit and push to GitHub.\nThat’s it, that’s all you need to do to publish a beautiful website for your package!1\nVisit the URL revealed in the output and marvel at your handiwork.",
-    "crumbs": [
-      "Package development",
-      "Create a package website"
-    ]
+    "objectID": "slides/pkg-dev.html#tools",
+    "href": "slides/pkg-dev.html#tools",
+    "title": "Introduction to R package development",
+    "section": "Tools",
+    "text": "Tools\n\n\nR, ideally the current release\nPositron\nA package development toolchain (Rtools, Xcode CLI tools, r-base-dev)\nThe devtools package\n\nGit and GitHub are optional but strongly recommended."
   },
   {
-    "objectID": "pkg-dev/07-website.html#footnotes",
-    "href": "pkg-dev/07-website.html#footnotes",
-    "title": "Create a package website",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nAssuming that:\n\nYou’re using Git\nand GitHub\nand have Git &lt;-&gt; GitHub integration working smoothly in R\nand the repo is public\nand you remembered to commit and push after use_pkgdown_github_pages().\n\n↩︎",
-    "crumbs": [
-      "Package development",
-      "Create a package website"
-    ]
+    "objectID": "slides/pkg-dev.html#installing-r",
+    "href": "slides/pkg-dev.html#installing-r",
+    "title": "Introduction to R package development",
+    "section": "Installing R",
+    "text": "Installing R\nI recommend rig, the R Installation Manager:\nrig add release\nIt handles the fiddly parts, steers you into best practices, and lets you keep several versions of R side by side."
   },
   {
-    "objectID": "pkg-dev/05-dependencies.html",
-    "href": "pkg-dev/05-dependencies.html",
-    "title": "Managing dependencies",
-    "section": "",
-    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
-    "crumbs": [
-      "Package development",
-      "Managing dependencies"
-    ]
+    "objectID": "slides/pkg-dev.html#installing-packages",
+    "href": "slides/pkg-dev.html#installing-packages",
+    "title": "Introduction to R package development",
+    "section": "Installing packages",
+    "text": "Installing packages\ninstall.packages(\"devtools\")\ndevtools is a meta-package, so usethis, roxygen2, testthat, and pkgdown all come along.\nI personally use pak for all package management:\npak::pak(\"devtools\")"
   },
   {
-    "objectID": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
-    "href": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
-    "title": "Managing dependencies",
-    "section": "",
-    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
-    "crumbs": [
-      "Package development",
-      "Managing dependencies"
-    ]
+    "objectID": "slides/pkg-dev.html#situation-reports",
+    "href": "slides/pkg-dev.html#situation-reports",
+    "title": "Introduction to R package development",
+    "section": "Situation reports",
+    "text": "Situation reports\nIs my system ready to develop packages?\ndevtools::dev_sitrep()\nDo R, Git, and GitHub understand each other?\nusethis::git_sitrep()\nYou want a name, an email, and a PAT reported as &lt;discovered&gt;."
   },
   {
-    "objectID": "pkg-dev/05-dependencies.html#manual-test-drive",
-    "href": "pkg-dev/05-dependencies.html#manual-test-drive",
-    "title": "Managing dependencies",
+    "objectID": "slides/pkg-dev.html#why-positron",
+    "href": "slides/pkg-dev.html#why-positron",
+    "title": "Introduction to R package development",
+    "section": "Why Positron?",
+    "text": "Why Positron?\nEverything here works in RStudio too. The commands are all devtools and usethis calls, which are IDE-agnostic.\nBut we will lean on Positron’s package development affordances, which live in the Command Palette and behind keyboard shortcuts."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#why-make-a-package",
+    "href": "slides/pkg-dev.html#why-make-a-package",
+    "title": "Introduction to R package development",
+    "section": "Why make a package?",
+    "text": "Why make a package?\n\nEasier to reuse the functions you write\nA consistent framework that nudges you to organize, document, and test\nThat framework unlocks a lot of standardized tooling\nThe easiest way to distribute code, to your team or to the world"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#lets-make-a-package-together",
+    "href": "slides/pkg-dev.html#lets-make-a-package-together",
+    "title": "Introduction to R package development",
+    "section": "Let’s make a package together",
+    "text": "Let’s make a package together\nWe will:\n\nCreate a small package from scratch\nUse Git to track our changes\nPush the code to GitHub\nWrite documentation\nWrite tests\nTake on a dependency\nSet up automated checks and a website"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#we-wont",
+    "href": "slides/pkg-dev.html#we-wont",
+    "title": "Introduction to R package development",
+    "section": "We won’t",
+    "text": "We won’t\n\nTalk much about writing and designing functions\nTalk about shipping data in your package (possible, and often useful)\nGo deep on any one topic\n\nHalf a day is enough for the whole game, once. Depth comes later."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#our-end-goal",
+    "href": "slides/pkg-dev.html#our-end-goal",
+    "title": "Introduction to R package development",
+    "section": "Our end goal",
+    "text": "Our end goal\nlibminer, a toy package that tells you about your R libraries.\n\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\nJenny’s libminer from 2026: PLACEHOLDER, we make it live today"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#five-forms-of-a-package",
+    "href": "slides/pkg-dev.html#five-forms-of-a-package",
+    "title": "Introduction to R package development",
+    "section": "Five forms of a package",
+    "text": "Five forms of a package"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#a-package-in-source-form",
+    "href": "slides/pkg-dev.html#a-package-in-source-form",
+    "title": "Introduction to R package development",
+    "section": "A package in “source” form",
+    "text": "A package in “source” form"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#libraries-where-packages-live",
+    "href": "slides/pkg-dev.html#libraries-where-packages-live",
+    "title": "Introduction to R package development",
+    "section": "Libraries: where packages live",
+    "text": "Libraries: where packages live\n\nA library is a directory containing installed packages\nYou have at least one, and commonly two:\n\na system library, with the base and recommended packages\na user library, with everything you installed\n\nlibrary(pkg) attaches a package from a library"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#where-do-your-packages-live",
+    "href": "slides/pkg-dev.html#where-do-your-packages-live",
+    "title": "Introduction to R package development",
+    "section": "Where do your packages live?",
+    "text": "Where do your packages live?\n.libPaths()\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#load-devtools",
+    "href": "slides/pkg-dev.html#load-devtools",
+    "title": "Introduction to R package development",
+    "section": "Load devtools",
+    "text": "Load devtools\nlibrary(devtools)\n\nAttaches usethis as well, which is the source of most functions we will use\nUpdate it if it is old"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#create_package",
+    "href": "slides/pkg-dev.html#create_package",
+    "title": "Introduction to R package development",
+    "section": "create_package()",
+    "text": "create_package()\ncreate_package(\"~/work/libminer\")\nPick a location that makes sense to you. Not inside another package or Git repo!"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#what-you-get",
+    "href": "slides/pkg-dev.html#what-you-get",
+    "title": "Introduction to R package development",
+    "section": "What you get",
+    "text": "What you get\nlibminer\n├── .Rbuildignore\n├── DESCRIPTION\n├── NAMESPACE\n├── R\n└── libminer.Rproj\n\nA directory with the basic package skeleton\nOpened as a new project in Positron"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_git",
+    "href": "slides/pkg-dev.html#use_git",
+    "title": "Introduction to R package development",
+    "section": "use_git()",
+    "text": "use_git()\nuse_git()\n\nTurns the package directory into a Git repository\nOffers to commit the files\nOffers to restart"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_github",
+    "href": "slides/pkg-dev.html#use_github",
+    "title": "Introduction to R package development",
+    "section": "use_github()",
+    "text": "use_github()\nuse_github()\nCreates a GitHub repo and pushes your package to it.\nPrerequisites: a GitHub account, and credentials that work. That is what git_sitrep() was for."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_devtools",
+    "href": "slides/pkg-dev.html#use_devtools",
+    "title": "Introduction to R package development",
+    "section": "use_devtools()",
+    "text": "use_devtools()\nuse_devtools()\nAdds a line to your .Rprofile so devtools is attached in every interactive session. Paste, save, restart R.\nSkip it if you prefer, then just call library(devtools) after each restart."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn",
+    "href": "slides/pkg-dev.html#your-turn",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nCreate your package with create_package()\nPoke around the files it made\nRun use_git(), then use_github()\nRun use_devtools() and restart R"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_r",
+    "href": "slides/pkg-dev.html#use_r",
+    "title": "Introduction to R package development",
+    "section": "use_r()",
+    "text": "use_r()\nuse_r(\"lib_summary\")\n\nYour R code goes in R/\nName the file after the function it defines\nPut the function definition, and only the definition, in the file"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#write-your-first-function",
+    "href": "slides/pkg-dev.html#write-your-first-function",
+    "title": "Introduction to R package development",
+    "section": "Write your first function",
+    "text": "Write your first function\nlib_summary &lt;- function() {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n  pkg_df\n}"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#how-do-you-test-drive-it",
+    "href": "slides/pkg-dev.html#how-do-you-test-drive-it",
+    "title": "Introduction to R package development",
+    "section": "How do you test drive it?",
+    "text": "How do you test drive it?\nTempting, but no:\n\nsource(\"R/lib_summary.R\")\nSend the function definition to R console with keyboard shortcut\n\nDo this instead:\nload_all() # remember: I assume devtools is attached!"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#load_all",
+    "href": "slides/pkg-dev.html#load_all",
+    "title": "Introduction to R package development",
+    "section": "load_all()",
+    "text": "load_all()\n\nSimulates building, installing, and attaching your package.\n\nMakes all your package’s functions available immediately\nFast iteration: edit, load, run\nA good approximation of how users will meet your package"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#workflow-edit-load-run",
+    "href": "slides/pkg-dev.html#workflow-edit-load-run",
+    "title": "Introduction to R package development",
+    "section": "Workflow: edit, load, run",
+    "text": "Workflow: edit, load, run\nload_all() is the single most common thing you do.\n\nR: Load R Package in the Command Palette\nCmd/Ctrl + Shift + L\n\nWorth committing to muscle memory."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-1",
+    "href": "slides/pkg-dev.html#your-turn-1",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nuse_r(\"lib_summary\")\nWrite lib_summary() in that file\nload_all(), then call lib_summary()\nCommit your changes"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#check",
+    "href": "slides/pkg-dev.html#check",
+    "title": "Introduction to R package development",
+    "section": "check()",
+    "text": "check()\nRuns R CMD check, the official checker, from within R.\n\nR: Check R Package in the Command Palette\nCmd/Ctrl + Shift + E\nor check() in the console (the command / keyboard shortcut is better, tho)\n\nCheck early, check often. “If it hurts, do it more often.”"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#three-kinds-of-message",
+    "href": "slides/pkg-dev.html#three-kinds-of-message",
+    "title": "Introduction to R package development",
+    "section": "Three kinds of message",
+    "text": "Three kinds of message\n\nERROR: severe problems, always fix\nWARNING: fix them, and you must fix them for CRAN\nNOTE: mild problems, or sometimes just an observation\n\nFor CRAN, try to get to zero of all three."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#the-description-file",
+    "href": "slides/pkg-dev.html#the-description-file",
+    "title": "Introduction to R package development",
+    "section": "The DESCRIPTION file",
+    "text": "The DESCRIPTION file\nYour package’s metadata. Edit along these lines:\nPackage: libminer\nTitle: Explore Your R Libraries\nVersion: 0.0.0.9000\nAuthors@R:\n    person(\"Jane\", \"Doe\",\n           email = \"jane.doe@something.com\",\n           role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"XXXX-XXXX-XXXX-XXXX\"))\nDescription: Provides functions for learning about your R libraries, and the\n    packages you have installed."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#description-details",
+    "href": "slides/pkg-dev.html#description-details",
+    "title": "Introduction to R package development",
+    "section": "DESCRIPTION details",
+    "text": "DESCRIPTION details\n\nEvery package must have one. It is the defining feature\nMachine readable, with fussy formatting (Debian Control Format)\nTitle: one line, title case, no full stop\nDescription: full sentences, ends with a full stop, does not start with “A package for”\nAuthors@R is unusual: it holds executable R code"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#licenses",
+    "href": "slides/pkg-dev.html#licenses",
+    "title": "Introduction to R package development",
+    "section": "Licenses",
+    "text": "Licenses\nuse_*_license()\n\nPermissive: MIT (simple), Apache 2.0 (MIT plus patent protection)\nCopyleft: GPL, AGPL, LGPL. Improvements must be shared\nCreative Commons: good for data packages. CC0, CC-BY"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_mit_license",
+    "href": "slides/pkg-dev.html#use_mit_license",
+    "title": "Introduction to R package development",
+    "section": "use_mit_license()",
+    "text": "use_mit_license()\nuse_mit_license()\n✔ Adding 'MIT + file LICENSE' to License\n✔ Writing 'LICENSE'\n✔ Writing 'LICENSE.md'\n✔ Adding '^LICENSE\\.md$' to '.Rbuildignore'\nThen check again."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-2",
+    "href": "slides/pkg-dev.html#your-turn-2",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\ncheck() and read the output\nFill in DESCRIPTION with your own details\nuse_mit_license()\ncheck() again, then commit and push"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#man.rd",
+    "href": "slides/pkg-dev.html#man.rd",
+    "title": "Introduction to R package development",
+    "section": "man/*.Rd",
+    "text": "man/*.Rd\nHelp files live in man/ and are written in an Rd markup language.\nYou will not write them by hand. You write roxygen comments next to your code, and roxygen2 generates the .Rd files."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#roxygen2",
+    "href": "slides/pkg-dev.html#roxygen2",
+    "title": "Introduction to R package development",
+    "section": "roxygen2",
+    "text": "roxygen2\nSpecial comments starting with #' above a function definition:\n\nTitle and description\n@param for each argument\n@returns for the return value\n@export to make it public\n@examples for usage\n\nDocumentation lives with the code."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#generating-a-skeleton-in-positron",
+    "href": "slides/pkg-dev.html#generating-a-skeleton-in-positron",
+    "title": "Introduction to R package development",
+    "section": "Generating a skeleton in Positron",
+    "text": "Generating a skeleton in Positron\n\nPut your cursor in the function’s name\nA light bulb appears, offering “Show Code Actions”\nChoose Generate a roxygen template"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#a-roxygen-block",
+    "href": "slides/pkg-dev.html#a-roxygen-block",
+    "title": "Introduction to R package development",
+    "section": "A roxygen block",
+    "text": "A roxygen block\n#' R Library Summary\n#'\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @returns A `data.frame` containing the count of packages in each of the\n#'   user's libraries\n#' @export\n#'\n#' @examples\n#' lib_summary()\nlib_summary &lt;- function() {\n  ...\n}"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#document",
+    "href": "slides/pkg-dev.html#document",
+    "title": "Introduction to R package development",
+    "section": "document()",
+    "text": "document()\nTurns roxygen comments into man/*.Rd and updates NAMESPACE.\n\nR: Document R Package in the Command Palette\nCmd/Ctrl + Shift + D\nor document() in the console (the command / keyboard shortcut is better, tho)\n\nThen preview:\nload_all()\n\n?lib_summary"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#namespace",
+    "href": "slides/pkg-dev.html#namespace",
+    "title": "Introduction to R package development",
+    "section": "NAMESPACE",
+    "text": "NAMESPACE\nLists the R objects that are:\n\nExported from your package for users: export(), S3method()\nImported from other packages for your internal use: import(), importFrom()\n\ndocument() maintains this file for you. Do not edit it by hand."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#documentation-workflow",
+    "href": "slides/pkg-dev.html#documentation-workflow",
+    "title": "Introduction to R package development",
+    "section": "Documentation workflow",
+    "text": "Documentation workflow\nEdit roxygen, document(), ?fun, repeat.\nAdd it to the loop you already have:\n\nload_all(), Cmd/Ctrl + Shift + L\ndocument(), Cmd/Ctrl + Shift + D\ncheck(), Cmd/Ctrl + Shift + E"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#package-level-documentation",
+    "href": "slides/pkg-dev.html#package-level-documentation",
+    "title": "Introduction to R package development",
+    "section": "Package-level documentation",
+    "text": "Package-level documentation\nuse_package_doc()\n\ndocument()\n?libminer\nA landing page for the package as a whole. Then check again."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#install",
+    "href": "slides/pkg-dev.html#install",
+    "title": "Introduction to R package development",
+    "section": "install()",
+    "text": "install()\nInstalls your package into your library, for real.\n\nR: Install R Package and Restart R in the Command Palette\nCmd/Ctrl + Shift + B\n\nlibrary(libminer)\n\nlib_summary() # one more package than before, that's yours!"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#readme",
+    "href": "slides/pkg-dev.html#readme",
+    "title": "Introduction to R package development",
+    "section": "README",
+    "text": "README\nuse_readme_rmd()\nYour package’s home page on GitHub. Cover:\n\nThe purpose of the package\nInstallation instructions\nExample usage"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#installation-instructions",
+    "href": "slides/pkg-dev.html#installation-instructions",
+    "title": "Introduction to R package development",
+    "section": "Installation instructions",
+    "text": "Installation instructions\n# install.packages(\"pak\")\npak::pak(\"jennybc/libminer\")\nThen render README.Rmd to README.md:\nbuild_readme()\nbuild_readme() renders against the current source of your package."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-3",
+    "href": "slides/pkg-dev.html#your-turn-3",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nAdd a roxygen block, document(), and read your own help page\nuse_package_doc() and document() again\ninstall() and use your package like a user would\nuse_readme_rmd(), fill it in, build_readme()\nCheck, commit, push"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#why-formal-tests",
+    "href": "slides/pkg-dev.html#why-formal-tests",
+    "title": "Introduction to R package development",
+    "section": "Why formal tests?",
+    "text": "Why formal tests?\nYou are already testing informally, every time you load_all() and try something out.\nFormal tests make that permanent: they run every time, in a fresh session, on every platform."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#benefits-of-automated-tests",
+    "href": "slides/pkg-dev.html#benefits-of-automated-tests",
+    "title": "Introduction to R package development",
+    "section": "Benefits of automated tests",
+    "text": "Benefits of automated tests\n\nFewer bugs. Informal testing explores typical usage; formal tests anticipate the weird cases\nBetter code structure. Hard-to-test code is usually badly factored code\nA call to action. Write a failing test first when you hit a bug\nRobust code. You can refactor with confidence"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_testthat",
+    "href": "slides/pkg-dev.html#use_testthat",
+    "title": "Introduction to R package development",
+    "section": "use_testthat()",
+    "text": "use_testthat()\nuse_testthat()\n\nAdds testthat to Suggests\nCreates tests/testthat/\nWrites tests/testthat.R\n\nYou still have to write the tests."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_test",
+    "href": "slides/pkg-dev.html#use_test",
+    "title": "Introduction to R package development",
+    "section": "use_test()",
+    "text": "use_test()\nuse_test(\"lib_summary\")\nBetter: with R/lib_summary.R open in the editor, call use_test() with no arguments. usethis creates and opens the companion test file.\n\n\n\n\n\n\n\n\n\n\nuse_r() is the inverse, for jumping back the other way."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#anatomy-of-a-test",
+    "href": "slides/pkg-dev.html#anatomy-of-a-test",
+    "title": "Introduction to R package development",
+    "section": "Anatomy of a test",
+    "text": "Anatomy of a test\n\nFile: one or more related tests, named test-*.R, mirroring R/\nTest: test_that(\"description\", { ... }), one unit of functionality\nExpectation: expect_*(), one specific comparison\n\nFailure reports quote the description, so make it informative."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#write-a-test",
+    "href": "slides/pkg-dev.html#write-a-test",
+    "title": "Introduction to R package development",
+    "section": "Write a test",
+    "text": "Write a test\ntest_that(\"lib_summary returns expected results\", {\n  res &lt;- lib_summary()\n  expect_s3_class(res, \"data.frame\")\n  expect_equal(ncol(res), 2)\n  expect_equal(names(res), c(\"Library\", \"n_packages\"))\n  expect_type(res$Library, \"character\")\n  expect_type(res$n_packages, \"integer\")\n})"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#run-your-tests",
+    "href": "slides/pkg-dev.html#run-your-tests",
+    "title": "Introduction to R package development",
+    "section": "Run your tests",
+    "text": "Run your tests\n\nR: Test R Package in Test Explorer in the Command Palette\nCmd/Ctrl + Shift + T\nor test() in the console"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#positrons-test-explorer",
+    "href": "slides/pkg-dev.html#positrons-test-explorer",
+    "title": "Introduction to R package development",
+    "section": "Positron’s Test Explorer",
+    "text": "Positron’s Test Explorer\nA tree of your test files and test_that() blocks, with pass and fail marks on each one.\n\nRun or re-run a single test\nVery handy when you are chasing one failure\n\n\nR: Test R Package in Terminal gives you plain console output instead."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#workflow-code-plus-tests",
+    "href": "slides/pkg-dev.html#workflow-code-plus-tests",
+    "title": "Introduction to R package development",
+    "section": "Workflow: code plus tests",
+    "text": "Workflow: code plus tests\n\nEdit code, load_all(), Cmd/Ctrl + Shift + L\nEdit tests, test(), Cmd/Ctrl + Shift + T\nEdit roxygen, document(), Cmd/Ctrl + Shift + D\nPeriodically, check(), Cmd/Ctrl + Shift + E"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-4",
+    "href": "slides/pkg-dev.html#your-turn-4",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nuse_testthat()\nuse_test() with R/lib_summary.R open\nWrite a couple of tests and run them\ncheck(), commit, push"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#taking-on-a-dependency",
+    "href": "slides/pkg-dev.html#taking-on-a-dependency",
+    "title": "Introduction to R package development",
+    "section": "Taking on a dependency",
+    "text": "Taking on a dependency\nLet’s report the on-disk size of each library, using the fs package.\nuse_package(\"fs\")\n\nEvery package you use must be declared\nNever call library() in code below R/"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#depends-imports-suggests",
+    "href": "slides/pkg-dev.html#depends-imports-suggests",
+    "title": "Introduction to R package development",
+    "section": "Depends, Imports, Suggests",
+    "text": "Depends, Imports, Suggests\n\nDepends: installed with your package and attached. Rarely what you want\nImports: installed with your package. The usual choice\nSuggests: not installed automatically. For development, tests, vignettes, or rarely used features"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#imports-in-two-files",
+    "href": "slides/pkg-dev.html#imports-in-two-files",
+    "title": "Introduction to R package development",
+    "section": "Imports in two files",
+    "text": "Imports in two files\n\nListing a package in Imports: in DESCRIPTION does not “import” it\nA package in Imports: may, but need not, appear in NAMESPACE\nEvery package in NAMESPACE must be in Imports: (or Depends:)"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#three-ways-to-call-another-packages-functions",
+    "href": "slides/pkg-dev.html#three-ways-to-call-another-packages-functions",
+    "title": "Introduction to R package development",
+    "section": "Three ways to call another package’s functions",
+    "text": "Three ways to call another package’s functions\n\npkg::fun(), always fine, always explicit\n#' @importFrom pkg fun1 fun2, for functions you use constantly\n#' @import pkg, the whole package. Rarely a good idea\n\nWe will use pkg::fun()."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use-the-dependency",
+    "href": "slides/pkg-dev.html#use-the-dependency",
+    "title": "Introduction to R package development",
+    "section": "Use the dependency",
+    "text": "Use the dependency\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#manual-test-drive",
+    "href": "slides/pkg-dev.html#manual-test-drive",
+    "title": "Introduction to R package development",
     "section": "Manual test drive",
-    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nIt seems to work!",
+    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nSeems to work!"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#but-the-tests-disagree",
+    "href": "slides/pkg-dev.html#but-the-tests-disagree",
+    "title": "Introduction to R package development",
+    "section": "But the tests disagree",
+    "text": "But the tests disagree\nRun the tests and one of them fails. This is the system working as designed.\nUpdate the test, and add one for the new behaviour:\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#and-check-disagrees-too",
+    "href": "slides/pkg-dev.html#and-check-disagrees-too",
+    "title": "Introduction to R package development",
+    "section": "And check() disagrees too",
+    "text": "And check() disagrees too\nA warning about an undocumented parameter, sizes.\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the\n#'   user's libraries. A `lib_size` column is included if `sizes = TRUE`.\nThen document() and check again."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#clean",
+    "href": "slides/pkg-dev.html#clean",
+    "title": "Introduction to R package development",
+    "section": "Clean",
+    "text": "Clean\n0 errors ✔ | 0 warnings ✔ | 0 notes ✔"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-5",
+    "href": "slides/pkg-dev.html#your-turn-5",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nuse_package(\"fs\")\nAdd the sizes argument\nFix and extend your tests\nDocument sizes, document(), check()\nCommit and push"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_github_action",
+    "href": "slides/pkg-dev.html#use_github_action",
+    "title": "Introduction to R package development",
+    "section": "use_github_action()",
+    "text": "use_github_action()\nIf your code is on GitHub, GitHub Actions can check your package on three operating systems every time you push.\nuse_github_action()\nChoose check-standard."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#what-it-writes",
+    "href": "slides/pkg-dev.html#what-it-writes",
+    "title": "Introduction to R package development",
+    "section": "What it writes",
+    "text": "What it writes\n\n.github/workflows/R-CMD-check.yaml\nAn R-CMD-check badge in README.Rmd\n\nSo re-render the README:\nbuild_readme()"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#commit-and-push",
+    "href": "slides/pkg-dev.html#commit-and-push",
+    "title": "Introduction to R package development",
+    "section": "Commit and push",
+    "text": "Commit and push\nThe config has to be on GitHub to take effect.\nbrowse_github()\nbrowse_github_actions()\nAdmire the badge, and your automatic multi-platform check results."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-6",
+    "href": "slides/pkg-dev.html#your-turn-6",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nuse_github_action()\nbuild_readme()\ncheck(), commit, push\nWatch the checks run on GitHub"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_pkgdown_github_pages",
+    "href": "slides/pkg-dev.html#use_pkgdown_github_pages",
+    "title": "Introduction to R package development",
+    "section": "use_pkgdown_github_pages()",
+    "text": "use_pkgdown_github_pages()\nuse_pkgdown_github_pages()\nCommit and push.\nThat is all you need to publish a beautiful website for your package.\nAssuming that:\n\nYou are using Git\nand GitHub\nand Git and GitHub work smoothly from R\nand the repo is public\nand you remembered to commit and push afterwards"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#your-turn-7",
+    "href": "slides/pkg-dev.html#your-turn-7",
+    "title": "Introduction to R package development",
+    "section": "Your turn",
+    "text": "Your turn\n\nuse_pkgdown_github_pages()\nCommit and push\nVisit the URL in the output and marvel at your handiwork"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#getting-your-package-to-users",
+    "href": "slides/pkg-dev.html#getting-your-package-to-users",
+    "title": "Introduction to R package development",
+    "section": "Getting your package to users",
+    "text": "Getting your package to users\n\nGitHub: easy for you, harder for users. Comes free with everything we just did. Good for a small, savvy audience\nCRAN: easy for users, harder for you. Binaries, discoverability, ordinary install.packages(), and stringent requirements"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#preparing-for-cran",
+    "href": "slides/pkg-dev.html#preparing-for-cran",
+    "title": "Introduction to R package development",
+    "section": "Preparing for CRAN",
+    "text": "Preparing for CRAN\n“If it hurts, do it more often.”\n\n\ncheck() often, aiming for zero errors, warnings, and notes\nLet GitHub Actions check you on every platform, on every push"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#use_release_issue",
+    "href": "slides/pkg-dev.html#use_release_issue",
+    "title": "Introduction to R package development",
+    "section": "use_release_issue()",
+    "text": "use_release_issue()\nuse_release_issue()\nOpens a GitHub issue with a checklist for preparing a CRAN release."
+  },
+  {
+    "objectID": "slides/pkg-dev.html#review-functions",
+    "href": "slides/pkg-dev.html#review-functions",
+    "title": "Introduction to R package development",
+    "section": "Review: functions",
+    "text": "Review: functions\nRun once\ncreate_package(), use_git(), use_github(), use_devtools(), use_mit_license(), use_testthat(), use_readme_rmd(), use_package_doc(), use_github_action(), use_pkgdown_github_pages(), use_release_issue()\nRun periodically\nuse_r(), use_test(), use_package(), build_readme(), install()"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#review-shortcuts",
+    "href": "slides/pkg-dev.html#review-shortcuts",
+    "title": "Introduction to R package development",
+    "section": "Review: shortcuts",
+    "text": "Review: shortcuts\n\n\n\n\n\n\n\n\nFunction\nPositron command\nShortcut\n\n\n\n\nload_all()\nR: Load R Package\nCmd/Ctrl + Shift + L\n\n\ndocument()\nR: Document R Package\nCmd/Ctrl + Shift + D\n\n\ntest()\nR: Test R Package in Test Explorer\nCmd/Ctrl + Shift + T\n\n\ncheck()\nR: Check R Package\nCmd/Ctrl + Shift + E\n\n\ninstall()\nR: Install R Package and Restart R\nCmd/Ctrl + Shift + B"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#resources",
+    "href": "slides/pkg-dev.html#resources",
+    "title": "Introduction to R package development",
+    "section": "Resources",
+    "text": "Resources\n\nr-pkgs.org, the book behind this workshop\nhappygitwithr.com, for Git and GitHub trouble\ndesign.tidyverse.org, for function design\nPosit cheatsheets"
+  },
+  {
+    "objectID": "slides/pkg-dev.html#thanks",
+    "href": "slides/pkg-dev.html#thanks",
+    "title": "Introduction to R package development",
+    "section": "Thanks!",
+    "text": "Thanks!\nWorkshop site: https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/\nRead next: R Packages (2e)\nGratefully adapted from materials by Andy Teucher for Introduction to R Package Development at posit::conf(2023)."
+  },
+  {
+    "objectID": "pkg-dev/08-share.html",
+    "href": "pkg-dev/08-share.html",
+    "title": "Release",
+    "section": "",
+    "text": "To get a checklist suitable for preparing for CRAN release:\nuse_release_issue()",
     "crumbs": [
       "Package development",
-      "Managing dependencies"
+      "Release"
     ]
   },
   {
-    "objectID": "pkg-dev/05-dependencies.html#run-package-tests",
-    "href": "pkg-dev/05-dependencies.html#run-package-tests",
-    "title": "Managing dependencies",
-    "section": "Run package tests",
-    "text": "Run package tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nOops, a test fails, though.",
+    "objectID": "pkg-dev/06-ci.html",
+    "href": "pkg-dev/06-ci.html",
+    "title": "Automated checking with GitHub Actions",
+    "section": "",
+    "text": "If your package source code is hosted on GitHub, you can take advantage of GitHub Actions to automatically check your package on 3 operating systems every time you push. Example of what’s known as “continuous integration” = CI.\nPlace a special YAML file to configure this:\nRe-generate README.md to incorporate the new badge.",
     "crumbs": [
       "Package development",
-      "Managing dependencies"
+      "Automated checking with GitHub Actions"
     ]
   },
   {
-    "objectID": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
-    "href": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
-    "title": "Managing dependencies",
-    "section": "Update tests and test again",
-    "text": "Update tests and test again\ntest_that(\"lib_summary fails appropriately\", {\n  expect_error(lib_summary(sizes = \"foo\"), \"not interpretable as logical\")\n})\n\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})\nTests pass again!",
-    "crumbs": [
-      "Package development",
-      "Managing dependencies"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/05-dependencies.html#check-package-again",
-    "href": "pkg-dev/05-dependencies.html#check-package-again",
-    "title": "Managing dependencies",
-    "section": "Check package again",
-    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nOops, warning about undocumented parameter, sizes.",
-    "crumbs": [
-      "Package development",
-      "Managing dependencies"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
-    "href": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
-    "title": "Managing dependencies",
-    "section": "Update roxygen comment and regenerate documentation",
-    "text": "Update roxygen comment and regenerate documentation\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the user's\n#'   libraries. A `lib_size` column is included if `sizes = TRUE`.\n#' @export\n#'\n#' @examples\n#' lib_summary()\n#' lib_summary(sizes = TRUE)\ndocument() # Cmd/Ctrl + Shift + D",
-    "crumbs": [
-      "Package development",
-      "Managing dependencies"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/05-dependencies.html#check-package-again-1",
-    "href": "pkg-dev/05-dependencies.html#check-package-again-1",
-    "title": "Managing dependencies",
+    "objectID": "pkg-dev/06-ci.html#check-package-again",
+    "href": "pkg-dev/06-ci.html#check-package-again",
+    "title": "Automated checking with GitHub Actions",
     "section": "Check package again",
     "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nPassing cleanly: 0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
     "crumbs": [
       "Package development",
-      "Managing dependencies"
+      "Automated checking with GitHub Actions"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/06-ci.html#commit-and-push",
+    "href": "pkg-dev/06-ci.html#commit-and-push",
+    "title": "Automated checking with GitHub Actions",
+    "section": "Commit and push",
+    "text": "Commit and push\nObviously the GHA config must be pushed to GitHub to take effect.\nView your package on GitHub to see the new badge in README and to see your new, automatic, multi-platform R CMD check results:\nbrowse_github()\nbrowse_github_actions()",
+    "crumbs": [
+      "Package development",
+      "Automated checking with GitHub Actions"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html",
+    "href": "pkg-dev/04-testing.html",
+    "title": "Tests",
+    "section": "",
+    "text": "use_testthat()",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html#initialize-test-infrastructure",
+    "href": "pkg-dev/04-testing.html#initialize-test-infrastructure",
+    "title": "Tests",
+    "section": "",
+    "text": "use_testthat()",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html#create-test-file-to-match-the-r.r-file",
+    "href": "pkg-dev/04-testing.html#create-test-file-to-match-the-r.r-file",
+    "title": "Tests",
+    "section": "Create test file to match the R/*.R file",
+    "text": "Create test file to match the R/*.R file\nuse_test(\"lib_summary\")\nMore typically, you don’t type the file name at all. With R/lib_summary.R open in the editor, just call use_test() with no arguments and usethis creates (or opens, if it already exists) the companion test file tests/testthat/test-lib_summary.R.\nHere R/lib_summary.R is the active file (1), so use_test() needs no argument (2), and usethis writes the companion test file and opens it (3).\n\n\n\n\n\n\n\n\n\n\nuse_r() is the inverse of use_test(). It’s helpful for creating or focusing the R/*.R file when you’re staring at the test file.",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html#write-tests",
+    "href": "pkg-dev/04-testing.html#write-tests",
+    "title": "Tests",
+    "section": "Write tests",
+    "text": "Write tests\nMake this the content of tests/testthat/test-lib_summary.R:\ntest_that(\"lib_summary returns expected results\", {\n  res &lt;- lib_summary()\n  expect_s3_class(res, \"data.frame\")\n  expect_equal(ncol(res), 2)\n  expect_equal(names(res), c(\"Library\", \"n_packages\"))\n  expect_type(res$Library, \"character\")\n  expect_type(res$n_packages, \"integer\")\n})\n\ntest_that(\"lib_summary fails appropriately\", {\n  expect_error(lib_summary(\"foo\"), \"unused argument\")\n})",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html#run-tests",
+    "href": "pkg-dev/04-testing.html#run-tests",
+    "title": "Tests",
+    "section": "Run tests",
+    "text": "Run tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nThat first option uses Positron’s R test explorer, which gives you a tree of your test files and test_that() blocks, with pass / fail marks attached to each one. You can run or re-run an individual test from there, which is very handy when you’re iterating on one failure.\n\nThere is also R: Test R Package in Terminal, which just runs devtools::test() in a terminal and gives you plain console output.",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/04-testing.html#check-package-again",
+    "href": "pkg-dev/04-testing.html#check-package-again",
+    "title": "Tests",
+    "section": "Check package again",
+    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)",
+    "crumbs": [
+      "Package development",
+      "Tests"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/02-create-pkg-and-metadata.html",
+    "href": "pkg-dev/02-create-pkg-and-metadata.html",
+    "title": "Package creation and metadata",
+    "section": "",
+    "text": "Before we make a package, let’s look at where the packages you already have actually live:\n.libPaths()\nAnd at what is in them:\ninstalled.packages()\nThat is a lot of information, so you may prefer to look at just a few columns:\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build.",
+    "crumbs": [
+      "Package development",
+      "Package creation and metadata"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#explore-your-package-libraries",
+    "href": "pkg-dev/02-create-pkg-and-metadata.html#explore-your-package-libraries",
+    "title": "Package creation and metadata",
+    "section": "",
+    "text": "Before we make a package, let’s look at where the packages you already have actually live:\n.libPaths()\nAnd at what is in them:\ninstalled.packages()\nThat is a lot of information, so you may prefer to look at just a few columns:\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build.",
+    "crumbs": [
+      "Package development",
+      "Package creation and metadata"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#lay-the-foundations",
+    "href": "pkg-dev/02-create-pkg-and-metadata.html#lay-the-foundations",
+    "title": "Package creation and metadata",
+    "section": "Lay the foundations",
+    "text": "Lay the foundations\n\nLoad devtools and create your package infrastructure\nlibrary(devtools)                 # attaches usethis as well\ncreate_package(\"~/work/libminer\") # pick a place that makes sense to you!\n\n\nInitialize this package as a git repo\nuse_git()\n\n\nAttach devtools in all interactive sessions\nWe can load devtools automatically via our .Rprofile file so that it is always loaded during development\nuse_devtools()\nPaste the contents of your clipboard in .Rprofile, and restart R.\nIf you choose not to do this, you’ll need to attach devtools everytime you restart R during your package development work:\nlibrary(devtools)",
+    "crumbs": [
+      "Package development",
+      "Package creation and metadata"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#write-your-first-function",
+    "href": "pkg-dev/02-create-pkg-and-metadata.html#write-your-first-function",
+    "title": "Package creation and metadata",
+    "section": "Write your first function",
+    "text": "Write your first function\n\nOpen a new file in R/ to hold your code\nuse_r(\"lib_summary\")\n\n\nWrite your function definition in this file\nlib_summary &lt;- function() {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n  pkg_df\n}\n\n\nLoad your package with load_all()\nload_all()\n\n\n\n\n\n\nTipLearn the load_all() keyboard shortcut\n\n\n\nPositron also exposes this from the Command Palette as R: Load R Package, with the keyboard shortcut Cmd/Ctrl + Shift + L.\nload_all() is the single most common thing you do while developing a package, so this shortcut is worth committing to muscle memory.\n\n\nAnd test out our new function:\nlib_summary()\n\n\nCheck your package\ncheck()\n\n\n\n\n\n\nTipLearn the check() keyboard shortcut\n\n\n\nPositron also exposes this from the Command Palette as R: Check R Package, with the keyboard shortcut Cmd/Ctrl + Shift + E.\ncheck() is your early warning system: run it often, so that when something does break you have a small set of recent changes to blame.\n\n\n\n\nChoose a license, any license\nuse_mit_license()\n\n\nUpdate DESCRIPTION with better metadata\nPackage: libminer\nTitle: Explore Your R Libraries\nVersion: 0.0.0.9000\nAuthors@R:\n    person(\"Jane\", \"Doe\",\n           email = \"jane.doe@something.com\",\n           role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"XXXX-XXXX-XXXX-XXXX\"))\nDescription: Provides functions for learning about your R libraries, and the\n    packages you have installed.\n\n\nCheck again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command is better, though, because it runs in a clean terminal)\n\n\n\nUse GitHub\nuse_github()",
+    "crumbs": [
+      "Package development",
+      "Package creation and metadata"
+    ]
+  },
+  {
+    "objectID": "positron/index.html",
+    "href": "positron/index.html",
+    "title": "Introduction to Positron and Posit Assistant",
+    "section": "",
+    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
+    "crumbs": [
+      "Positron and Posit Assistant"
+    ]
+  },
+  {
+    "objectID": "positron/index.html#materials",
+    "href": "positron/index.html#materials",
+    "title": "Introduction to Positron and Posit Assistant",
+    "section": "",
+    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
+    "crumbs": [
+      "Positron and Posit Assistant"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RaukR 2026",
+    "section": "",
+    "text": "Welcome! This is the landing page for my two sessions at RaukR: Data Science with R, held 2026 August 10 - 20 in Visby, Sweden.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#where-to-find-me-online",
+    "href": "index.html#where-to-find-me-online",
+    "title": "RaukR 2026",
+    "section": "Where to find me online",
+    "text": "Where to find me online\n\n\n RaukR Slack: #positron or #pkg-dev\n GitHub: @jennybc\n BlueSky: @jennybryan.bsky.social",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html",
+    "href": "pkg-dev/01-setup.html",
+    "title": "System setup",
+    "section": "",
+    "text": "You will need the following software installed and configured. Please have this set up and ready to go before we start.",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#computing-requirements",
+    "href": "pkg-dev/01-setup.html#computing-requirements",
+    "title": "System setup",
+    "section": "Computing requirements",
+    "text": "Computing requirements\nYou will need:\n\nA computer you are allowed to install software on\nR\nPositron\nR package development toolchain\nThe devtools package\n\nOptional, but recommended:\n\nGit and GitHub",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#install-r",
+    "href": "pkg-dev/01-setup.html#install-r",
+    "title": "System setup",
+    "section": "Install R",
+    "text": "Install R\nI highly recommend installing R with rig, the R Installation Manager: https://github.com/r-lib/rig. It handles the fiddly parts for you, steers you into best practices, and lets you keep several versions of R side by side, which works great with Positron. Once rig is installed, getting the current release of R is:\nrig add release\nIf you would rather not use rig, download and install R for your operating system from https://cloud.r-project.org/. Either way, use a recent version, ideally the current release.",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#install-positron",
+    "href": "pkg-dev/01-setup.html#install-positron",
+    "title": "System setup",
+    "section": "Install Positron",
+    "text": "Install Positron\nDownload and install Positron from https://positron.posit.co/download.html.\nIf you already have Positron, please make sure it is up to date. Positron updates often and we want everyone on the same version. Use Positron &gt; Check for Updates… on macOS, or Help &gt; Check for Updates… on Windows and Linux.\n\n\nEverything in this session also works in RStudio or other development environment. The commands are all devtools and usethis function calls, which are IDE-agnostic. But the workshop will feature interactive workflows in Positron.",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#install-r-package-development-tools",
+    "href": "pkg-dev/01-setup.html#install-r-package-development-tools",
+    "title": "System setup",
+    "section": "Install R package development tools",
+    "text": "Install R package development tools\nSome packages include C, C++, or Fortran code, which has to be compiled. You need a compiler toolchain in order to install such a package from source.\nThe package we will develop is pure R, so you’ll probably be fine without a compiler toolchain. But as you get deeper into package development, you will inevitably want to install something from source that has compiled code, so this is a nicetime to set it up.\n\nFor Windows\nDownload and run the latest Rtools installer from https://cran.r-project.org/bin/windows/Rtools/. Be sure to get the Rtools version that matches your R version.\n\nKeep the default settings for the installation location and components.\nDo not select the box for “Edit the system PATH”. R-specific tooling puts Rtools on the PATH when it is needed.\nDo select the box for “Save version information to registry”. It should be selected by default.\n\n\n\nFor Mac\nInstall the Xcode command line tools (full Xcode is not necessary). Open a terminal (in Positron, use the Terminal pane) and run:\nxcode-select --install\nYou will be prompted to confirm the install, and possibly to enter your computer password.\n\n\nFor Linux\nIf you installed r-base-dev when you installed R, you should have all you need to build packages from source. If not, go back to https://cloud.r-project.org/ and follow the instructions for your distribution. On Ubuntu and Debian it is sudo apt-get install r-base-dev.",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#packages",
+    "href": "pkg-dev/01-setup.html#packages",
+    "title": "System setup",
+    "section": "Install packages",
+    "text": "Install packages\nIn R, run:\ninstall.packages(\"devtools\")\nThat is enough. devtools is a meta-package and everything else we need, such as usethis, roxygen2, testthat, and pkgdown, comes along with it.\n\n\nI personally use pak to install packages:\npak::pak(\"devtools\")\nYou can verify your system is set up for package development by asking for a “development situation report”:\ndevtools::dev_sitrep()\nThis reports on your R version, your IDE, devtools itself, and whether any of your package development dependencies are out of date. If it flags something as missing or stale, update it.",
+    "crumbs": [
+      "Package development",
+      "System setup"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/01-setup.html#git-and-github",
+    "href": "pkg-dev/01-setup.html#git-and-github",
+    "title": "System setup",
+    "section": "Git and GitHub",
+    "text": "Git and GitHub\nHappy Git with R is the place to go for anything in this section that does not go smoothly.\n\n\nWe will use Git and GitHub to track changes and share our package. You can follow along without them, but you will get more out of the session if you have them working.\n\nGit\nCheck whether you already have Git by running this in a terminal (in Positron, use the Terminal pane):\nwhich git\nIf that reports a path, you’re set. If not, Happy Git has installation instructions for every platform.\n\n\nGitHub account\nRegister at github.com, if you have not already.\n\n\nCheck the link between R and GitHub\nAsk usethis for a “situation report”:\nusethis::git_sitrep()\nYou are in good shape if it shows your name and email, and reports a personal access token (PAT) as &lt;discovered&gt;.\nIf not:\n\nNo name or email? usethis::use_git_config()\nNo PAT? Underscoped PAT? Managing Git(Hub) Credentials walks through create_github_token() and gitcreds::gitcreds_set().",
+    "crumbs": [
+      "Package development",
+      "System setup"
     ]
   },
   {
@@ -208,274 +912,123 @@
     ]
   },
   {
-    "objectID": "pkg-dev/01-setup.html",
-    "href": "pkg-dev/01-setup.html",
-    "title": "System setup",
+    "objectID": "pkg-dev/05-dependencies.html",
+    "href": "pkg-dev/05-dependencies.html",
+    "title": "Managing dependencies",
     "section": "",
-    "text": "You will need the following software installed and configured. Please have this set up and ready to go before we start.",
+    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
     "crumbs": [
       "Package development",
-      "System setup"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/01-setup.html#computing-requirements",
-    "href": "pkg-dev/01-setup.html#computing-requirements",
-    "title": "System setup",
-    "section": "Computing requirements",
-    "text": "Computing requirements\nYou will need:\n\nA computer you are allowed to install software on\nR\nPositron\nR package development toolchain\nThe devtools package\n\nOptional, but recommended:\n\nGit and GitHub",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/01-setup.html#install-r",
-    "href": "pkg-dev/01-setup.html#install-r",
-    "title": "System setup",
-    "section": "Install R",
-    "text": "Install R\nI highly recommend installing R with rig, the R Installation Manager: https://github.com/r-lib/rig. It handles the fiddly parts for you, steers you into best practices, and lets you keep several versions of R side by side, which works great with Positron. Once rig is installed, getting the current release of R is:\nrig add release\nIf you would rather not use rig, download and install R for your operating system from https://cloud.r-project.org/. Either way, use a recent version, ideally the current release.",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/01-setup.html#install-positron",
-    "href": "pkg-dev/01-setup.html#install-positron",
-    "title": "System setup",
-    "section": "Install Positron",
-    "text": "Install Positron\nDownload and install Positron from https://positron.posit.co/download.html.\nIf you already have Positron, please make sure it is up to date. Positron updates often and we want everyone on the same version. Use Positron &gt; Check for Updates… on macOS, or Help &gt; Check for Updates… on Windows and Linux.\n\n\nEverything in this session also works in RStudio or other development environment. The commands are all devtools and usethis function calls, which are IDE-agnostic. But the workshop will feature interactive workflows in Positron.",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/01-setup.html#install-r-package-development-tools",
-    "href": "pkg-dev/01-setup.html#install-r-package-development-tools",
-    "title": "System setup",
-    "section": "Install R package development tools",
-    "text": "Install R package development tools\nSome packages include C, C++, or Fortran code, which has to be compiled. You need a compiler toolchain in order to install such a package from source.\nThe package we will develop is pure R, so you’ll probably be fine without a compiler toolchain. But as you get deeper into package development, you will inevitably want to install something from source that has compiled code, so this is a nicetime to set it up.\n\nFor Windows\nDownload and run the latest Rtools installer from https://cran.r-project.org/bin/windows/Rtools/. Be sure to get the Rtools version that matches your R version.\n\nKeep the default settings for the installation location and components.\nDo not select the box for “Edit the system PATH”. R-specific tooling puts Rtools on the PATH when it is needed.\nDo select the box for “Save version information to registry”. It should be selected by default.\n\n\n\nFor Mac\nInstall the Xcode command line tools (full Xcode is not necessary). Open a terminal (in Positron, use the Terminal pane) and run:\nxcode-select --install\nYou will be prompted to confirm the install, and possibly to enter your computer password.\n\n\nFor Linux\nIf you installed r-base-dev when you installed R, you should have all you need to build packages from source. If not, go back to https://cloud.r-project.org/ and follow the instructions for your distribution. On Ubuntu and Debian it is sudo apt-get install r-base-dev.",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/01-setup.html#packages",
-    "href": "pkg-dev/01-setup.html#packages",
-    "title": "System setup",
-    "section": "Install packages",
-    "text": "Install packages\nIn R, run:\ninstall.packages(\"devtools\")\nThat is enough. devtools is a meta-package and everything else we need, such as usethis, roxygen2, testthat, and pkgdown, comes along with it.\n\n\nI personally use pak to install packages:\npak::pak(\"devtools\")\nYou can verify your system is set up for package development by asking for a “development situation report”:\ndevtools::dev_sitrep()\nThis reports on your R version, your IDE, devtools itself, and whether any of your package development dependencies are out of date. If it flags something as missing or stale, update it.",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/01-setup.html#git-and-github",
-    "href": "pkg-dev/01-setup.html#git-and-github",
-    "title": "System setup",
-    "section": "Git and GitHub",
-    "text": "Git and GitHub\nHappy Git with R is the place to go for anything in this section that does not go smoothly.\n\n\nWe will use Git and GitHub to track changes and share our package. You can follow along without them, but you will get more out of the session if you have them working.\n\nGit\nCheck whether you already have Git by running this in a terminal (in Positron, use the Terminal pane):\nwhich git\nIf that reports a path, you’re set. If not, Happy Git has installation instructions for every platform.\n\n\nGitHub account\nRegister at github.com, if you have not already.\n\n\nCheck the link between R and GitHub\nAsk usethis for a “situation report”:\nusethis::git_sitrep()\nYou are in good shape if it shows your name and email, and reports a personal access token (PAT) as &lt;discovered&gt;.\nIf not:\n\nNo name or email? usethis::use_git_config()\nNo PAT? Underscoped PAT? Managing Git(Hub) Credentials walks through create_github_token() and gitcreds::gitcreds_set().",
-    "crumbs": [
-      "Package development",
-      "System setup"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "RaukR 2026",
+    "objectID": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
+    "href": "pkg-dev/05-dependencies.html#use-functions-from-fs-in-our-package",
+    "title": "Managing dependencies",
     "section": "",
-    "text": "Welcome! This is the landing page for my two sessions at RaukR: Data Science with R, held 2026 August 10 - 20 in Visby, Sweden.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#where-to-find-me-online",
-    "href": "index.html#where-to-find-me-online",
-    "title": "RaukR 2026",
-    "section": "Where to find me online",
-    "text": "Where to find me online\n\n\n RaukR Slack: #positron or #pkg-dev\n GitHub: @jennybc\n BlueSky: @jennybryan.bsky.social",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "positron/index.html",
-    "href": "positron/index.html",
-    "title": "Introduction to Positron and Posit Assistant",
-    "section": "",
-    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
-    "crumbs": [
-      "Positron and Posit Assistant"
-    ]
-  },
-  {
-    "objectID": "positron/index.html#materials",
-    "href": "positron/index.html#materials",
-    "title": "Introduction to Positron and Posit Assistant",
-    "section": "",
-    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
-    "crumbs": [
-      "Positron and Posit Assistant"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/02-create-pkg-and-metadata.html",
-    "href": "pkg-dev/02-create-pkg-and-metadata.html",
-    "title": "Package creation and metadata",
-    "section": "",
-    "text": "Before we make a package, let’s look at where the packages you already have actually live:\n.libPaths()\nAnd at what is in them:\ninstalled.packages()\nThat is a lot of information, so you may prefer to look at just a few columns:\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build.",
+    "text": "Let’s add a feature to reveal the on-disk size of each package library. We’ll use some functions from the fs package to do this. We’re taking on a dependency.\nDeclare that your package will use fs:\nuse_package(\"fs\")\nThen call fs functions with the pkg::fun() form:\nlib_summary &lt;- function(sizes = FALSE) {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n\n  if (sizes) {\n    pkg_df$lib_size &lt;- fs::as_fs_bytes(vapply(\n      pkg_df$Library,\n      function(x) {\n        sum(fs::dir_info(x, recurse = TRUE, type = \"file\")$size)\n      },\n      FUN.VALUE = numeric(1)\n    ))\n  }\n  pkg_df\n}",
     "crumbs": [
       "Package development",
-      "Package creation and metadata"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#explore-your-package-libraries",
-    "href": "pkg-dev/02-create-pkg-and-metadata.html#explore-your-package-libraries",
-    "title": "Package creation and metadata",
-    "section": "",
-    "text": "Before we make a package, let’s look at where the packages you already have actually live:\n.libPaths()\nAnd at what is in them:\ninstalled.packages()\nThat is a lot of information, so you may prefer to look at just a few columns:\ninstalled.packages()[, c(\"Package\", \"Version\", \"LibPath\")]\nThat is the raw material for the package we are about to build.",
+    "objectID": "pkg-dev/05-dependencies.html#manual-test-drive",
+    "href": "pkg-dev/05-dependencies.html#manual-test-drive",
+    "title": "Managing dependencies",
+    "section": "Manual test drive",
+    "text": "Manual test drive\nload_all()\nlib_summary()\nlib_summary(TRUE)\nIt seems to work!",
     "crumbs": [
       "Package development",
-      "Package creation and metadata"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#lay-the-foundations",
-    "href": "pkg-dev/02-create-pkg-and-metadata.html#lay-the-foundations",
-    "title": "Package creation and metadata",
-    "section": "Lay the foundations",
-    "text": "Lay the foundations\n\nLoad devtools and create your package infrastructure\nlibrary(devtools)                 # attaches usethis as well\ncreate_package(\"~/work/libminer\") # pick a place that makes sense to you!\n\n\nInitialize this package as a git repo\nuse_git()\n\n\nAttach devtools in all interactive sessions\nWe can load devtools automatically via our .Rprofile file so that it is always loaded during development\nuse_devtools()\nPaste the contents of your clipboard in .Rprofile, and restart R.\nIf you choose not to do this, you’ll need to attach devtools everytime you restart R during your package development work:\nlibrary(devtools)",
+    "objectID": "pkg-dev/05-dependencies.html#run-package-tests",
+    "href": "pkg-dev/05-dependencies.html#run-package-tests",
+    "title": "Managing dependencies",
+    "section": "Run package tests",
+    "text": "Run package tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nOops, a test fails, though.",
     "crumbs": [
       "Package development",
-      "Package creation and metadata"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/02-create-pkg-and-metadata.html#write-your-first-function",
-    "href": "pkg-dev/02-create-pkg-and-metadata.html#write-your-first-function",
-    "title": "Package creation and metadata",
-    "section": "Write your first function",
-    "text": "Write your first function\n\nOpen a new file in R/ to hold your code\nuse_r(\"lib-summary\")\n\n\nWrite your function definition in this file\nlib_summary &lt;- function() {\n  pkgs &lt;- utils::installed.packages()\n  pkg_tbl &lt;- table(pkgs[, \"LibPath\"])\n  pkg_df &lt;- as.data.frame(pkg_tbl, stringsAsFactors = FALSE)\n  names(pkg_df) &lt;- c(\"Library\", \"n_packages\")\n  pkg_df\n}\n\n\nLoad your package with load_all()\nload_all()\n\n\n\n\n\n\nTipLearn the load_all() keyboard shortcut\n\n\n\nPositron also exposes this from the Command Palette as R: Load R Package, with the keyboard shortcut Cmd/Ctrl + Shift + L.\nload_all() is the single most common thing you do while developing a package, so this shortcut is worth committing to muscle memory.\n\n\nAnd test out our new function:\nlib_summary()\n\n\nCheck your package\ncheck()\n\n\n\n\n\n\nTipLearn the check() keyboard shortcut\n\n\n\nPositron also exposes this from the Command Palette as R: Check R Package, with the keyboard shortcut Cmd/Ctrl + Shift + E.\ncheck() is your early warning system: run it often, so that when something does break you have a small set of recent changes to blame.\n\n\n\n\nChoose a license, any license\nuse_mit_license()\n\n\nUpdate DESCRIPTION with better metadata\nPackage: libminer\nTitle: Explore Your R Libraries\nVersion: 0.0.0.9000\nAuthors@R:\n    person(\"Jane\", \"Doe\",\n           email = \"jane.doe@something.com\",\n           role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"XXXX-XXXX-XXXX-XXXX\"))\nDescription: Provides functions for learning about your R libraries, and the\n    packages you have installed.\n\n\nCheck again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command is better, though, because it runs in a clean terminal)\n\n\n\nUse GitHub\nuse_github()",
+    "objectID": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
+    "href": "pkg-dev/05-dependencies.html#update-tests-and-test-again",
+    "title": "Managing dependencies",
+    "section": "Update tests and test again",
+    "text": "Update tests and test again\ntest_that(\"lib_summary fails appropriately\", {\n  expect_error(lib_summary(sizes = \"foo\"), \"not interpretable as logical\")\n})\n\ntest_that(\"sizes argument works\", {\n  res &lt;- lib_summary(sizes = TRUE)\n  expect_equal(names(res), c(\"Library\", \"n_packages\", \"lib_size\"))\n  expect_type(res$lib_size, \"double\")\n})\nTests pass again!",
     "crumbs": [
       "Package development",
-      "Package creation and metadata"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/04-testing.html",
-    "href": "pkg-dev/04-testing.html",
-    "title": "Tests",
-    "section": "",
-    "text": "use_testthat()",
-    "crumbs": [
-      "Package development",
-      "Tests"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/04-testing.html#initialize-test-infrastructure",
-    "href": "pkg-dev/04-testing.html#initialize-test-infrastructure",
-    "title": "Tests",
-    "section": "",
-    "text": "use_testthat()",
-    "crumbs": [
-      "Package development",
-      "Tests"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/04-testing.html#create-test-file-to-match-the-r.r-file",
-    "href": "pkg-dev/04-testing.html#create-test-file-to-match-the-r.r-file",
-    "title": "Tests",
-    "section": "Create test file to match the R/*.R file",
-    "text": "Create test file to match the R/*.R file\nuse_test(\"lib_summary\")\nMore typically, you don’t type the file name at all. With R/lib_summary.R open in the editor, just call use_test() with no arguments and usethis creates (or opens, if it already exists) the companion test file tests/testthat/test-lib_summary.R.\nHere R/lib_summary.R is the active file (1), so use_test() needs no argument (2), and usethis writes the companion test file and opens it (3).\n\n\n\n\n\n\n\n\n\n\nuse_r() is the inverse of use_test(). It’s helpful for creating or focusing the R/*.R file when you’re staring at the test file.",
-    "crumbs": [
-      "Package development",
-      "Tests"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/04-testing.html#write-tests",
-    "href": "pkg-dev/04-testing.html#write-tests",
-    "title": "Tests",
-    "section": "Write tests",
-    "text": "Write tests\nMake this the content of tests/testthat/test-lib_summary.R:\ntest_that(\"lib_summary returns expected results\", {\n  res &lt;- lib_summary()\n  expect_s3_class(res, \"data.frame\")\n  expect_equal(ncol(res), 2)\n  expect_equal(names(res), c(\"Library\", \"n_packages\"))\n  expect_type(res$Library, \"character\")\n  expect_type(res$n_packages, \"integer\")\n})\n\ntest_that(\"lib_summary fails appropriately\", {\n  expect_error(lib_summary(\"foo\"), \"unused argument\")\n})",
-    "crumbs": [
-      "Package development",
-      "Tests"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/04-testing.html#run-tests",
-    "href": "pkg-dev/04-testing.html#run-tests",
-    "title": "Tests",
-    "section": "Run tests",
-    "text": "Run tests\n\nR: Test R Package in Test Explorer from Positron Command Palette or\nCmd/Ctrl + Shift + T or\ntest() in R console (the command / keyboard shortcut is better, though)\n\nThat first option uses Positron’s R test explorer, which gives you a tree of your test files and test_that() blocks, with pass / fail marks attached to each one. You can run or re-run an individual test from there, which is very handy when you’re iterating on one failure.\n\nThere is also R: Test R Package in Terminal, which just runs devtools::test() in a terminal and gives you plain console output.",
-    "crumbs": [
-      "Package development",
-      "Tests"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/04-testing.html#check-package-again",
-    "href": "pkg-dev/04-testing.html#check-package-again",
-    "title": "Tests",
+    "objectID": "pkg-dev/05-dependencies.html#check-package-again",
+    "href": "pkg-dev/05-dependencies.html#check-package-again",
+    "title": "Managing dependencies",
     "section": "Check package again",
-    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)",
+    "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nOops, warning about undocumented parameter, sizes.",
     "crumbs": [
       "Package development",
-      "Tests"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/06-ci.html",
-    "href": "pkg-dev/06-ci.html",
-    "title": "Automated checking with GitHub Actions",
-    "section": "",
-    "text": "If your package source code is hosted on GitHub, you can take advantage of GitHub Actions to automatically check your package on 3 operating systems every time you push. Example of what’s known as “continuous integration” = CI.\nPlace a special YAML file to configure this:\nRe-generate README.md to incorporate the new badge.",
+    "objectID": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
+    "href": "pkg-dev/05-dependencies.html#update-roxygen-comment-and-regenerate-documentation",
+    "title": "Managing dependencies",
+    "section": "Update roxygen comment and regenerate documentation",
+    "text": "Update roxygen comment and regenerate documentation\n#' Provides a brief summary of the package libraries on your machine\n#'\n#' @param sizes Should the sizes of the libraries be calculated?\n#'\n#' @returns A data.frame containing the count of packages in each of the user's\n#'   libraries. A `lib_size` column is included if `sizes = TRUE`.\n#' @export\n#'\n#' @examples\n#' lib_summary()\n#' lib_summary(sizes = TRUE)\ndocument() # Cmd/Ctrl + Shift + D",
     "crumbs": [
       "Package development",
-      "Automated checking with GitHub Actions"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/06-ci.html#check-package-again",
-    "href": "pkg-dev/06-ci.html#check-package-again",
-    "title": "Automated checking with GitHub Actions",
+    "objectID": "pkg-dev/05-dependencies.html#check-package-again-1",
+    "href": "pkg-dev/05-dependencies.html#check-package-again-1",
+    "title": "Managing dependencies",
     "section": "Check package again",
     "text": "Check package again\n\nR: Check R Package from Positron Command Palette or\nCmd/Ctrl + Shift + E or\ncheck() in R console (the command / keyboard shortcut is better, though)\n\nPassing cleanly: 0 errors ✔ | 0 warnings ✔ | 0 notes ✔",
     "crumbs": [
       "Package development",
-      "Automated checking with GitHub Actions"
+      "Managing dependencies"
     ]
   },
   {
-    "objectID": "pkg-dev/06-ci.html#commit-and-push",
-    "href": "pkg-dev/06-ci.html#commit-and-push",
-    "title": "Automated checking with GitHub Actions",
-    "section": "Commit and push",
-    "text": "Commit and push\nObviously the GHA config must be pushed to GitHub to take effect.\nView your package on GitHub to see the new badge in README and to see your new, automatic, multi-platform R CMD check results:\nbrowse_github()\nbrowse_github_actions()",
-    "crumbs": [
-      "Package development",
-      "Automated checking with GitHub Actions"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/08-share.html",
-    "href": "pkg-dev/08-share.html",
-    "title": "Release",
+    "objectID": "pkg-dev/07-website.html",
+    "href": "pkg-dev/07-website.html",
+    "title": "Create a package website",
     "section": "",
-    "text": "To get a checklist suitable for preparing for CRAN release:\nuse_release_issue()",
+    "text": "use_pkgdown_github_pages()\nCommit and push to GitHub.\nThat’s it, that’s all you need to do to publish a beautiful website for your package!1\nVisit the URL revealed in the output and marvel at your handiwork.",
     "crumbs": [
       "Package development",
-      "Release"
+      "Create a package website"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/07-website.html#footnotes",
+    "href": "pkg-dev/07-website.html#footnotes",
+    "title": "Create a package website",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAssuming that:\n\nYou’re using Git\nand GitHub\nand have Git &lt;-&gt; GitHub integration working smoothly in R\nand the repo is public\nand you remembered to commit and push after use_pkgdown_github_pages().\n\n↩︎",
+    "crumbs": [
+      "Package development",
+      "Create a package website"
+    ]
+  },
+  {
+    "objectID": "pkg-dev/index.html",
+    "href": "pkg-dev/index.html",
+    "title": "Introduction to R package development",
+    "section": "",
+    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023).\n\nAndy’s slides: PDF",
+    "crumbs": [
+      "Package development"
     ]
   }
 ]
