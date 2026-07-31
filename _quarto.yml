@@ -27,6 +27,8 @@ website:
       - section: "Package development"
         href: pkg-dev/index.qmd
         contents:
+          - href: slides/pkg-dev.qmd
+            text: "Slides"
           - pkg-dev/01-setup.qmd
           - pkg-dev/02-create-pkg-and-metadata.qmd
           - pkg-dev/03-documentation.qmd

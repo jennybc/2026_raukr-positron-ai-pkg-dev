@@ -37,7 +37,7 @@ Quarto website, deployed to <https://jennybc.github.io/2026_raukr-positron-ai-pk
     - A session with no module pages is a plain `href:`. A session with module pages is a `section:` carrying its own `href:` to the landing page, with modules listed **explicitly** under `contents:`. Add each new module by hand.
     - Never use `auto:`; it wraps matches in an extra section titled from the directory name, producing a stray "Pkg Dev" entry.
     - `collapse-level: 1`.
-  - The slide deck is in `render:` but deliberately **not** in the sidebar.
+  - The slide deck is linked twice on purpose: a "Slides" entry at the top of the Package development sidebar section, and a link at the top of `pkg-dev/index.qmd`. Keep both in sync if the deck moves.
 - `positron/_metadata.yml` and `pkg-dev/_metadata.yml`: shared front matter (`sidebar: main`, `toc: true`) for each session directory.
 - No R runs at render time and CI does not install R. Show R in plain ```` ```r ```` blocks, never executable ```` ```{r} ```` chunks. To display chunk syntax literally, double the braces: ```` ```{{r}} ````. Needed in `pkg-dev/03-documentation.qmd`.
 - Licensing is stated **once**, in the `page-footer` of `_quarto.yml`. Do not add per-page license sections. Root `LICENSE.md` has the full text plus attribution to Andy Teucher.
