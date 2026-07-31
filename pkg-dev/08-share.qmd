@@ -1,5 +1,5 @@
 ---
-title: "Hosting and sharing"
+title: "Release"
 ---
 
 To get a checklist suitable for preparing for CRAN release:

@@ -2,30 +2,18 @@
 title: "Introduction to R package development"
 ---
 
-## What we'll do
-
-We follow two chapters of [R Packages (2e)](https://r-pkgs.org/), which is the
-book to read if you want to go deeper on anything here:
+Workshop draws heavily on a chapter in [R Packages (2e)](https://r-pkgs.org/), which is the book to read if you want to go deeper on anything here:
 
 * **The Whole Game**: create a small package from scratch.
   [Chapter](https://r-pkgs.org/whole-game.html)
-* **The Package Within**: extract a package from data analysis scripts.
-  [Chapter](https://r-pkgs.org/package-within.html)
 
-## Materials
+We build a small packaged called **libminer**.
 
-* Slides: The Whole Game, in slide form, by Andy Teucher, prepared for
-  posit::conf(2023). [PDF](../pkg-dev-2023.pdf)
-* libminer, the example package we will build:
-  <https://github.com/ateucher/libminer>
-* Package development workshop from posit::conf(2023); the "Modules" provide
-  prompts for various activities:
-  <https://posit-conf-2023.github.io/pkg-dev/intro.html>
+* Jenny's libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!
+* Jenny's libminer from 2025: <https://github.com/jennybc/libminer-raukr-2025>
 
-## Acknowledgements
+Follow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.
 
-Much of this material is adapted, with gratitude, from
-[Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/)
-by [Andy Teucher](https://github.com/ateucher), prepared for posit::conf(2023)
-([source](https://github.com/posit-conf-2023/pkg-dev)). Andy's original is
-licensed CC BY-NC-SA 4.0, as is this adaptation.
+This workshop is gratefully adapted from materials developed by [Andy Teucher](https://github.com/ateucher) for the [Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/) workshop at posit::conf(2023).
+
+* Andy's slides: [PDF](../pkg-dev-2023.pdf)
