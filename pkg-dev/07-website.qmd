@@ -1,0 +1,38 @@
+---
+title: "Create a package website"
+---
+
+```r
+use_pkgdown_github_pages()
+```
+
+Commit and push to GitHub.
+
+That's it, that's all you need to do to publish a beautiful website for your package![^caveats]
+
+Visit the URL revealed in the output and marvel at your handiwork.
+
+[^caveats]: Assuming that:
+
+    * You're using Git
+    * and GitHub
+    * and have Git <-> GitHub integration working smoothly in R
+    * and the repo is public
+    * and you remembered to commit and push after `use_pkgdown_github_pages()`.
+
+```r
+> use_pkgdown_github_pages()
+✔ Writing _pkgdown.yml.
+☐ Modify _pkgdown.yml.
+✔ Activating GitHub Pages for "jennybc/libminer".
+✔ GitHub Pages is publishing from:
+• URL: "https://jennybc.github.io/libminer/"
+• Branch: "gh-pages"
+• Path: "/"
+✔ Saving "r-lib/actions/examples/pkgdown.yaml@v2" to .github/workflows/pkgdown.yaml.
+☐ Learn more at <https://github.com/r-lib/actions/blob/v2/examples/README.md>.
+✔ Recording <https://jennybc.github.io/libminer/> as site's url in _pkgdown.yml.
+✔ Adding "https://jennybc.github.io/libminer/" to URL.
+☐ Run devtools::document() to update package-level documentation.
+✔ Setting <https://jennybc.github.io/libminer/> as homepage of GitHub repo "jennybc/libminer".
+```

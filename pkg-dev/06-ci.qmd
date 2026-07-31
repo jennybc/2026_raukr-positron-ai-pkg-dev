@@ -49,7 +49,7 @@ Passing cleanly: `0 errors ✔ | 0 warnings ✔ | 0 notes ✔`
 
 Obviously the GHA config must be pushed to GitHub to take effect.
 
-View your package on GitHub to see the new badge and to see where `R CMD check` is running:
+View your package on GitHub to see the new badge in `README` and to see your new, automatic, multi-platform `R CMD check` results:
 
 ```r
 browse_github()
