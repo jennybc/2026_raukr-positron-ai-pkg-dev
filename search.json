@@ -4,37 +4,7 @@
     "href": "pkg-dev/index.html",
     "title": "Introduction to R package development",
     "section": "",
-    "text": "We follow two chapters of R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\nThe Package Within: extract a package from data analysis scripts. Chapter",
-    "crumbs": [
-      "Package development"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/index.html#what-well-do",
-    "href": "pkg-dev/index.html#what-well-do",
-    "title": "Introduction to R package development",
-    "section": "",
-    "text": "We follow two chapters of R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\nThe Package Within: extract a package from data analysis scripts. Chapter",
-    "crumbs": [
-      "Package development"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/index.html#materials",
-    "href": "pkg-dev/index.html#materials",
-    "title": "Introduction to R package development",
-    "section": "Materials",
-    "text": "Materials\n\nSlides: The Whole Game, in slide form, by Andy Teucher, prepared for posit::conf(2023). PDF\nlibminer, the example package we will build: https://github.com/ateucher/libminer\nPackage development workshop from posit::conf(2023); the “Modules” provide prompts for various activities: https://posit-conf-2023.github.io/pkg-dev/intro.html",
-    "crumbs": [
-      "Package development"
-    ]
-  },
-  {
-    "objectID": "pkg-dev/index.html#acknowledgements",
-    "href": "pkg-dev/index.html#acknowledgements",
-    "title": "Introduction to R package development",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nMuch of this material is adapted, with gratitude, from Introduction to R Package Development by Andy Teucher, prepared for posit::conf(2023) (source). Andy’s original is licensed CC BY-NC-SA 4.0, as is this adaptation.",
+    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023).\n\nAndy’s slides: PDF",
     "crumbs": [
       "Package development"
     ]
@@ -500,12 +470,12 @@
   {
     "objectID": "pkg-dev/08-share.html",
     "href": "pkg-dev/08-share.html",
-    "title": "Hosting and sharing",
+    "title": "Release",
     "section": "",
     "text": "To get a checklist suitable for preparing for CRAN release:\nuse_release_issue()",
     "crumbs": [
       "Package development",
-      "Hosting and sharing"
+      "Release"
     ]
   }
 ]
