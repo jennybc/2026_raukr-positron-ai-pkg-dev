@@ -1027,17 +1027,47 @@
     "href": "positron/index.html",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "",
-    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
+    "text": "Positron is a next-generation data science IDE from Posit that combines ideas from RStudio and Visual Studio Code. Posit Assistant is the AI assistant built into Positron.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
   },
   {
-    "objectID": "positron/index.html#materials",
-    "href": "positron/index.html#materials",
+    "objectID": "positron/index.html#before-the-workshop",
+    "href": "positron/index.html#before-the-workshop",
     "title": "Introduction to Positron and Posit Assistant",
-    "section": "",
-    "text": "Monday’s material lives in the Positron workshop site:\nhttp://pos.it/ron-raukr\nwhich should take you to\nhttps://posit-dev.github.io/positron-workshop/raukr.html",
+    "section": "Before the workshop",
+    "text": "Before the workshop\nInstall Positron and check that it can run R:\n\nLatest release: https://positron.posit.co/download.html\nPre-releases: https://github.com/posit-dev/positron/releases\nDetailed setup: https://posit-dev.github.io/positron-workshop/setup.html",
+    "crumbs": [
+      "Positron and Posit Assistant"
+    ]
+  },
+  {
+    "objectID": "positron/index.html#positron",
+    "href": "positron/index.html#positron",
+    "title": "Introduction to Positron and Posit Assistant",
+    "section": "Positron",
+    "text": "Positron\nWe work through the Positron workshop, which I have taught with colleagues throughout 2025. The 2026 materials will appear there; in the meantime, last year’s RaukR page shows the shape of it:\nhttps://posit-dev.github.io/positron-workshop/raukr.html\nshort link: http://pos.it/ron-raukr",
+    "crumbs": [
+      "Positron and Posit Assistant"
+    ]
+  },
+  {
+    "objectID": "positron/index.html#posit-assistant",
+    "href": "positron/index.html#posit-assistant",
+    "title": "Introduction to Positron and Posit Assistant",
+    "section": "Posit Assistant",
+    "text": "Posit Assistant\nPosit Assistant is the AI coding experience in Positron, bringing together what used to be Positron Assistant and Databot. The documentation is the place to start and the place to return to:\n\nOverview and feature summary: https://positron.posit.co/assistant.html\nSetup and everything else: https://pos.it/assistant-docs\n\nNote that Posit Assistant supersedes the older Positron Assistant, so beware of older material, including a walkthrough comparing the two.",
+    "crumbs": [
+      "Positron and Posit Assistant"
+    ]
+  },
+  {
+    "objectID": "positron/index.html#going-further",
+    "href": "positron/index.html#going-further",
+    "title": "Introduction to Positron and Posit Assistant",
+    "section": "Going further",
+    "text": "Going further\nIntroduction to Positron, three self-paced courses on Posit Academy.\nApplied statistics with R by Julia Silge, a two-day workshop that goes deeper on Positron and AI-assisted work inside a full modern R workflow (source).\nThe Positron documentation.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
