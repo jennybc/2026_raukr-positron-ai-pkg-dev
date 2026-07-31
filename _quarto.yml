@@ -4,6 +4,7 @@ project:
     - "index.qmd"
     - "positron/*.qmd"
     - "pkg-dev/*.qmd"
+    - "slides/*.qmd"
   resources:
     - "pkg-dev-2023.pdf"
 
