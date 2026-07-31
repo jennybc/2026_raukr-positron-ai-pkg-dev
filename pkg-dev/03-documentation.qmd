@@ -95,6 +95,54 @@ use_readme_rmd()
 
 Creates `README.Rmd` for your package and opens it for editing.
 
+Fill in the goal, adjust the example, and delete the boilerplate about `cars` and `pressure`, to end up with something like this:
+
+````
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{{r, include = FALSE}}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# libminer
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of libminer is to provide an overview of your R library setup. It is a toy
+package created as a part of a workshop and not meant for serious use.
+
+## Installation
+
+You can install the development version of libminer from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("jennybc/libminer")
+```
+
+## Example usage
+
+To get a count of installed packages in each of your library locations,
+optionally with the total sizes, use the `lib_summary()` function:
+
+```{{r example}}
+library(libminer)
+lib_summary()
+# specify `sizes = TRUE` to calculate the total size on disk of your packages
+lib_summary(sizes = TRUE)
+```
+````
+
 You still need to render that to `README.md` and `build_readme()` makes sure to render with respect to the current source of your in-development package, for consistency.
 
 ```r
