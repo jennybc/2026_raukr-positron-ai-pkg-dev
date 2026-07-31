@@ -5,39 +5,8 @@ Agenda for Jenny Bryan's instruction at:
 
   * [RaukR: Data Science with R](https://nbisweden.github.io/raukr-2026/)
   * 2026 August 10 - 20, Visby, Sweden
-
-## Introduction to Positron and Posit Assistant (Monday August 10)
-
-<http://pos.it/ron-raukr>
-
-which should take you to
-
-<https://posit-dev.github.io/positron-workshop/raukr.html>
-
-## Package development (Wednesday August 12)
-
-* The Whole Game: creating a small package from scratch.
-  - Based on this chapter of R Packages 2e: <https://r-pkgs.org/whole-game.html>   
-* The Package Within: how to extract a package from data analysis scripts
-  - Based on this chapter of R Packages 2e: <https://r-pkgs.org/package-within.html>
-  
-* Website for package development workshop from posit::conf(2023); the "Modules" provide prompts for various activities:
-  
-  - <https://posit-conf-2023.github.io/pkg-dev/intro.html>
-  
-* libminer, the example package we will build:
-
-  - <https://github.com/ateucher/libminer>
-  
-Slides
-
-  * The Whole Game, in slide form, by Andy Teucher, prepared for posit::conf(2023):
-
-    - Those slides as [PDF](pkg-dev-2023.pdf) here in this repo
-  
-Where to learn more:
-
-* R Packages, 2nd edition: <https://r-pkgs.org/>
+  * [Introduction to Positron and Posit Assistant](https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/), Monday August 10
+  * [Package development](https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/) (Wednesday August 12)
 
 ## Where to find me online
 
