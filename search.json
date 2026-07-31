@@ -1026,7 +1026,7 @@
     "href": "pkg-dev/index.html",
     "title": "Introduction to R package development",
     "section": "",
-    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023).\n\nAndy’s slides: PDF",
+    "text": "Workshop draws heavily on a chapter in R Packages (2e), which is the book to read if you want to go deeper on anything here:\n\nThe Whole Game: create a small package from scratch. Chapter\n\nWe build a small packaged called libminer.\n\nJenny’s libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!\nJenny’s libminer from 2025: https://github.com/jennybc/libminer-raukr-2025\n\nFollow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.\nThis workshop is gratefully adapted from materials developed by Andy Teucher for the Introduction to R Package Development workshop at posit::conf(2023), whose source is on GitHub.",
     "crumbs": [
       "Package development"
     ]
