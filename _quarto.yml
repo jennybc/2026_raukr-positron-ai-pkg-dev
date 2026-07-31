@@ -5,8 +5,6 @@ project:
     - "positron/*.qmd"
     - "pkg-dev/*.qmd"
     - "slides/*.qmd"
-  resources:
-    - "pkg-dev-2023.pdf"
 
 website:
   title: "RaukR 2026"

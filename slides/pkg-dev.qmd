@@ -7,60 +7,7 @@ format:
     slide-number: true
 ---
 
-## Why make a package?
-
-* Easier to reuse the functions you write
-* A consistent framework that nudges you to organize, document, and test
-* That framework unlocks a lot of standardized tooling
-* The easiest way to distribute code, to your team or to the world
-
-## Let's make a package together
-
-We will:
-
-* Create a small package from scratch
-* Use Git to track our changes
-* Push the code to GitHub
-* Write documentation
-* Write tests
-* Take on a dependency
-* Set up automated checks and a website
-
-## We won't
-
-* Talk much about writing and designing functions
-* Talk about shipping data in your package (possible, and often useful)
-* Go deep on any one topic
-
-Half a day is enough for the whole game, once. Depth comes later.
-
-## Our end goal
-
-**libminer**, a toy package that tells you about your R libraries.
-
-* Jenny's libminer from 2025:
-  <https://github.com/jennybc/libminer-raukr-2025>
-* Jenny's libminer from 2026: PLACEHOLDER, we make it live today
-
-## A package in "source" form
-
-<!-- I question the location of this and perhaps even whether it's needed? In any case, setup should come first so people can work on that in the background, while I go over introductory stuff -->
-
-* `R/` for your code
-* `man/` for function documentation
-* `tests/` for tests
-* `DESCRIPTION`, the metadata
-* `NAMESPACE`, what goes in and what comes out
-
-## Five forms of a package
-
-<!-- Same concern about location and content. If I talk about this, I usually use a figure from R Packages to make if more evocative, not just text. -->
-
-* **Source**: a directory of files. What you work on
-* **Bundle**: compressed to one `.tar.gz`, via `R CMD build`
-* **Binary**: platform-specific `.tgz` or `.zip`
-* **Installed**: decompressed into a library, via `install.packages()`
-* **In memory**: loaded and attached, via `library()`
+# Setup
 
 ## How to follow along
 
@@ -68,12 +15,19 @@ Half a day is enough for the whole game, once. Depth comes later.
 * Workshop website also has one page per module:
   - Use this to copy / paste content
   - See exact devtools/usethis functions
+* Questions, links, and getting unstuck: the
+  [#pkg-dev](https://raukr.slack.com/archives/C090ZD4GWD9) channel in the
+  RaukR Slack
 * Deeper reading: [R Packages (2e)](https://r-pkgs.org),
   especially [The Whole Game](https://r-pkgs.org/whole-game.html)
 
-# Setup
-
 ## Tools
+
+<!-- TODO: Air, the R formatter. My posit::conf(2025) pkg-dev deck covers it,
+     this one does not. Probably fine to leave out: Air comes up in the Positron
+     session on Aug 10, two days before this one, so it would be a repeat.
+     Decide whether it deserves a mention here anyway, e.g. use_air() as part of
+     package setup. -->
 
 * R, ideally the current release
 * [Positron](https://positron.posit.co/download.html)
@@ -131,6 +85,58 @@ usethis calls, which are IDE-agnostic.
 
 But we will lean on Positron's package development affordances, which live
 in the Command Palette and behind keyboard shortcuts.
+
+# Overview
+
+## Why make a package?
+
+* Easier to reuse the functions you write
+* A consistent framework that nudges you to organize, document, and test
+* That framework unlocks a lot of standardized tooling
+* The easiest way to distribute code, to your team or to the world
+
+## Let's make a package together
+
+We will:
+
+* Create a small package from scratch
+* Use Git to track our changes
+* Push the code to GitHub
+* Write documentation
+* Write tests
+* Take on a dependency
+* Set up automated checks and a website
+
+## We won't
+
+* Talk much about writing and designing functions
+* Talk about shipping data in your package (possible, and often useful)
+* Go deep on any one topic
+
+Half a day is enough for the whole game, once. Depth comes later.
+
+## Our end goal
+
+**libminer**, a toy package that tells you about your R libraries.
+
+* Jenny's libminer from 2025:
+  <https://github.com/jennybc/libminer-raukr-2025>
+* Jenny's libminer from 2026: PLACEHOLDER, we make it live today
+
+## Five forms of a package
+
+![](images/five-forms.png){width="90%"
+fig-alt="Diagram from R Packages showing the five states of a package (source,
+bundle, binary, installed, in memory) and which function moves a package between
+them."}
+
+## A package in "source" form
+
+<!-- TODO: still open, do we need this slide at all? -->
+
+![](images/package-files.png){width="42%"
+fig-alt="Diagram from R Packages showing which files appear in a package in
+source, bundle, and binary form."}
 
 # Create a package
 
@@ -196,7 +202,16 @@ use_git()
 * Offers to commit the files
 * Offers to restart
 
-<!-- I expected to see use_github() right around here. -->
+## `use_github()`
+
+```r
+use_github()
+```
+
+Creates a GitHub repo and pushes your package to it.
+
+Prerequisites: a GitHub account, and credentials that work. That is what
+`git_sitrep()` was for.
 
 ## `use_devtools()`
 
@@ -213,7 +228,7 @@ Skip it if you prefer, then just call `library(devtools)` after each restart.
 
 * Create your package with `create_package()`
 * Poke around the files it made
-* Run `use_git()`
+* Run `use_git()`, then `use_github()`
 * Run `use_devtools()` and restart R
 
 ## `use_r()`
@@ -242,8 +257,8 @@ lib_summary <- function() {
 
 Tempting, but no:
 
-* `source("R/lib_summary.R")`
-* Send the function definition to R console with keyboard shortcut
+* ~~`source("R/lib_summary.R")`~~
+* ~~Send the function definition to R console with keyboard shortcut~~
 
 Do this instead:
 
@@ -251,11 +266,12 @@ Do this instead:
 load_all() # remember: I assume devtools is attached!
 ```
 
-<!-- Use strikethrough on the `source()` and "send the function" lines to discourage actual usage. -->
-
 ## `load_all()`
 
-<!-- Needs the figure in Andy's slides. Ask me for help if you can't find this. -->
+![](images/load-all.png){width="90%"
+fig-alt="Diagram from R Packages contrasting devtools::load_all(), which takes a
+package from source straight into memory, with library(), which loads an already
+installed package."}
 
 Simulates building, installing, and attaching your package.
 
@@ -263,9 +279,9 @@ Simulates building, installing, and attaching your package.
 * Fast iteration: edit, load, run
 * A good approximation of how users will meet your package
 
-## Workflow: edit, load, run
+## {background-image="images/workflow-1-code.png" background-size="contain"}
 
-<!-- Needs the figure in Andy's slides. Ask me for help if you can't find this. -->
+## Workflow: edit, load, run
 
 `load_all()` is the single most common thing you do.
 
@@ -290,6 +306,8 @@ Runs `R CMD check`, the official checker, from within R.
 * or `check()` in the console (the command / keyboard shortcut is better, tho)
 
 Check early, check often. "If it hurts, do it more often."
+
+## {background-image="images/workflow-2-code-check.png" background-size="contain"}
 
 ## Three kinds of message
 
@@ -348,25 +366,12 @@ use_mit_license()
 
 Then check again.
 
-## `use_github()`
-
-```r
-use_github()
-```
-
-Creates a GitHub repo and pushes your package to it.
-
-Prerequisites: a GitHub account, and credentials that work. That is what
-`git_sitrep()` was for.
-
-<!-- Not sure why we waited til now for use_github(). -->
-
 ## Your turn
 
 * `check()` and read the output
 * Fill in `DESCRIPTION` with your own details
 * `use_mit_license()`
-* `check()` again, commit, and `use_github()`
+* `check()` again, then commit and push
 
 # Documentation
 
@@ -395,7 +400,10 @@ Documentation lives with the code.
 * A light bulb appears, offering "Show Code Actions"
 * Choose **Generate a roxygen template**
 
-<!-- Use the screenshot I have in the module for this. -->
+![](../pkg-dev/images/roxygen-code-action.png){width="55%"
+fig-alt="The Positron editor with the cursor in the function name lib_summary. A
+light bulb has appeared and its menu is open, showing the code action \"Generate
+a roxygen template\"."}
 
 ## A roxygen block
 
@@ -421,8 +429,7 @@ Turns roxygen comments into `man/*.Rd` and updates `NAMESPACE`.
 
 * **R: Document R Package** in the Command Palette
 * <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>
-
-<!-- `document()` should get a bullet. Make parallel to other bullet lists of package dev moves. -->
+* or `document()` in the console (the command / keyboard shortcut is better, tho)
 
 Then preview:
 
@@ -442,6 +449,10 @@ Lists the R objects that are:
 
 `document()` maintains this file for you. Do not edit it by hand.
 
+## {background-image="images/workflow-3-doc.png" background-size="contain"}
+
+## {background-image="images/workflow-4-code-doc-check.png" background-size="contain"}
+
 ## Documentation workflow
 
 Edit roxygen, `document()`, `?fun`, repeat.
@@ -451,10 +462,6 @@ Add it to the loop you already have:
 * `load_all()`, <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
 * `document()`, <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>
 * `check()`, <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>
-
-<!-- Needs the figure Andy uses for this workflow. -->
-
-<!-- Andy also has a slide 30 with joint workflow for editing code and edit documentation. -->
 
 ## Package-level documentation
 
@@ -557,8 +564,11 @@ use_test("lib_summary")
 Better: with `R/lib_summary.R` open in the editor, call `use_test()` with no
 arguments. usethis creates and opens the companion test file.
 
-<!-- Use the screenshot from the module. -->
+::: {layout="[[2,3]]"}
+![](../pkg-dev/images/use-test-before.png){fig-alt="The Positron editor with R/lib_summary.R open and its tab circled, and the R console below where use_test() has been typed but not yet run."}
 
+![](../pkg-dev/images/use-test-after.png){fig-alt="The Positron editor now showing a second tab, test-lib_summary.R, circled, containing testthat's placeholder \"multiplication works\" test. The console reports writing tests/testthat/test-lib_summary.R."}
+:::
 
 `use_r()` is the inverse, for jumping back the other way.
 
@@ -597,10 +607,20 @@ on each one.
 * Run or re-run a single test
 * Very handy when you are chasing one failure
 
-<!-- Use the screenshot from the module. -->
-
+![](../pkg-dev/images/test-explorer.png){width="55%"
+fig-alt="Positron's Testing pane, reached via the circled flask icon in the
+activity bar. A summary line reads 2/2 in 659ms, above a tree with
+test-lib_summary.R and its two tests, each with a green check."}
 
 **R: Test R Package in Terminal** gives you plain console output instead.
+
+## {background-image="images/workflow-5-test.png" background-size="contain"}
+
+## {background-image="images/workflow-6-code-test.png" background-size="contain"}
+
+## {background-image="images/workflow-7-code-test-doc.png" background-size="contain"}
+
+## {background-image="images/workflow-8-all-check.png" background-size="contain"}
 
 ## Workflow: code plus tests
 
@@ -615,8 +635,6 @@ on each one.
 * `use_test()` with `R/lib_summary.R` open
 * Write a couple of tests and run them
 * `check()`, commit, push
-
-<!-- Andy's slides 38, 39, 40 have good workflow figures. We need those. -->
 
 # Dependencies
 
@@ -725,8 +743,6 @@ Then `document()` and check again.
 * Document `sizes`, `document()`, `check()`
 * Commit and push
 
-<!-- Andy's slide 49 has a workflow figure with all 3 of edit code, edit tests, edit roxygen. We need to include that. -->
-
 # Continuous integration
 
 ## `use_github_action()`
@@ -771,7 +787,7 @@ Admire the badge, and your automatic multi-platform check results.
 
 # A package website
 
-## `use_pkgdown_github_pages()`
+## `use_pkgdown_github_pages()` {.smaller}
 
 ```r
 use_pkgdown_github_pages()
@@ -780,11 +796,6 @@ use_pkgdown_github_pages()
 Commit and push.
 
 That is all you need to publish a beautiful website for your package.
-
-<!-- Move "fine print" content to next slide here. -->
-
-
-## Fine print
 
 Assuming that:
 
@@ -813,10 +824,12 @@ Assuming that:
 
 "If it hurts, do it more often."
 
+![](images/pain-curve.png){width="45%"
+fig-alt="A curve rising steeply: pain on the vertical axis, time between actions
+on the horizontal axis."}
+
 * `check()` often, aiming for zero errors, warnings, and notes
 * Let GitHub Actions check you on every platform, on every push
-
-The release is then a small step, not a cliff.
 
 ## `use_release_issue()`
 
@@ -826,15 +839,14 @@ use_release_issue()
 
 Opens a GitHub issue with a checklist for preparing a CRAN release.
 
+![](images/release-issue.png){width="42%"
+fig-alt="A GitHub issue titled Release libminer 0.1.0 with 25 task checkboxes,
+grouped into First release, Prepare for release, Submit to CRAN, and Wait for
+CRAN."}
+
 # Review
 
-## Review: the workflow
-
-* Edit code, then `load_all()`
-* Edit tests, then `test()`
-* Edit roxygen, then `document()` and `?fun`
-* Periodically `check()`
-* Commit and push
+## {background-image="images/workflow-9-all-git.png" background-size="contain"}
 
 ## Review: functions
 
@@ -849,7 +861,7 @@ Opens a GitHub issue with a checklist for preparing a CRAN release.
 
 `use_r()`, `use_test()`, `use_package()`, `build_readme()`, `install()`
 
-## Review: shortcuts
+## Review: shortcuts {.smaller}
 
 | Function | Positron command | Shortcut |
 |---|---|---|
@@ -858,9 +870,6 @@ Opens a GitHub issue with a checklist for preparing a CRAN release.
 | `test()` | R: Test R Package in Test Explorer | Cmd/Ctrl + Shift + T |
 | `check()` | R: Check R Package | Cmd/Ctrl + Shift + E |
 | `install()` | R: Install R Package and Restart R | Cmd/Ctrl + Shift + B |
-
-<!-- I like this table but the last row appears to be cutoff? Feels like the font size needs to autoscale for the space available. -->
-
 
 ## Resources
 

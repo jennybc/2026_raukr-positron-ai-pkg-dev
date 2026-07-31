@@ -14,6 +14,4 @@ We build a small packaged called **libminer**.
 
 Follow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.
 
-This workshop is gratefully adapted from materials developed by [Andy Teucher](https://github.com/ateucher) for the [Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/) workshop at posit::conf(2023).
-
-* Andy's slides: [PDF](../pkg-dev-2023.pdf)
+This workshop is gratefully adapted from materials developed by [Andy Teucher](https://github.com/ateucher) for the [Introduction to R Package Development](https://posit-conf-2023.github.io/pkg-dev/) workshop at posit::conf(2023), whose [source is on GitHub](https://github.com/posit-conf-2023/pkg-dev).
