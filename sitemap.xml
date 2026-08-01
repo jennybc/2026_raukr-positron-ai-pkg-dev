@@ -2,50 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/slides/pkg-dev.html</loc>
-    <lastmod>2026-07-31T23:17:48.017Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.830Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/08-share.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/06-ci.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/04-testing.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/02-create-pkg-and-metadata.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/index.html</loc>
-    <lastmod>2026-07-31T23:17:48.006Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/07-posit-assistant.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/05-r.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/02-explore.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/index.html</loc>
-    <lastmod>2026-07-31T23:17:47.998Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.808Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/01-hello-positron.html</loc>
+    <lastmod>2026-08-01T04:17:45.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/03-organize.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/06-customize.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/positron/08-beyond.html</loc>
+    <lastmod>2026-08-01T04:17:45.817Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/01-setup.html</loc>
-    <lastmod>2026-07-31T23:17:48.002Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.813Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/03-documentation.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/05-dependencies.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/07-website.html</loc>
-    <lastmod>2026-07-31T23:17:48.003Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.814Z</lastmod>
   </url>
   <url>
     <loc>https://jennybc.github.io/2026_raukr-positron-ai-pkg-dev/pkg-dev/index.html</loc>
-    <lastmod>2026-07-31T23:17:48.005Z</lastmod>
+    <lastmod>2026-08-01T04:17:45.816Z</lastmod>
   </url>
 </urlset>

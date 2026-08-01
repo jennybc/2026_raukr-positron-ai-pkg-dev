@@ -1027,27 +1027,27 @@
     "href": "positron/index.html",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "",
-    "text": "Positron is a next-generation data science IDE from Posit that combines ideas from RStudio and Visual Studio Code. Posit Assistant is the AI assistant built into Positron.",
+    "text": "NoteSlides are still being updated\n\n\n\nThe decks below currently show a single placeholder slide. The real ones go up before the workshop.\nPositron is a next-generation data science IDE from Posit that combines ideas from RStudio and Visual Studio Code. Posit Assistant is the AI assistant built into Positron.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
   },
   {
-    "objectID": "positron/index.html#before-the-workshop",
-    "href": "positron/index.html#before-the-workshop",
+    "objectID": "positron/index.html#getting-set-up",
+    "href": "positron/index.html#getting-set-up",
     "title": "Introduction to Positron and Posit Assistant",
-    "section": "Before the workshop",
-    "text": "Before the workshop\nInstall Positron and check that it can run R:\n\nLatest release: https://positron.posit.co/download.html\nPre-releases: https://github.com/posit-dev/positron/releases\nDetailed setup: https://posit-dev.github.io/positron-workshop/setup.html",
+    "section": "Getting set up",
+    "text": "Getting set up\nIf you can install Positron before we start, great. If not, no problem: this is the first session of RaukR, so we will get you going as we go, and you can always just watch me and catch up during a break.\n\nLatest release: https://positron.posit.co/download.html\nPre-releases: https://github.com/posit-dev/positron/releases\nDetailed setup: https://posit-dev.github.io/positron-workshop/setup.html\n\nSigning in to an AI provider takes a few extra minutes and an account, so I will demonstrate it rather than wait for everyone. Do it later at your own pace.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
   },
   {
-    "objectID": "positron/index.html#positron",
-    "href": "positron/index.html#positron",
+    "objectID": "positron/index.html#modules",
+    "href": "positron/index.html#modules",
     "title": "Introduction to Positron and Posit Assistant",
-    "section": "Positron",
-    "text": "Positron\nWe work through the Positron workshop, which I have taught with colleagues throughout 2025. The 2026 materials will appear there; in the meantime, last year’s RaukR page shows the shape of it:\nhttps://posit-dev.github.io/positron-workshop/raukr.html\nshort link: http://pos.it/ron-raukr",
+    "section": "Modules",
+    "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant\n\n\n08\nBeyond the basics\n\n\n\nThese are adapted from the Positron workshop that I have taught with colleagues throughout 2025. That site has more, including a setup guide and the bingo solutions.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1073,6 +1073,27 @@
     ]
   },
   {
+    "objectID": "positron/07-posit-assistant.html",
+    "href": "positron/07-posit-assistant.html",
+    "title": "Posit Assistant",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/05-r.html",
+    "href": "positron/05-r.html",
+    "title": "R",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/02-explore.html",
+    "href": "positron/02-explore.html",
+    "title": "Exploring Positron",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "RaukR 2026",
@@ -1091,6 +1112,34 @@
     "crumbs": [
       "Home"
     ]
+  },
+  {
+    "objectID": "positron/01-hello-positron.html",
+    "href": "positron/01-hello-positron.html",
+    "title": "Hello Positron",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/03-organize.html",
+    "href": "positron/03-organize.html",
+    "title": "Organization",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/06-customize.html",
+    "href": "positron/06-customize.html",
+    "title": "Customization and extensions",
+    "section": "",
+    "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/08-beyond.html",
+    "href": "positron/08-beyond.html",
+    "title": "Beyond the basics",
+    "section": "",
+    "text": "Slides (PDF)"
   },
   {
     "objectID": "pkg-dev/01-setup.html",

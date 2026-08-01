@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to Positron and Posit Assistant – RaukR 2026</title>
+<title>Beyond the basics – RaukR 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,7 +35,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pkg-dev/index.html" rel="next">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -86,7 +85,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../positron/index.html">Positron and Posit Assistant</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      RaukR 2026
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../positron/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../positron/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Positron and Posit Assistant</span></a>
   </div>
 </li>
@@ -194,24 +195,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#getting-set-up" id="toc-getting-set-up" class="nav-link active" data-scroll-target="#getting-set-up">Getting set up</a></li>
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
-  <li><a href="#posit-assistant" id="toc-posit-assistant" class="nav-link" data-scroll-target="#posit-assistant">Posit Assistant</a></li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further">Going further</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to Positron and Posit Assistant</h1>
+<h1 class="title">Beyond the basics</h1>
 </div>
 
 
@@ -228,89 +220,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Slides are still being updated
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The decks below currently show a single placeholder slide. The real ones go up before the workshop.</p>
-</div>
-</div>
-<p><a href="https://positron.posit.co">Positron</a> is a next-generation data science IDE from <a href="https://posit.co">Posit</a> that combines ideas from RStudio and Visual Studio Code. <a href="https://positron.posit.co/assistant.html">Posit Assistant</a> is the AI assistant built into Positron.</p>
-<section id="getting-set-up" class="level2">
-<h2 class="anchored" data-anchor-id="getting-set-up">Getting set up</h2>
-<p>If you can install Positron before we start, great. If not, no problem: this is the first session of RaukR, so we will get you going as we go, and you can always just watch me and catch up during a break.</p>
-<ul>
-<li>Latest release: <a href="https://positron.posit.co/download.html" class="uri">https://positron.posit.co/download.html</a></li>
-<li>Pre-releases: <a href="https://github.com/posit-dev/positron/releases" class="uri">https://github.com/posit-dev/positron/releases</a></li>
-<li>Detailed setup: <a href="https://posit-dev.github.io/positron-workshop/setup.html" class="uri">https://posit-dev.github.io/positron-workshop/setup.html</a></li>
-</ul>
-<p>Signing in to an AI provider takes a few extra minutes and an account, so I will demonstrate it rather than wait for everyone. Do it later at your own pace.</p>
-</section>
-<section id="modules" class="level2">
-<h2 class="anchored" data-anchor-id="modules">Modules</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Module</th>
-<th>Topic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="../positron/01-hello-positron.html">01</a></td>
-<td>Hello Positron</td>
-</tr>
-<tr class="even">
-<td><a href="../positron/02-explore.html">02</a></td>
-<td>Exploring Positron</td>
-</tr>
-<tr class="odd">
-<td><a href="../positron/03-organize.html">03</a></td>
-<td>Organization</td>
-</tr>
-<tr class="even">
-<td><a href="../positron/05-r.html">05</a></td>
-<td>R</td>
-</tr>
-<tr class="odd">
-<td><a href="../positron/06-customize.html">06</a></td>
-<td>Customization and extensions</td>
-</tr>
-<tr class="even">
-<td><a href="../positron/07-posit-assistant.html">07</a></td>
-<td>Posit Assistant</td>
-</tr>
-<tr class="odd">
-<td><a href="../positron/08-beyond.html">08</a></td>
-<td>Beyond the basics</td>
-</tr>
-</tbody>
-</table>
-<p>These are adapted from the <a href="https://posit-dev.github.io/positron-workshop/">Positron workshop</a> that I have taught with colleagues throughout 2025. That site has more, including a <a href="https://posit-dev.github.io/positron-workshop/setup.html">setup guide</a> and the <a href="https://posit-dev.github.io/positron-workshop/bingo-solutions/">bingo solutions</a>.</p>
-</section>
-<section id="posit-assistant" class="level2">
-<h2 class="anchored" data-anchor-id="posit-assistant">Posit Assistant</h2>
-<p><a href="https://positron.posit.co/assistant.html">Posit Assistant</a> is the AI coding experience in Positron, bringing together what used to be Positron Assistant and Databot. The documentation is the place to start and the place to return to:</p>
-<ul>
-<li>Overview and feature summary: <a href="https://positron.posit.co/assistant.html" class="uri">https://positron.posit.co/assistant.html</a></li>
-<li>Setup and everything else: <a href="https://pos.it/assistant-docs" class="uri">https://pos.it/assistant-docs</a></li>
-</ul>
-<p>Note that Posit Assistant supersedes the older Positron Assistant, so beware of older material, including a walkthrough <a href="https://www.youtube.com/watch?v=Y9P2nlFXKnQ">comparing the two</a>.</p>
-</section>
-<section id="going-further" class="level2">
-<h2 class="anchored" data-anchor-id="going-further">Going further</h2>
-<p><a href="https://academy.posit.co/path/introduction-to-positron">Introduction to Positron</a>, three self-paced courses on Posit Academy.</p>
-<p><a href="https://juliasilge.github.io/applied-stats-byu-2026/">Applied statistics with R</a> by <a href="https://juliasilge.com">Julia Silge</a>, a two-day workshop that goes deeper on Positron and AI-assisted work inside a full modern R workflow (<a href="https://github.com/juliasilge/applied-stats-byu-2026">source</a>).</p>
-<p>The <a href="https://positron.posit.co">Positron documentation</a>.</p>
+<p><a href="slides/08-beyond.pdf">Slides (PDF)</a></p>
+<iframe src="slides/08-beyond.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -713,15 +626,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../pkg-dev/index.html" class="pagination-link" aria-label="Package development">
-        <span class="nav-page-text">Package development</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
