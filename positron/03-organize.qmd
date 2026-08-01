@@ -1,0 +1,9 @@
+---
+title: "Organization"
+---
+
+[Slides (PDF)](slides/03-organize.pdf)
+
+```{=html}
+<iframe src="slides/03-organize.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
+```

@@ -2,28 +2,47 @@
 title: "Introduction to Positron and Posit Assistant"
 ---
 
+::: {.callout-note}
+## Slides are still being updated
+
+The decks below currently show a single placeholder slide. The real ones go up
+before the workshop.
+:::
+
 [Positron](https://positron.posit.co) is a next-generation data science IDE from
 [Posit](https://posit.co) that combines ideas from RStudio and Visual Studio
 Code. [Posit Assistant](https://positron.posit.co/assistant.html) is the AI
 assistant built into Positron.
 
-## Before the workshop
+## Getting set up
 
-Install Positron and check that it can run R:
+If you can install Positron before we start, great. If not, no problem: this is the
+first session of RaukR, so we will get you going as we go, and you can always just
+watch me and catch up during a break.
 
 * Latest release: <https://positron.posit.co/download.html>
 * Pre-releases: <https://github.com/posit-dev/positron/releases>
 * Detailed setup: <https://posit-dev.github.io/positron-workshop/setup.html>
 
-## Positron
+Signing in to an AI provider takes a few extra minutes and an account, so I will
+demonstrate it rather than wait for everyone. Do it later at your own pace.
 
-We work through the [Positron workshop](https://posit-dev.github.io/positron-workshop/),
-which I have taught with colleagues throughout 2025. The 2026 materials will
-appear there; in the meantime, last year's RaukR page shows the shape of it:
+## Modules
 
-<https://posit-dev.github.io/positron-workshop/raukr.html>
+| Module | Topic |
+|---|---|
+| [01](01-hello-positron.qmd) | Hello Positron |
+| [02](02-explore.qmd) | Exploring Positron |
+| [03](03-organize.qmd) | Organization |
+| [05](05-r.qmd) | R |
+| [06](06-customize.qmd) | Customization and extensions |
+| [07](07-posit-assistant.qmd) | Posit Assistant |
+| [08](08-beyond.qmd) | Beyond the basics |
 
-short link: <http://pos.it/ron-raukr>
+These are adapted from the [Positron workshop](https://posit-dev.github.io/positron-workshop/)
+that I have taught with colleagues throughout 2025. That site has more, including
+a [setup guide](https://posit-dev.github.io/positron-workshop/setup.html) and the
+[bingo solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/).
 
 ## Posit Assistant
 

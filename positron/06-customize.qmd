@@ -1,0 +1,9 @@
+---
+title: "Customization and extensions"
+---
+
+[Slides (PDF)](slides/06-customize.pdf)
+
+```{=html}
+<iframe src="slides/06-customize.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
+```

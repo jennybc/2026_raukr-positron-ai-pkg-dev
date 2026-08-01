@@ -1,0 +1,9 @@
+---
+title: "Posit Assistant"
+---
+
+[Slides (PDF)](slides/07-posit-assistant.pdf)
+
+```{=html}
+<iframe src="slides/07-posit-assistant.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
+```
