@@ -9,3 +9,4 @@
 **/*.quarto_ipynb
 
 /notes-private/
+/_keynote/

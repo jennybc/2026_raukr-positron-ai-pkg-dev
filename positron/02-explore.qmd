@@ -7,3 +7,5 @@ title: "Exploring Positron"
 ```{=html}
 <iframe src="slides/02-explore.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
 ```
+
+[Bingo solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/)
