@@ -8,4 +8,14 @@ title: "Exploring Positron"
 <iframe src="slides/02-explore.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
 ```
 
-[Bingo solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/)
+## Bingo card
+
+[Example card](https://posit-dev.github.io/positron-workshop/_bingo/bingo-01.pdf)
+
+You'll get your own unique card in the workshop.
+
+::: {.callout-warning collapse="true"}
+## Bingo solutions: don't peek!
+
+[Solutions](https://posit-dev.github.io/positron-workshop/bingo-solutions/)
+:::
