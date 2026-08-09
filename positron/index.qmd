@@ -4,13 +4,6 @@ toc: true
 page-layout: article
 ---
 
-::: {.callout-note}
-## Slides are still being updated
-
-The decks below currently show a single placeholder slide. The real ones go up
-before the workshop.
-:::
-
 [Positron](https://positron.posit.co) is a next-generation data science IDE from
 [Posit](https://posit.co) that combines ideas from RStudio and Visual Studio
 Code. [Posit Assistant](https://positron.posit.co/assistant.html) is the AI
@@ -33,25 +26,3 @@ assistant built into Positron.
 | [05](05-r.qmd) | R |
 | [06](06-customize.qmd) | Customization and extensions |
 | [07](07-posit-assistant.qmd) | Posit Assistant |
-
-## Posit Assistant
-
-[Posit Assistant](https://positron.posit.co/assistant.html) is the AI coding
-experience in Positron:
-
-* Overview and feature summary: <https://positron.posit.co/assistant.html>
-* Setup and everything else: <https://pos.it/assistant-docs>
-
-Note that Posit Assistant supersedes the older Positron Assistant and Databot.
-
-## Going further
-
-[Introduction to Positron](https://academy.posit.co/path/introduction-to-positron),
-three self-paced courses on Posit Academy.
-
-[Applied statistics with R](https://juliasilge.github.io/applied-stats-byu-2026/)
-by [Julia Silge](https://juliasilge.com), a two-day workshop that goes deeper on
-Positron and AI-assisted work inside a full modern R workflow
-([source](https://github.com/juliasilge/applied-stats-byu-2026)).
-
-The [Positron documentation](https://positron.posit.co).
