@@ -1,5 +1,7 @@
 ---
 title: "Introduction to Positron and Posit Assistant"
+toc: true
+page-layout: article
 ---
 
 ::: {.callout-note}

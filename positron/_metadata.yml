@@ -1,3 +1,6 @@
-# Shared front matter for all Positron + Posit Assistant pages
+# Shared front matter for all Positron + Posit Assistant pages.
+# These pages are mostly a full-width iframe around a PDF deck, so they drop the
+# toc gutter and use the full content width. index.qmd overrides both.
 sidebar: main
-toc: true
+toc: false
+page-layout: full
