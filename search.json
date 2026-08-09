@@ -1047,7 +1047,7 @@
     "href": "positron/index.html#modules",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "Modules",
-    "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n04\nQuarto, covered separately\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant\n\n\n08\nBeyond the basics",
+    "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n04\nQuarto, covered separately\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1073,32 +1073,32 @@
     ]
   },
   {
-    "objectID": "positron/07-posit-assistant.html",
-    "href": "positron/07-posit-assistant.html",
-    "title": "Posit Assistant",
+    "objectID": "positron/06-customize.html",
+    "href": "positron/06-customize.html",
+    "title": "Customization and extensions",
     "section": "",
     "text": "Slides (PDF)"
   },
   {
-    "objectID": "positron/05-r.html",
-    "href": "positron/05-r.html",
-    "title": "R",
+    "objectID": "positron/03-organize.html",
+    "href": "positron/03-organize.html",
+    "title": "Organization",
     "section": "",
     "text": "Slides (PDF)"
   },
   {
-    "objectID": "positron/02-explore.html",
-    "href": "positron/02-explore.html",
-    "title": "Exploring Positron",
-    "section": "",
-    "text": "Slides (PDF)"
+    "objectID": "positron/03-organize.html#example-project",
+    "href": "positron/03-organize.html#example-project",
+    "title": "Organization",
+    "section": "Example project",
+    "text": "Example project\nGit repo URL:\nhttps://github.com/posit-dev/positron-workshop-project\nIf you don’t have Git installed, you can get the example project just using R via usethis:\nusethis::use_course(\"posit-dev/positron-workshop-project\")"
   },
   {
-    "objectID": "positron/02-explore.html#bingo-card",
-    "href": "positron/02-explore.html#bingo-card",
-    "title": "Exploring Positron",
-    "section": "Bingo card",
-    "text": "Bingo card\nExample card\nYou’ll get your own unique card in the workshop.\n\n\n\n\n\n\nWarningBingo solutions: don’t peek!\n\n\n\n\n\nSolutions"
+    "objectID": "positron/01-hello-positron.html",
+    "href": "positron/01-hello-positron.html",
+    "title": "Hello Positron",
+    "section": "",
+    "text": "Slides (PDF)"
   },
   {
     "objectID": "index.html",
@@ -1121,37 +1121,30 @@
     ]
   },
   {
-    "objectID": "positron/01-hello-positron.html",
-    "href": "positron/01-hello-positron.html",
-    "title": "Hello Positron",
+    "objectID": "positron/02-explore.html",
+    "href": "positron/02-explore.html",
+    "title": "Exploring Positron",
     "section": "",
     "text": "Slides (PDF)"
   },
   {
-    "objectID": "positron/03-organize.html",
-    "href": "positron/03-organize.html",
-    "title": "Organization",
+    "objectID": "positron/02-explore.html#bingo-card",
+    "href": "positron/02-explore.html#bingo-card",
+    "title": "Exploring Positron",
+    "section": "Bingo card",
+    "text": "Bingo card\nExample card\nYou’ll get your own unique card in the workshop.\n\n\n\n\n\n\nWarningBingo solutions: don’t peek!\n\n\n\n\n\nSolutions"
+  },
+  {
+    "objectID": "positron/05-r.html",
+    "href": "positron/05-r.html",
+    "title": "R",
     "section": "",
     "text": "Slides (PDF)"
   },
   {
-    "objectID": "positron/03-organize.html#example-project",
-    "href": "positron/03-organize.html#example-project",
-    "title": "Organization",
-    "section": "Example project",
-    "text": "Example project\nGit repo URL:\nhttps://github.com/posit-dev/positron-workshop-project\nIf you don’t have Git installed, you can get the example project just using R via usethis:\nusethis::use_course(\"posit-dev/positron-workshop-project\")"
-  },
-  {
-    "objectID": "positron/06-customize.html",
-    "href": "positron/06-customize.html",
-    "title": "Customization and extensions",
-    "section": "",
-    "text": "Slides (PDF)"
-  },
-  {
-    "objectID": "positron/08-beyond.html",
-    "href": "positron/08-beyond.html",
-    "title": "Beyond the basics",
+    "objectID": "positron/07-posit-assistant.html",
+    "href": "positron/07-posit-assistant.html",
+    "title": "Posit Assistant",
     "section": "",
     "text": "Slides (PDF)"
   },
