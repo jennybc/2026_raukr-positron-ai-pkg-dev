@@ -33,7 +33,6 @@ assistant built into Positron.
 | [05](05-r.qmd) | R |
 | [06](06-customize.qmd) | Customization and extensions |
 | [07](07-posit-assistant.qmd) | Posit Assistant |
-| [08](08-beyond.qmd) | Beyond the basics |
 
 ## Posit Assistant
 

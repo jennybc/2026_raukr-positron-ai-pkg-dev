@@ -1,9 +1,0 @@
----
-title: "Beyond the basics"
----
-
-[Slides (PDF)](slides/08-beyond.pdf)
-
-```{=html}
-<iframe src="slides/08-beyond.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
-```
