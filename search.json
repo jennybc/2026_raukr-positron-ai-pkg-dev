@@ -1037,7 +1037,7 @@
     "href": "positron/index.html#getting-set-up",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "Getting set up",
-    "text": "Getting set up\nIf you can install Positron before we start, great. If not, no problem: this is the first session of RaukR, so we will get you going as we go, and you can always just watch me and catch up during a break.\n\nLatest release: https://positron.posit.co/download.html\nPre-releases: https://github.com/posit-dev/positron/releases\nDetailed setup: https://posit-dev.github.io/positron-workshop/setup.html\n\nSigning in to an AI provider takes a few extra minutes and an account, so I will demonstrate it rather than wait for everyone. Do it later at your own pace.",
+    "text": "Getting set up\n\nSetup guide: https://posit-dev.github.io/positron-workshop/setup.html\nLatest release: https://positron.posit.co/download.html\nPre-releases: https://github.com/posit-dev/positron/releases",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1047,7 +1047,7 @@
     "href": "positron/index.html#modules",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "Modules",
-    "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant\n\n\n08\nBeyond the basics\n\n\n\nThese are adapted from the Positron workshop that I have taught with colleagues throughout 2025. That site has more, including a setup guide and the bingo solutions.",
+    "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n04\nQuarto, covered separately\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant\n\n\n08\nBeyond the basics",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1057,7 +1057,7 @@
     "href": "positron/index.html#posit-assistant",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "Posit Assistant",
-    "text": "Posit Assistant\nPosit Assistant is the AI coding experience in Positron, bringing together what used to be Positron Assistant and Databot. The documentation is the place to start and the place to return to:\n\nOverview and feature summary: https://positron.posit.co/assistant.html\nSetup and everything else: https://pos.it/assistant-docs\n\nNote that Posit Assistant supersedes the older Positron Assistant, so beware of older material, including a walkthrough comparing the two.",
+    "text": "Posit Assistant\nPosit Assistant is the AI coding experience in Positron:\n\nOverview and feature summary: https://positron.posit.co/assistant.html\nSetup and everything else: https://pos.it/assistant-docs\n\nNote that Posit Assistant supersedes the older Positron Assistant and Databot.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1094,6 +1094,13 @@
     "text": "Slides (PDF)"
   },
   {
+    "objectID": "positron/02-explore.html#bingo-card",
+    "href": "positron/02-explore.html#bingo-card",
+    "title": "Exploring Positron",
+    "section": "Bingo card",
+    "text": "Bingo card\nExample card\nYou’ll get your own unique card in the workshop.\n\n\n\n\n\n\nWarningBingo solutions: don’t peek!\n\n\n\n\n\nSolutions"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "RaukR 2026",
@@ -1126,6 +1133,13 @@
     "title": "Organization",
     "section": "",
     "text": "Slides (PDF)"
+  },
+  {
+    "objectID": "positron/03-organize.html#example-project",
+    "href": "positron/03-organize.html#example-project",
+    "title": "Organization",
+    "section": "Example project",
+    "text": "Example project\nGit repo URL:\nhttps://github.com/posit-dev/positron-workshop-project\nIf you don’t have Git installed, you can get the example project just using R via usethis:\nusethis::use_course(\"posit-dev/positron-workshop-project\")"
   },
   {
     "objectID": "positron/06-customize.html",
