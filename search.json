@@ -1027,7 +1027,7 @@
     "href": "positron/index.html",
     "title": "Introduction to Positron and Posit Assistant",
     "section": "",
-    "text": "NoteSlides are still being updated\n\n\n\nThe decks below currently show a single placeholder slide. The real ones go up before the workshop.\nPositron is a next-generation data science IDE from Posit that combines ideas from RStudio and Visual Studio Code. Posit Assistant is the AI assistant built into Positron.",
+    "text": "Positron is a next-generation data science IDE from Posit that combines ideas from RStudio and Visual Studio Code. Posit Assistant is the AI assistant built into Positron.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
@@ -1048,26 +1048,6 @@
     "title": "Introduction to Positron and Posit Assistant",
     "section": "Modules",
     "text": "Modules\n\n\n\nModule\nTopic\n\n\n\n\n01\nHello Positron\n\n\n02\nExploring Positron\n\n\n03\nOrganization\n\n\n04\nQuarto, covered separately\n\n\n05\nR\n\n\n06\nCustomization and extensions\n\n\n07\nPosit Assistant",
-    "crumbs": [
-      "Positron and Posit Assistant"
-    ]
-  },
-  {
-    "objectID": "positron/index.html#posit-assistant",
-    "href": "positron/index.html#posit-assistant",
-    "title": "Introduction to Positron and Posit Assistant",
-    "section": "Posit Assistant",
-    "text": "Posit Assistant\nPosit Assistant is the AI coding experience in Positron:\n\nOverview and feature summary: https://positron.posit.co/assistant.html\nSetup and everything else: https://pos.it/assistant-docs\n\nNote that Posit Assistant supersedes the older Positron Assistant and Databot.",
-    "crumbs": [
-      "Positron and Posit Assistant"
-    ]
-  },
-  {
-    "objectID": "positron/index.html#going-further",
-    "href": "positron/index.html#going-further",
-    "title": "Introduction to Positron and Posit Assistant",
-    "section": "Going further",
-    "text": "Going further\nIntroduction to Positron, three self-paced courses on Posit Academy.\nApplied statistics with R by Julia Silge, a two-day workshop that goes deeper on Positron and AI-assisted work inside a full modern R workflow (source).\nThe Positron documentation.",
     "crumbs": [
       "Positron and Posit Assistant"
     ]
