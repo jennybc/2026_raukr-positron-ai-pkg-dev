@@ -7,3 +7,17 @@ title: "Organization"
 ```{=html}
 <iframe src="slides/03-organize.pdf" style="width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dee2e6;"></iframe>
 ```
+
+## Example project
+
+Git repo URL:
+
+```default
+https://github.com/posit-dev/positron-workshop-project
+```
+
+If you don't have Git installed, you can get the example project just using R via usethis:
+
+```r
+usethis::use_course("posit-dev/positron-workshop-project")
+```
