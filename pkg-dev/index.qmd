@@ -11,7 +11,7 @@ Workshop draws heavily on a chapter in [R Packages (2e)](https://r-pkgs.org/), w
 
 We build a small packaged called **libminer**.
 
-* Jenny's libminer from 2026: FILL THIS IN LIVE ONCE IT EXISTS!
+* Jenny's libminer from 2026: <https://github.com/jennybc/libminer-raukr-2026>
 * Jenny's libminer from 2025: <https://github.com/jennybc/libminer-raukr-2025>
 
 Follow along via the modules in the sidebar, e.g. for easy copy/paste of what the instructor is doing.
